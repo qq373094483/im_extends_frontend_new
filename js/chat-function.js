@@ -42,7 +42,7 @@ function sleep(numberMillis) {
             return;
     }
 }
-
+/*聊天窗口*/
 function welcome(){
 	//进入页面，打开10000号系统聊天框，并显示欢迎语。
 	var welcomeContent ="欢迎使用 IM_WEB 版 (^_^)";
