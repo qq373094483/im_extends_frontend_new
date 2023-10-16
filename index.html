@@ -49,89 +49,91 @@
             </table>
         </div>-->
 
-        <!-- 左侧菜单栏 -->
-        <div id="to" class="hidden-xs coolchat_left_nav">
-            <div class="header">
-                <div class="info">
-                    <h3>
-                        <span class="display_name">即时通讯系统</span>
-                        <a class="system_menu_opt" href="javascript:;" style="float: right;">
-                            <i class="system_menu_icon"></i>
-                        </a>
-                    </h3>
-                    <!-- <p class="signature"></p> -->
-                </div>
-            </div>
-            <div id="system_menu_panel" class="mmpop ng-scope system_menu" tabindex="-1"
-                 style="top: 50px; left: 80px; display: none;">
-                <ul class="dropdown_menu">
-                    <li>
-                        <a tabindex="-1" href="javascript:;" onclick="UI.showSetting()" title="隐私设置" class="ng-scope">
-                            <i class="menuicon_push_on"></i>隐私设置
-                        </a>
-                    </li>
-                    <li>
-                        <a tabindex="-1" href="javascript:;" onclick="UI.showPwd()" title="修改密码" class="ng-scope">
-                            <i class="menuicon_volume_on"></i>修改密码
-                        </a>
-                    </li>
-                    <li class="last_child">
-                        <a tabindex="-1" href="javascript:;" onclick="UI.quit()" title="退出登录">
-                            <i class="menuicon_quit"></i>退出登录
-                        </a>
-                    </li>
-                </ul>
 
-            </div>
 
-            <div id="photo" style="height: 130px;text-align: center;"></div>
-            <dl>
-                <dt>
-                    <a href="#messagesTab" data-toggle="tab" style="text-decoration: none" onclick="UI.showMessages()">
-                        <p id="messages" onclick='UI.handoverImg(this)' style=" position:relative;" class="back">
-                            <img id='messageImg' style="width: 20px;margin-top: -4px;color: " src="img/messageImg.png">&nbsp;&nbsp;聊天消息
-                            <i id="messageNum" class="messageNum"></i>
-                        </p>
-                    </a>
-                </dt>
-            </dl>
-
-            <dl>
-                <dt>
-                    <a href="#friendsTab" data-toggle="tab" style="text-decoration: none" onclick="UI.showFriends(0)">
-                        <p id="friend" onclick='UI.handoverImg(this)' class="left_title_old">
-                            <img id='friendImg' style="width: 20px;margin-top: -4px" src="img/friendImg2.png">&nbsp;&nbsp;<span>我的好友</span>
-                        </p>
-                    </a>
-                </dt>
-            </dl>
-            <dl>
-                <dt>
-                    <a href="#roomTab" data-toggle="tab" style="text-decoration: none"
-                       onclick="GroupManager.showMyRoom(0)">
-                        <p id="room" onclick='UI.handoverImg(this)' class="left_title_old">
-                            <img id='roomImg' style="width: 25px;margin-top: -4px" src="img/roomImg2.png">&nbsp;&nbsp;群组聊天
-                        </p>
-                    </a>
-                </dt>
-            </dl>
-            <dl>
-                <dt>
-                    <a href="#companyTab" style="text-decoration: none" data-toggle="tab"
-                       onclick="CompanyManager.findCompany()">
-                        <p id="company" onclick='UI.handoverImg(this)' class="left_title_old">
-                            <img id='compImg' style="width: 25px;margin-top: -4px" src="img/compImg2.png">&nbsp;&nbsp;我的同事
-                        </p>
-                    </a>
-                </dt>
-            </dl>
-        </div>
-
-        <!-- 好友、聊天面板 -->
         <div class="coolchat_content_nav box" style="">
+            <div class="layui-fluid" style="width: 1530px;">
+                <!-- 左侧菜单栏 -->
+                <div id="to" class="hidden-xs coolchat_left_nav" style="height:760px">
+                    <div id="photo" style="height: 130px;text-align: center;"></div>
+                    <dl>
+                        <dt>
+                            <a href="#messagesTab" data-toggle="tab" style="text-decoration: none" onclick="UI.showMessages()">
+                                <p id="messages" onclick='UI.handoverImg(this)' style=" position:relative;" class="back">
+                                    <img id='messageImg' style="width: 20px;margin-top: -4px;color: " src="img/messageImg.png"><!--&nbsp;&nbsp;聊天消息-->
+                                    <i id="messageNum" class="messageNum"></i>
+                                </p>
+                            </a>
+                        </dt>
+                    </dl>
 
+                    <dl>
+                        <dt>
+                            <a href="#friendsTab" data-toggle="tab" style="text-decoration: none" onclick="UI.showFriends(0)">
+                                <p id="friend" onclick='UI.handoverImg(this)' class="left_title_old">
+                                    <img id='friendImg' style="width: 20px;margin-top: -4px" src="img/friendImg2.png"><!--&nbsp;&nbsp;<span>我的好友</span>-->
+                                </p>
+                            </a>
+                        </dt>
+                    </dl>
+                    <dl>
+                        <dt>
+                            <a href="#roomTab" data-toggle="tab" style="text-decoration: none"
+                               onclick="GroupManager.showMyRoom(0)">
+                                <p id="room" onclick='UI.handoverImg(this)' class="left_title_old">
+                                    <img id='roomImg' style="width: 25px;margin-top: -4px" src="img/roomImg2.png"><!--&nbsp;&nbsp;群组聊天-->
+                                </p>
+                            </a>
+                        </dt>
+                    </dl>
+                    <dl>
+                        <dt>
+                            <a href="#companyTab" style="text-decoration: none" data-toggle="tab"
+                               onclick="CompanyManager.findCompany()">
+                                <p id="company" onclick='UI.handoverImg(this)' class="left_title_old">
+                                    <img id='compImg' style="width: 25px;margin-top: -4px" src="img/compImg2.png"><!--&nbsp;&nbsp;我的同事-->
+                                </p>
+                            </a>
+                        </dt>
+                    </dl>
 
-            <div class="layui-fluid" style="width: 1030px;">
+                    <div class="header">
+                        <div class="info">
+                            <h3>
+                                <!--
+                                                                <span class="display_name">即时通讯系统</span>
+                                -->
+                                <a class="system_menu_opt" href="javascript:;" style="">
+                                    <i class="system_menu_icon"></i>
+                                </a>
+                            </h3>
+                            <!-- <p class="signature"></p> -->
+                        </div>
+                    </div>
+                    <div id="system_menu_panel" class="mmpop ng-scope system_menu" tabindex="-1"
+                         style="top: 50px; left: 80px; display: none;">
+                        <ul class="dropdown_menu">
+                            <li>
+                                <a tabindex="-1" href="javascript:;" onclick="UI.showSetting()" title="隐私设置" class="ng-scope">
+                                    <i class="menuicon_push_on"></i>隐私设置
+                                </a>
+                            </li>
+                            <li>
+                                <a tabindex="-1" href="javascript:;" onclick="UI.showPwd()" title="修改密码" class="ng-scope">
+                                    <i class="menuicon_volume_on"></i>修改密码
+                                </a>
+                            </li>
+                            <li class="last_child">
+                                <a tabindex="-1" href="javascript:;" onclick="UI.quit()" title="退出登录">
+                                    <i class="menuicon_quit"></i>退出登录
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+
+                <!-- 好友、聊天面板 -->
                 <div id="o" class="coolchat_data_panel">
                     <div class="tab-content" style="height: 760px;">
                         <div id="friendsTab" class="tab-pane fade">

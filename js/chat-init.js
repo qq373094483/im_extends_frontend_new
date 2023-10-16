@@ -1056,7 +1056,10 @@ layui.use(['form', 'layedit', 'laydate'], function () {
             title: '个人资料',
             placement: 'bottom'
         })
+        //TODO临时性解决方案，待找到初始化问题后再作修改
         layui.layer.close(init_loading_index); //关闭loding
+        $("#to").css("pointer-events", "auto");
+
     });
 
 
