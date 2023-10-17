@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>用户登录·即时通讯系统</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="./layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="./css/login1.css" media="all"/>
+    <link rel="stylesheet" href="./assets/css/intlTelInput.css">
+
+
+</head>
+<body class="login-body">
+<div class="login-page">
+    <div class="login-images">
+
+    </div>
+    <div class="login-title">
+        <div class="register-title">
+            <span class="head-title">手机号注册</span>
+            <span class="head-title">用户名注册</span>
+        </div>
+        <div class="login-title">
+            <span class="head-title">手机号登录</span>
+            <span class="head-title">用户名登录</span>
+        </div>
+    </div>
+    <div class="login-user">
+        <form method='post'>
+
+        </form>
+    </div>
+    <div class="login-phone">
+        <form method='post'>
+
+        </form>
+    </div>
+    <div class="register-user">
+        <form method='post'>
+
+        </form>
+    </div>
+    <div class="register-phone">
+        <form method='post'>
+            <div class="layui-form-item input-item" >
+                <input id="telephone" type="text" placeholder="请输入账号" autocomplete="off" name="telephone"
+                       class="layui-input" lay-verify="required" >
+            </div>
+            <div class="layui-form-item">
+                <input name="password" id="register_password" lay-verify="required|passwd" placeholder="密码"
+                       class="layui-input" type="password">
+            </div>
+
+            <div class="layui-form-item">
+                <input name="repassword" id="register_repass" lay-verify="required|passwd" placeholder="确认密码"
+                       class="layui-input" type="password">
+            </div>
+            <div class="layui-form-item checkcode-warp register_inviteCode" style="display: none;">
+                <input name="inviteCode" id="inviteCode" lay-verify="required" placeholder="邀请码" class="layui-input"
+                       type="text">
+            </div>
+            <!--<div class="layui-form-item input-item img-code">
+                <input type="text" placeholder="图形码,点击图片刷新" autocomplete="off" id="resetPwd_imgcode"
+                       class="layui-input">
+                <img id="reset-pwd-img" onclick="getImgCode(this.id,'resetPwd_telephone')" src="./img/get_img_code.png">
+            </div>-->
+            <div class="layui-form-item checkcode-warp">
+                <div class="smsCodeInput">
+                    <input name="smsCode" id="resetPwd_smsCode" placeholder="短信验证码" class="layui-input" type="text">
+                </div>
+                <div class="smsCodeButton">
+                    <button id="resetPwd_getSmsCode" class="get-check-code layui-btn layui-block" type="button"
+                            onclick="sendmessage(this.id,'resetPwd_imgcode','resetPwd_telephone',0)">
+                        获取验证码
+                    </button>
+                </div>
+            </div>
+
+            <div class="layui-form-item" >
+                <button id="user_login" class="layui-btn layui-block" lay-filter="user_login" lay-submit  style="background-color: #6090dc; width:100%">登录</button>
+            </div>
+
+        </form>
+    </div>
+    <div class="login-title">
+        <div class="register-title">
+            <span class="tail-title">还没有账号?</span>
+            <span class="tail-title" style="color:#b8d7f9">立即注册</span>
+        </div>
+        <div class="login-title">
+            <span class="tail-title">有账号?</span>
+            <span class="tail-title" style="color:#b8d7f9">登录</span>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" charset="UTF-8">
+    (function () {
+        //ie,包括ie11
+        if (!!window.ActiveXObject || "ActiveXObject" in window) {
+            alert("暂时不支持 ie 浏览器，请使用 Chrome、火狐、UC 等浏览器访问");
+            document.execCommand("stop");
+        }
+    })();
+</script>
+<link rel="stylesheet" type="text/css" href="css/xcConfirm.css"/> <!-- 自定义弹框    -->
+
+<script src="./assets/js/jquery-1.11.3.min.js" type="text/javascript"></script>
+<script src="./assets/js/jquery.md5.js" type="text/javascript"></script>
+<script src="./assets/js/jquery.qrcode.min.js" type="text/javascript"></script>
+<!-- <script src="./assets/js/utils.js" type="text/javascript"></script> -->
+<script src="./layui/layui.js" type="text/javascript"></script>
+
+<script src="js/xcConfirm.js" type="text/javascript"></script> <!-- 自定义弹框    -->
+
+<script src="./js/commons.js" type="text/javascript"></script>
+<script src="./js/_coolchat-commons.js" type="text/javascript"></script>
+<script src="./js/chat-sdk.js" type="text/javascript"></script>
+<script src="./assets/js/jquery.cookie.js" type="text/javascript"></script>
+
+<script src="./assets/js/intlTelInput.js" type="text/javascript"></script>
+<!-- 本地数据库 相关 -->
+<script src="./assets/js/cookieStorage.js" type="text/javascript"></script>
+<script src="./assets/js/localStoreage.js" type="text/javascript"></script>
+<script src="./js/dbUtils.js" type="text/javascript"></script>
+<script src="./js/dataUtils.js" type="text/javascript"></script>
+
+<script src="js/webim.js"></script>
+
+<script src="./js/_coolchat-login.js" type="text/javascript"></script>
+
+<!-- 客服模块相关js -->
+<script src="./js/customerService.js" type="text/javascript"></script>
+</body>
+</html>

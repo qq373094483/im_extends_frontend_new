@@ -1,0 +1,82 @@
+.login-body,.login-page{
+    background-color: #fbf4ef;
+}
+.login-page .layui-form-item input{transition: all 0.3s ease-in-out;-webkit-transition: all 0.3s ease-in-out;}
+
+.login-page .layui-input-focus .layui-input::-webkit-input-placeholder{transition: color 0.2s linear 0.2s;-webkit-transition: color 0.2s linear 0.2s;}
+.login-page .layui-input-focus .layui-input::-moz-placeholder{transition: color 0.2s linear 0.2s;}
+.login-page .layui-input-focus .layui-input:-ms-input-placeholder{transition: color 0.2s linear 0.2s;}
+.login-page .layui-input-focus .layui-input::placeholder{transition: color 0.2s linear 0.2s;-webkit-transition: color 0.2s linear 0.2s;}
+
+
+.layui-form-item{
+    position:relative;
+
+}
+.login-page {
+    padding:0 30px;
+    width:360px;
+    height:auto;
+    position:absolute;
+    left:50%;
+    top:50%;
+    margin: -180px 0 0 -180px;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -o-box-sizing:border-box;
+    box-sizing:border-box;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
+    border:1px solid red;
+}
+
+.login-page .login-images {
+    background-image: url("../img/300.png");
+    height: 100px;
+    width: 100px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin:0px auto;
+}
+
+.register-title{
+    display: none;
+}
+
+.head-title{
+    background-color: #efedec;
+    border-radius: 25px;
+    padding:0px 5px;
+}
+
+.layui-form-item .layui-input,#resetPwd_getSmsCode{
+    border-radius:10px;
+}
+.smsCodeInput{
+    width:60%;
+    margin:0px;
+    float: left;
+}
+.smsCodeButton{
+    width:30%;
+    padding:0px 10px;
+    float: right;
+    position: relative;
+    left:-20px;
+}
+.smsCodeButton{
+    outline: none;
+    height:38px;
+    padding:0;
+    line-height:38px
+
+}
+#resetPwd_getSmsCode{
+    background-color: #ffffff;
+    color:#000000;
+}
+.login-title{
+    margin:0px auto;
+    text-align: center;
+}
