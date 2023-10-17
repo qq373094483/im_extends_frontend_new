@@ -1,14 +1,14 @@
 var AppConfig = {
 
 	apiUrl : "http://localhost:8092",// 接口地址
-    boshUrl : "http://localhost:5280",
-    //boshUrl : "wss://im.shikutech.com:5290",// http://+（XMPP主机IP或域名）+（:5280）
-    uploadServer:"http://mm.jimi5588.com:8088/",
-    fileServer:"http://mm.jimi5588.com:8089/",
-    jitsiDomain:"",
-    apiKey:"",
-    companyId : "5cd2fdfd0c03d03c19a109c7", //客服模块公司id
-    departmentId : "5cd2fdfd0c03d03c19a109c9", //客服部门id
+	boshUrl : "http://localhost:5280",
+	//boshUrl : "wss://im.shikutech.com:5290",// http://+（XMPP主机IP或域名）+（:5280）
+	uploadServer:"http://mm.jimi5588.com:8088/",
+	fileServer:"http://mm.jimi5588.com:8089/",
+	jitsiDomain:"",
+	apiKey:"",
+	companyId : "5cd2fdfd0c03d03c19a109c7", //客服模块公司id
+	departmentId : "5cd2fdfd0c03d03c19a109c9", //客服部门id
 	isOpenReceipt:1,
 	isOpenSMSCode:0,  //是否开短信验证码
 	registerInviteCode:0, //注册邀请码  0：关闭 1:一码一用(注册型邀请码)  2：一码多用（推广型邀请码）
@@ -41,19 +41,19 @@ var myData = {
 //日志打印
 function shikuLog(obj){
 	//log 打印
- 	console.log("shikuLog "+obj);
+	console.log("shikuLog "+obj);
 }
 
 
 var ivKey=[1,2,3,4,5,6,7,8];
 
 function getStrFromBytes (arr) {
-    var r = "";
-    for(var i=0;i<arr.length;i++){
-        r += String.fromCharCode(arr[i]);
-    }
-    //console.log(r);
-    return r;
+	var r = "";
+	for(var i=0;i<arr.length;i++){
+		r += String.fromCharCode(arr[i]);
+	}
+	//console.log(r);
+	return r;
 }
 var iv=getStrFromBytes(ivKey);
 
@@ -77,31 +77,31 @@ var myFn = {
 			url : obj.url,
 			data : obj.data,
 			dataType : 'json',
-			
- 			success : function(result) {
-				
+
+			success : function(result) {
+
 				if(1030101==result.resultCode){
-						//缺少访问令牌
-						console.log("===> "+obj.url+" >> "+result.resultMsg);
-						if(result.resultMsg)
-							ownAlert(3,result.resultMsg);
-						/*setTimeout(function(){
-							 window.location.href = "login.html";
-						},1000);*/
-						
+					//缺少访问令牌
+					console.log("===> "+obj.url+" >> "+result.resultMsg);
+					if(result.resultMsg)
+						ownAlert(3,result.resultMsg);
+					/*setTimeout(function(){
+                         window.location.href = "login.html";
+                    },1000);*/
+
 				}else if(1030102==result.resultCode){
-						//访问令牌过期
-						console.log("===> "+obj.url+" >> "+result.resultMsg);
-						if(result.resultMsg)
-							ownAlert(3,result.resultMsg);
-						setTimeout(function(){
-							 window.location.href = "login.html";
-						},1000);
-						
+					//访问令牌过期
+					console.log("===> "+obj.url+" >> "+result.resultMsg);
+					if(result.resultMsg)
+						ownAlert(3,result.resultMsg);
+					setTimeout(function(){
+						window.location.href = "login.html";
+					},1000);
+
 				}else if(1010101==result.resultCode){
 					console.log("===> "+obj.url+" >> "+result.resultMsg);
 				}else if(1040307 == result.resultCode||1040308 == result.resultCode||1040309 == result.resultCode){
-					
+
 				}else if(1!=result.resultCode && myFn.notNull(result.resultMsg)){
 					if(false==obj.isShowAlert){return;}
 					if(result.resultMsg)
@@ -109,7 +109,7 @@ var myFn = {
 					if(obj.fail){
 						obj.fail();
 					}
-					return;	
+					return;
 				}else if(myFn.notNull(result.resultMsg)){
 					if(obj.isShowAlert)
 						ownAlert(3,result.resultMsg);
@@ -117,9 +117,9 @@ var myFn = {
 				obj.success(result);
 			},
 			error : function(result) {
-				 if(false==obj.isShowAlert){return;}
-				 if(result.resultMsg)
-					 ownAlert(2,result.resultMsg);
+				if(false==obj.isShowAlert){return;}
+				if(result.resultMsg)
+					ownAlert(2,result.resultMsg);
 				// obj.error(result);
 			},
 			complete : function() {
@@ -144,26 +144,26 @@ var myFn = {
 			dataType : 'JSON',
 			success : function(result) {
 				layer.closeAll('loading');
-				
+
 				if(1==result.resultCode){
 					if(obj.successMsg!=false)
 						layer.msg(obj.successMsg,{icon: 1});
 					obj.successCb(result);//执行成功的回调函数					
-				
+
 				}else if(1030101==result.resultCode){
-						//缺少访问令牌
-						layer.msg(result.resultMsg,{icon: 3});
-						/*setTimeout(function(){
-							 window.location.href = "login.html";
-						},1000);*/
-						
+					//缺少访问令牌
+					layer.msg(result.resultMsg,{icon: 3});
+					/*setTimeout(function(){
+                         window.location.href = "login.html";
+                    },1000);*/
+
 				}else if(1030102==result.resultCode){
-						//访问令牌过期
-						layer.msg(result.resultMsg,{icon: 3});
-						setTimeout(function(){
-							 window.location.href = "login.html";
-						},1000);
-				
+					//访问令牌过期
+					layer.msg(result.resultMsg,{icon: 3});
+					setTimeout(function(){
+						window.location.href = "login.html";
+					},1000);
+
 				}else if(-1==result.resultCode){
 					if(result.resultMsg)
 						layer.msg(result.resultMsg,{icon: 3});
@@ -171,11 +171,11 @@ var myFn = {
 				}else{
 					if(!myFn.isNil(result.resultMsg))
 						layer.msg(result.resultMsg,{icon: 2});
-					
+
 					//obj.errorCb(result);
 				}
 				return;
-					
+
 			},
 			error : function(result) {
 				layer.closeAll('loading');
@@ -188,7 +188,7 @@ var myFn = {
 				return;
 			},
 			complete : function(result) {
-				layer.closeAll('loading');           
+				layer.closeAll('loading');
 			}
 		}
 		params.url = AppConfig.apiUrl + params.url;
@@ -205,7 +205,7 @@ var myFn = {
 			imgUrl+="?x="+Math.random()*10;
 		return imgUrl;
 	},
-	
+
 	/*是否为阅后即焚消息*/
 	isReadDelMsg : function(msg){
 		try {
@@ -214,13 +214,13 @@ var myFn = {
 			}
 			return ("true"==msg.isReadDel||1==msg.isReadDel);
 		} catch (e) {
-		 	//console.log(e.name + ": " + e.message);
-		 return false;
+			//console.log(e.name + ": " + e.message);
+			return false;
 		}
-		
+
 	},
 	isContains: function(str, substr) {
-    	return str.indexOf(substr) >= 0;
+		return str.indexOf(substr) >= 0;
 	},
 	isNil : function(s) {
 		return undefined == s ||"undefined"==s|| null == s || $.trim(s) == "" || $.trim(s) == "null"||NaN==s;
@@ -232,14 +232,14 @@ var myFn = {
 	getText:function(text,length){
 		if(myFn.isNil(text))
 			return  " ";
-		text = text.replace(/<br\/>/g, '');  
+		text = text.replace(/<br\/>/g, '');
 		if(!length)
 			length=15;
-		if (text.length<=length) 
+		if (text.length<=length)
 			return text;
-		text = text.substring(0,length)+"...";  
-		    return text;
-		
+		text = text.substring(0,length)+"...";
+		return text;
+
 	},
 	strToJson : function(str) {
 		return eval("(" + str + ")");
@@ -263,7 +263,7 @@ var myFn = {
 		/*var isEncrypt = myData.isEncrypt;  //是否为加密  false:不是  true:是
 			myData.isEncrypt=!isEncrypt;
 			ownAlert(3,myData.isEncrypt);*/
-			
+
 	},
 	switchCustomer:function(key){
 		if(key==1){
@@ -336,7 +336,7 @@ var myFn = {
 		console.log(mp3html);
 		return mp3html;
 	},
-	
+
 	parseContent : function(content) {
 		var emojlKeys = new Array();
 		if(myFn.isNil(content))
@@ -363,32 +363,32 @@ var myFn = {
 			var key=null;
 			var emojl=null;
 			for (var i = 0; i < emojlKeys.length; i++) {
-				 key = emojlKeys[i];
-				 emojl=_emojl[key];
-				 if(!myFn.isNil(emojl)){
+				key = emojlKeys[i];
+				emojl=_emojl[key];
+				if(!myFn.isNil(emojl)){
 					s = s.replace(key, "<img src='" + emojl + "' width='25' height='25' />");
-				 }
-					
+				}
+
 			}
 			return s;
 		}
 
 		content=Utils.hrefEncode(content);
-		
+
 		return content;
-		
+
 	},
 	parseFileSize : function(value){
-	    if(null==value||value==''){
-	        return "0 B";
-	    }
-	    var unitArr = new Array("B","KB","MB","GB");
-	    var index=0;
-	    var srcsize = parseFloat(value);
-	    index=Math.floor(Math.log(srcsize)/Math.log(1024));
-	    var size =srcsize/Math.pow(1024,index);
-	    size=size.toFixed(2);//保留的小数位数
-	    return size+unitArr[index];
+		if(null==value||value==''){
+			return "0 B";
+		}
+		var unitArr = new Array("B","KB","MB","GB");
+		var index=0;
+		var srcsize = parseFloat(value);
+		index=Math.floor(Math.log(srcsize)/Math.log(1024));
+		var size =srcsize/Math.pow(1024,index);
+		size=size.toFixed(2);//保留的小数位数
+		return size+unitArr[index];
 	},
 	getAvatar : function (){
 		$("#avatarForm #avatar").click();
@@ -417,14 +417,14 @@ var myFn = {
 
 
 /**
- * 
+ *
  * @param type //type : 1 成功 2:失败 3：提示 4:询问
  * @param infoText
  * @param okCallback
  * @returns
  */
 function ownAlert(type,infoText,okCallback){  //自定义的弹框  
-	
+
 	/*if(type==1)
 		window.wxc.xcConfirm(infoText, window.wxc.xcConfirm.typeEnum.success,options);
 	if(type==2)
@@ -439,23 +439,23 @@ function ownAlert(type,infoText,okCallback){  //自定义的弹框
 		layer.msg(infoText, {icon: 5});
 	if(type==3)
 		layui.layer.open({
-		  title: false,
-		  closeBtn: 0,
-		  btnAlign: 'c',
-		  skin: 'my-skin',
-		  content: '<div style="text-align:center;">'+infoText+'</div>' 
+			title: false,
+			closeBtn: 0,
+			btnAlign: 'c',
+			skin: 'my-skin',
+			content: '<div style="text-align:center;">'+infoText+'</div>'
 		});
 	if(type==4)
 
 		layui.layer.confirm(
-				'<div style="text-align:center;">'+infoText+'</div>', 
-				{icon: 3, title:false, closeBtn: 0,btnAlign: 'c',skin: 'my-skin'}, 
-				function(index){
-				   if(okCallback)	
-						 okCallback();
-                   layui.layer.close(index);
+			'<div style="text-align:center;">'+infoText+'</div>',
+			{icon: 3, title:false, closeBtn: 0,btnAlign: 'c',skin: 'my-skin'},
+			function(index){
+				if(okCallback)
+					okCallback();
+				layui.layer.close(index);
 
-			    }
+			}
 		);
 
 };
@@ -464,19 +464,19 @@ function ownAlert(type,infoText,okCallback){  //自定义的弹框
 var Checkbox = {
 	/*用于存储被选中的好友的userId  key:userId  value:userId 
 	 用于解决checkbox翻页后上一页的选中数据无法记录的问题*/
-	cheackedFriends : {}, 
+	cheackedFriends : {},
 	checkedNames:[],
 	checkedAndCancel : function(that) {  //checkbox选中与取消选中
 		// ownAlert(3,"点击选中与取消");
-	    if (that.checked) {//判断是否为选中状态
-	        Checkbox.checked(that);
-	    } else {
-	        Checkbox.cancel(that.value,that.id);
-	    }
-		
+		if (that.checked) {//判断是否为选中状态
+			Checkbox.checked(that);
+		} else {
+			Checkbox.cancel(that.value,that.id);
+		}
+
 	},
 	checked : function (that) {  //checkbox选中事件
-		
+
 		var userId=that.value;
 		var showAreaId=that.id;
 		if(Checkbox.cheackedFriends[userId]==userId){  //判断是否存在
@@ -484,9 +484,9 @@ var Checkbox = {
 		}
 		Checkbox.cheackedFriends[userId] = userId; //选中后将userId 存到map中
 		var nickname=$(that).attr("nickname");
-		
+
 		if(!myFn.isNil(nickname)){
-			Checkbox.checkedNames[userId+"uId"]=nickname; 
+			Checkbox.checkedNames[userId+"uId"]=nickname;
 			Checkbox.checkedNames.length+=1;
 		}
 		var imgUrl = myFn.getAvatarUrl(userId);
@@ -520,8 +520,8 @@ var Checkbox = {
 		}
 		var invitees = new Array();
 		for(var key in Checkbox.cheackedFriends){  //通过定义一个局部变量key遍历获取到了cheackedFriends中所有的key值  
-		  
-		   invitees.push(Checkbox.cheackedFriends[key]); //获取key所对应的value的值,并存入数组  
+
+			invitees.push(Checkbox.cheackedFriends[key]); //获取key所对应的value的值,并存入数组
 		}
 		// return JSON.stringify(invitees);
 		return invitees;
