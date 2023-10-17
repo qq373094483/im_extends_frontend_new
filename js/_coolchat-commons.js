@@ -1,10 +1,10 @@
 var AppConfig = {
 
-	apiUrl : "http://imapi.server.com:8092",// 接口地址
-    boshUrl : "http://im.server.com:5280",
+	apiUrl : "http://localhost:8092",// 接口地址
+    boshUrl : "http://localhost:5280",
     //boshUrl : "wss://im.shikutech.com:5290",// http://+（XMPP主机IP或域名）+（:5280）
-    uploadServer:"http://file.server.com:8088/",
-    fileServer:"http://file.server.com:8089/",
+    uploadServer:"http://mm.jimi5588.com:8088/",
+    fileServer:"http://mm.jimi5588.com:8089/",
     jitsiDomain:"",
     apiKey:"",
     companyId : "5cd2fdfd0c03d03c19a109c7", //客服模块公司id
