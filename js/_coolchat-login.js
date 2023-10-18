@@ -149,8 +149,8 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
                 }
 			}
 	       	obj.field.areaCode = $("#register_telephone").intlTelInput("getSelectedCountryData").dialCode;
-	        obj.field.password = $.md5(obj.field.password); 
-
+	        obj.field.password = $.md5(obj.field.password);
+			AppConfig.isOpenSMSCode = 0;//TODO 暂时写死
 	        if(AppConfig.isOpenSMSCode!=0){ //开启短信验证码
 	        	if(!saveAndCheckSmsCode(obj.field.telephone+"",obj.field.smsCode,"register",1)){
 		        	layer.msg("错误的短信验证码",{icon: 2});
@@ -256,6 +256,9 @@ function PageSwitch(pageId){
 	$("."+pageId+"").siblings().hide();
 
 	if(pageId=="register_page"){ //切换到注册页面
+		//TODO 两个变量暂时写死
+		AppConfig.regeditPhoneOrName = 1;
+		AppConfig.isOpenSMSCode = 0;
 		// 用户名、手机号注册
         if(AppConfig.regeditPhoneOrName == 0) { // 开启手机号注册
 			if(AppConfig.isOpenSMSCode==1){// 开启短信验证码
