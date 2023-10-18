@@ -34,6 +34,8 @@
             <div class="layui-form-item input-item">
                 <input id="telephone" type="text" placeholder="请输入手机号" autocomplete="off" name="telephone"
                        class="layui-input" lay-verify="required">
+                <input id="account" type="text" placeholder="请输入账号" autocomplete="off" name="telephone"
+                       class="layui-input" style="display: none" lay-verify="required">
             </div>
             <div class="layui-form-item">
                 <input name="password" id="password" lay-verify="required" placeholder="密码"
@@ -73,6 +75,8 @@
             <div class="layui-form-item input-item">
                 <input id="register_telephone" type="text" placeholder="请输入手机号" autocomplete="off" name="telephone"
                        class="layui-input" lay-verify="required">
+                <input id="register_account" type="text" placeholder="请输入账号" autocomplete="off" name="telephone"
+                       class="layui-input" style="display: none" lay-verify="required">
             </div>
             <div class="layui-form-item">
                 <input name="password" id="register_password" lay-verify="required|passwd" placeholder="密码"
@@ -116,11 +120,11 @@
     <div class="login-tail login-title">
         <div class="register">
             <span class="tail-title">有账号?</span>
-            <span class="tail-title" style="color:#b8d7f9">登录</span>
+            <span id="toLogin" class="tail-title" style="color:#b8d7f9">登录</span>
         </div>
         <div class="register-title login">
             <span class="tail-title">还没有账号?</span>
-            <span class="tail-title" style="color:#b8d7f9">立即注册</span>
+            <span id="toRigister" class="tail-title" style="color:#b8d7f9">立即注册</span>
         </div>
     </div>
 </div>
@@ -174,10 +178,8 @@
         }catch (e) {
             regeditPhoneOrName = 0;
         }
-        $(".register").css("display", "none");
-        $(".login").css("display", "null");
         //登录区号
-        $("#telephone").intlTelInput({
+        $("#telephone,#register_telephone").intlTelInput({
             autoHideDialCode: false,
             autoPlaceholder: "off",
             dropdownContainer: "body",
@@ -188,6 +190,47 @@
             preferredCountries: ['cn', 'my'],
             separateDialCode: true,
             utilsScript: "assets/js/utils.js",
+        });
+        $(".register").hide();
+        $(".login").show();
+        $(".phone-title").click(function(){
+            $(this).css({"background-color":"#a0ccfd","position":"relative","left":"10px","z-index":"1"});
+            $(".user-title").css({"background-color":"#eeedec","position":"relative","left":"-5px","z-index":"0"});
+            $('#telephone,#register_telephone').closest('.intl-tel-input').show();
+            //登录区号
+            $("#telephone,#register_telephone").intlTelInput({
+                autoHideDialCode: false,
+                autoPlaceholder: "off",
+                dropdownContainer: "body",
+                geoIpLookup: null,
+                //初始国家
+                initialCountry: "cn",
+                nationalMode: false,
+                preferredCountries: ['cn', 'my'],
+                separateDialCode: true,
+                utilsScript: "assets/js/utils.js",
+            });
+            $('#account,#register_account').hide();
+        });
+        $(".user-title").click(function(){
+            $(this).css({"background-color":"#a0ccfd","position":"relative","left":"-5px","z-index":"1"});
+            $(".phone-title").css({"background-color":"#eeedec","position":"relative","left":"10px","z-index":"0"});
+            $('#telephone,#register_telephone').closest('.intl-tel-input').hide();
+            $('#account,#register_account').show();
+        });
+        $('#toLogin').click(function () {
+            $(".register").hide();
+            $(".login").show();
+            $(".phone-title").css({"background-color":"#a0ccfd","position":"relative","left":"10px","z-index":"1"});
+            $(".user-title").css({"background-color":"#eeedec","position":"relative","left":"-5px","z-index":"0"});
+            $(".phone-title").click();
+        });
+        $('#toRigister').click(function () {
+            $(".register").show();
+            $(".login").hide();
+            $(".phone-title").css({"background-color":"#a0ccfd","position":"relative","left":"10px","z-index":"1"});
+            $(".user-title").css({"background-color":"#eeedec","position":"relative","left":"-5px","z-index":"0"});
+            $(".phone-title").click();
         });
         if(0 == regeditPhoneOrName){
             //注册区号
