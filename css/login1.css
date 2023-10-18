@@ -1,19 +1,19 @@
-.login-body,.login-page{
+.login-body,.index-page{
     background-color: #fbf4ef;
 }
-.login-page .layui-form-item input{transition: all 0.3s ease-in-out;-webkit-transition: all 0.3s ease-in-out;}
+.index-page .layui-form-item input{transition: all 0.3s ease-in-out;-webkit-transition: all 0.3s ease-in-out;}
 
-.login-page .layui-input-focus .layui-input::-webkit-input-placeholder{transition: color 0.2s linear 0.2s;-webkit-transition: color 0.2s linear 0.2s;}
-.login-page .layui-input-focus .layui-input::-moz-placeholder{transition: color 0.2s linear 0.2s;}
-.login-page .layui-input-focus .layui-input:-ms-input-placeholder{transition: color 0.2s linear 0.2s;}
-.login-page .layui-input-focus .layui-input::placeholder{transition: color 0.2s linear 0.2s;-webkit-transition: color 0.2s linear 0.2s;}
+.index-page .layui-input-focus .layui-input::-webkit-input-placeholder{transition: color 0.2s linear 0.2s;-webkit-transition: color 0.2s linear 0.2s;}
+.index-page .layui-input-focus .layui-input::-moz-placeholder{transition: color 0.2s linear 0.2s;}
+.index-page .layui-input-focus .layui-input:-ms-input-placeholder{transition: color 0.2s linear 0.2s;}
+.index-page .layui-input-focus .layui-input::placeholder{transition: color 0.2s linear 0.2s;-webkit-transition: color 0.2s linear 0.2s;}
 
 
 .layui-form-item{
     position:relative;
 
 }
-.login-page {
+.index-page {
     padding:0 30px;
     width:360px;
     height:auto;
@@ -27,27 +27,25 @@
     box-sizing:border-box;
     -webkit-border-radius:5px;
     -moz-border-radius:5px;
+    background-color: #ffffff;
     border-radius:5px;
-    border:1px solid red;
 }
 
-.login-page .login-images {
+.index-page .login-images {
     background-image: url("../img/300.png");
     height: 100px;
     width: 100px;
     background-size: contain;
     background-repeat: no-repeat;
-    margin:0px auto;
+    margin:10px auto;
 }
 
-.register-title{
-    display: none;
-}
+
 
 .head-title{
     background-color: #efedec;
-    border-radius: 25px;
-    padding:0px 5px;
+    border-radius: 10px;
+    padding:0px 10px;
 }
 
 .layui-form-item .layui-input,#resetPwd_getSmsCode{
@@ -77,6 +75,18 @@
     color:#000000;
 }
 .login-title{
-    margin:0px auto;
+    margin:10px auto;
     text-align: center;
+}
+.login .phone-title{
+    background-color:#a0ccfd;
+    position:relative;
+    left: 10px;
+    z-index: 1;
+}
+
+.login .user-title{
+    position:relative;
+    left: -5px;
+    z-index: 0;
 }

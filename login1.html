@@ -9,37 +9,31 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
-    <link rel="stylesheet" href="./layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="./layui/css/layui.css" media="all"/>
     <link rel="stylesheet" href="./css/login1.css" media="all"/>
     <link rel="stylesheet" href="./assets/css/intlTelInput.css">
 
 
 </head>
 <body class="login-body">
-<div class="login-page">
+<div class="index-page">
     <div class="login-images">
-
     </div>
-    <div class="login-title">
-        <div class="register-title">
-            <span class="head-title">手机号注册</span>
-            <span class="head-title">用户名注册</span>
+    <div class="login-head login-title">
+        <div class="login">
+            <span class="head-title phone-title">手机号登录</span>
+            <span class="head-title user-title">用户名登录</span>
         </div>
-        <div class="login-title">
-            <span class="head-title">手机号登录</span>
-            <span class="head-title">用户名登录</span>
+        <div class="register-title register">
+            <span class="head-title phone-title">手机号注册</span>
+            <span class="head-title user-title">用户名注册</span>
         </div>
     </div>
-    <div class="login-user">
+    <div class="login-page login">
         <form method='post'>
-
-        </form>
-    </div>
-    <div class="login-phone"  style="display: none;">
-        <form method='post'>
-            <div class="layui-form-item input-item" >
+            <div class="layui-form-item input-item">
                 <input id="telephone" type="text" placeholder="请输入手机号" autocomplete="off" name="telephone"
-                       class="layui-input" lay-verify="required" >
+                       class="layui-input" lay-verify="required">
             </div>
             <div class="layui-form-item">
                 <input name="password" id="password" lay-verify="required" placeholder="密码"
@@ -55,28 +49,30 @@
                        class="layui-input">
                 <img id="reset-pwd-img" onclick="getImgCode(this.id,'resetPwd_telephone')" src="./img/get_img_code.png">
             </div>-->
-           <!-- <div class="layui-form-item checkcode-warp">
-                <div class="smsCodeInput">
-                    <input name="smsCode" id="resetPwd_smsCode" placeholder="短信验证码" class="layui-input" type="text">
-                </div>
-                <div class="smsCodeButton">
-                    <button id="resetPwd_getSmsCode" class="get-check-code layui-btn layui-block" type="button"
-                            onclick="sendmessage(this.id,'resetPwd_imgcode','resetPwd_telephone',0)">
-                        获取验证码
-                    </button>
-                </div>
-            </div>-->
+            <!-- <div class="layui-form-item checkcode-warp">
+                 <div class="smsCodeInput">
+                     <input name="smsCode" id="resetPwd_smsCode" placeholder="短信验证码" class="layui-input" type="text">
+                 </div>
+                 <div class="smsCodeButton">
+                     <button id="resetPwd_getSmsCode" class="get-check-code layui-btn layui-block" type="button"
+                             onclick="sendmessage(this.id,'resetPwd_imgcode','resetPwd_telephone',0)">
+                         获取验证码
+                     </button>
+                 </div>
+             </div>-->
 
-            <div class="layui-form-item" >
-                <button id="user_login" class="layui-btn layui-block" lay-filter="user_login" lay-submit  style="background-color: #6090dc; width:100%">登录</button>
+            <div class="layui-form-item">
+                <button id="user_login" class="layui-btn layui-block" lay-filter="user_login" lay-submit
+                        style="background-color: #6090dc; width:100%">登录
+                </button>
             </div>
         </form>
     </div>
-    <div class="register-phone">
+    <div class="register-page register"  style="display: none;">
         <form method='post'>
-            <div class="layui-form-item input-item" >
+            <div class="layui-form-item input-item">
                 <input id="register_telephone" type="text" placeholder="请输入手机号" autocomplete="off" name="telephone"
-                       class="layui-input" lay-verify="required" >
+                       class="layui-input" lay-verify="required">
             </div>
             <div class="layui-form-item">
                 <input name="password" id="register_password" lay-verify="required|passwd" placeholder="密码"
@@ -88,7 +84,8 @@
                        class="layui-input" type="password">
             </div>
             <div class="layui-form-item checkcode-warp register_inviteCode" style="display: none;">
-                <input name="inviteCode" id="register_inviteCode" lay-verify="required" placeholder="邀请码" class="layui-input"
+                <input name="inviteCode" id="register_inviteCode" lay-verify="required" placeholder="邀请码"
+                       class="layui-input"
                        type="text">
             </div>
             <!--<div class="layui-form-item input-item img-code">
@@ -96,7 +93,7 @@
                        class="layui-input">
                 <img id="reset-pwd-img" onclick="getImgCode(this.id,'resetPwd_telephone')" src="./img/get_img_code.png">
             </div>-->
-            <div class="layui-form-item checkcode-warp">
+            <!--<div class="layui-form-item checkcode-warp">
                 <div class="smsCodeInput">
                     <input name="smsCode" id="resetPwd_smsCode" placeholder="短信验证码" class="layui-input" type="text">
                 </div>
@@ -106,22 +103,24 @@
                         获取验证码
                     </button>
                 </div>
-            </div>
+            </div>-->
 
-            <div class="layui-form-item" >
-                <button id="user_register" class="layui-btn layui-block" lay-filter="user_login" lay-submit  style="background-color: #6090dc; width:100%">注册</button>
+            <div class="layui-form-item">
+                <button id="user_register" class="layui-btn layui-block" lay-filter="user_login" lay-submit
+                        style="background-color: #6090dc; width:100%">注册
+                </button>
             </div>
 
         </form>
     </div>
-    <div class="login-title">
-        <div class="register-title">
-            <span class="tail-title">还没有账号?</span>
-            <span class="tail-title" style="color:#b8d7f9">立即注册</span>
-        </div>
-        <div class="login-title">
+    <div class="login-tail login-title">
+        <div class="register">
             <span class="tail-title">有账号?</span>
             <span class="tail-title" style="color:#b8d7f9">登录</span>
+        </div>
+        <div class="register-title login">
+            <span class="tail-title">还没有账号?</span>
+            <span class="tail-title" style="color:#b8d7f9">立即注册</span>
         </div>
     </div>
 </div>
@@ -159,9 +158,57 @@
 
 <script src="js/webim.js"></script>
 
-<script src="./js/_coolchat-login.js" type="text/javascript"></script>
+<!--<script src="./js/_coolchat-login.js" type="text/javascript"></script>-->
 
 <!-- 客服模块相关js -->
 <script src="./js/customerService.js" type="text/javascript"></script>
+<!-- <script type="text/javascript" src="login.js"></script> -->
+<script type="text/javascript" charset="UTF-8">
+    (function(){
+        var regeditPhoneOrName;// 0:手机号注册，1：用户名注册
+        try {
+            mySdk.getConfig(function(result){
+                regeditPhoneOrName = result.regeditPhoneOrName;
+                shikuLog("====> initConfig > "+JSON.stringify(result));
+            });
+        }catch (e) {
+            regeditPhoneOrName = 0;
+        }
+        $(".register").css("display", "none");
+        $(".login").css("display", "null");
+        //登录区号
+        $("#telephone").intlTelInput({
+            autoHideDialCode: false,
+            autoPlaceholder: "off",
+            dropdownContainer: "body",
+            geoIpLookup: null,
+            //初始国家
+            initialCountry: "cn",
+            nationalMode: false,
+            preferredCountries: ['cn', 'my'],
+            separateDialCode: true,
+            utilsScript: "assets/js/utils.js",
+        });
+        if(0 == regeditPhoneOrName){
+            //注册区号
+            $("#register_telephone").intlTelInput({
+                autoHideDialCode: false,
+                autoPlaceholder: "off",
+                dropdownContainer: "body",
+                geoIpLookup: null,
+                //初始国家
+                initialCountry: "cn",
+                nationalMode: false,
+                preferredCountries: ['cn', 'my'],
+                separateDialCode: true,
+                utilsScript: "assets/js/utils.js",
+            });
+        }else{
+
+        }
+    })();
+
+</script>
+
 </body>
 </html>
