@@ -30,8 +30,8 @@
         </div>
     </div>
     <div class="login-page login">
-        <form method='post'>
-            <div class="layui-form-item input-item">
+        <form class="layui-form"  method='post'>
+            <div class="layui-form-item">
                 <input id="telephone" type="text" placeholder="请输入手机号" autocomplete="off" name="telephone"
                        class="layui-input" lay-verify="required">
                 <input id="account" type="text" placeholder="请输入账号" autocomplete="off" name="telephone"
@@ -42,10 +42,10 @@
                        class="layui-input" type="password">
             </div>
 
-            <div class="layui-form-item checkcode-warp register_inviteCode" style="display: none;">
+            <!--<div class="layui-form-item checkcode-warp register_inviteCode" style="display: none;">
                 <input name="inviteCode" id="inviteCode" lay-verify="required" placeholder="邀请码" class="layui-input"
                        type="text">
-            </div>
+            </div>-->
             <!--<div class="layui-form-item input-item img-code">
                 <input type="text" placeholder="图形码,点击图片刷新" autocomplete="off" id="resetPwd_imgcode"
                        class="layui-input">
@@ -67,11 +67,12 @@
                 <button id="user_login" class="layui-btn layui-block" lay-filter="user_login" lay-submit
                         style="background-color: #6090dc; width:100%">登录
                 </button>
+
             </div>
         </form>
     </div>
     <div class="register-page register"  style="display: none;">
-        <form method='post'>
+        <form class="layui-form" method='post'>
             <div class="layui-form-item input-item">
                 <input id="register_telephone" type="text" placeholder="请输入手机号" autocomplete="off" name="telephone"
                        class="layui-input" lay-verify="required">
@@ -87,11 +88,11 @@
                 <input name="repassword" id="register_repass" lay-verify="required|passwd" placeholder="确认密码"
                        class="layui-input" type="password">
             </div>
-            <div class="layui-form-item checkcode-warp register_inviteCode" style="display: none;">
+            <!--<div class="layui-form-item checkcode-warp register_inviteCode" style="display: none;">
                 <input name="inviteCode" id="register_inviteCode" lay-verify="required" placeholder="邀请码"
                        class="layui-input"
                        type="text">
-            </div>
+            </div>-->
             <!--<div class="layui-form-item input-item img-code">
                 <input type="text" placeholder="图形码,点击图片刷新" autocomplete="off" id="resetPwd_imgcode"
                        class="layui-input">
@@ -110,10 +111,12 @@
             </div>-->
 
             <div class="layui-form-item">
-                <button id="user_register" class="layui-btn layui-block" lay-filter="user_login" lay-submit
+                <!--<button  class="layui-btn layui-block" lay-filter="user_login" lay-submit
                         style="background-color: #6090dc; width:100%">注册
-                </button>
+                </button>-->
+                <button id="user_register" class="layui-btn layui-btn-fluid" lay-filter="register-submit" lay-submit style="background-color: #6090dc; width:100%">注 册</button>
             </div>
+
 
         </form>
     </div>
@@ -163,6 +166,7 @@
 <script src="js/webim.js"></script>
 
 <!--<script src="./js/_coolchat-login.js" type="text/javascript"></script>-->
+<script src="./js/login.js" type="text/javascript"></script>
 
 <!-- 客服模块相关js -->
 <script src="./js/customerService.js" type="text/javascript"></script>
@@ -178,6 +182,7 @@
         }catch (e) {
             regeditPhoneOrName = 0;
         }
+        $('#account,#register_account').attr('lay-verify',null);
         //登录区号
         $("#telephone,#register_telephone").intlTelInput({
             autoHideDialCode: false,
@@ -211,12 +216,18 @@
                 utilsScript: "assets/js/utils.js",
             });
             $('#account,#register_account').hide();
+            $('#account,#register_account').attr('lay-verify',null);
+            $('#telephone,#register_telephone').attr('lay-verify',"required");
         });
+
+
         $(".user-title").click(function(){
             $(this).css({"background-color":"#a0ccfd","position":"relative","left":"-5px","z-index":"1"});
             $(".phone-title").css({"background-color":"#eeedec","position":"relative","left":"10px","z-index":"0"});
             $('#telephone,#register_telephone').closest('.intl-tel-input').hide();
             $('#account,#register_account').show();
+            $('#account,#register_account').attr('lay-verify',"required");
+            $('#telephone,#register_telephone').attr('lay-verify',null);
         });
         $('#toLogin').click(function () {
             $(".register").hide();
