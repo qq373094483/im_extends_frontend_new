@@ -1275,7 +1275,8 @@ var UI = {
 
 			var html = "";
 			if(pageIndex==0){
-				html+='<div  class="" id="friends_10001" onclick="UI.isChoose(10001);">'+
+				//TODO 新的朋友
+				/*html+='<div  class="" id="friends_10001" onclick="UI.isChoose(10001);">'+
 									        '<div class="chat_item slide-left active" onclick="UI.showNewFriends(0);" >'+
 									            '<div class="ext"> <p class="attr"></p> </div>'+
 									            '<div class="avatar">'+
@@ -1291,7 +1292,7 @@ var UI = {
 									                '</p>'+
 									            '</div>'+
 									        '</div>'+
-									    '</div>';
+									    '</div>';*/
 			}
 			for (var i = 0; i < result.pageData.length; i++) {
 				var obj = result.pageData[i];
