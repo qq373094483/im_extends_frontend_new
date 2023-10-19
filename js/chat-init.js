@@ -149,8 +149,9 @@ layui.use(['form', 'layedit', 'laydate'], function () {
 
         DataUtils.getIsEncrypt();
 
-        //进入主页面后加载左上角头像
-        var h5 = "<img onclick=" + 'UI.showMe()' + " id='myAvatar' onerror='this.src=\"img/ic_avatar.png\"' src='" + myFn.getAvatarUrl(myData.userId, 1) + "' class='myAvatar roundAvatar'><div id='user_online' class='user_status user_online'></div>"
+        //进入主页面后加载左上角头像.TODO 需要把在线状态调整一下
+        //var h5 = "<img onclick=" + 'UI.showMe()' + " id='myAvatar' onerror='this.src=\"img/ic_avatar.png\"' src='" + myFn.getAvatarUrl(myData.userId, 1) + "' class='myAvatar roundAvatar'><div id='user_online' class='user_status user_online'></div>";
+        var h5 = "<img onclick=" + 'UI.showMe()' + " id='myAvatar' onerror='this.src=\"img/ic_avatar.png\"' src='" + myFn.getAvatarUrl(myData.userId, 1) + "' class='myAvatar roundAvatar'>";
         $("#photo").append(h5);
         var sp = "<p id='nickname' class='text-length' style='color:white;margin-top:10px'>" + myData.nickname + "</p>"
         $("#photo").append(sp);
