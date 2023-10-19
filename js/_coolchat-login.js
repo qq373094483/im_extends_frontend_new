@@ -6,7 +6,7 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
 	var telephone;
 	var password;
 
-	createQRCode();
+	// createQRCode();
 	//$(function() {
 		WEBIM.initConfig();
 		
@@ -307,31 +307,29 @@ function createQRCode(){
 	num=0;
 	$("#code").empty();
 	myFn.invoke({
-		url:'/getQRCodeKey',
-		data:{
-			
-		},
-		success:function (result) {
+		url: '/getQRCodeKey',
+		data: {},
+		success: function (result) {
 			console.log(result);
 			$("#code").qrcode({
 				// render: "table", //table方式 
 				width: 200, //宽度 
-				height:200, //高度 
-				text: "http://shiku.co/im-download.html?action=webLogin&qrCodeKey="+result.data //任意内容 
-			})
+				height: 200, //高度
+				text: "http://shiku.co/im-download.html?action=webLogin&qrCodeKey=" + result.data //任意内容
+			});
 
 			timer = setInterval(function () {
 				return checkCode(result.data);
-			},1500);
+			}, 1500);
 		}
-	})
+	});
 }
 
 // 校验code
 function checkCode(code) {
 	num++;
 	if(num>40){
-		console.log("超过一分钟，请重新生成二维码")
+		console.log("超过一分钟，请重新生成二维码");
 		window.clearInterval(timer);
 		$("#codeError").show();
 		$("#successScan").hide();
