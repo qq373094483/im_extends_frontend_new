@@ -1939,6 +1939,9 @@ html,body{
     /*background-color: #eee;*/
     height: 100%;
     overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .hide{
