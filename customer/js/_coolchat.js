@@ -266,7 +266,7 @@ var ConversationManager = {
 		if(myFn.isNil(endTime)){
 			endTime = 0;
 		}
-		var url = 1!= ConversationManager.isGroup ? '/tigase/shiku_msgs' : '/tigase/shiku_muc_msgs';
+		var url = 1!= ConversationManager.isGroup ? '/tigase/tig_msgs' : '/tigase/tig_muc_msgs';
 		var params = {
 			pageIndex : pageIndex,
 			pageSize : 20,
