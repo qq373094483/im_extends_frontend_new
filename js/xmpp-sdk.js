@@ -83,7 +83,7 @@ var SKIMSDK={
     },
 	onConnect:function(status) {
 		/*xmpp 链接成功*/
-		if (status == Strophe.Status.CONNECTED) {
+		if (status === Strophe.Status.CONNECTED) {
 			console.log("xmpp连接成功-----");
 			SKIMSDK.loginSuccess();
 			
