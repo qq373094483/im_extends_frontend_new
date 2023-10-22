@@ -1718,8 +1718,8 @@ var UI = {
 	},
 	//打开设置面板
 	showSetting:function() {
-		$("#o").hide();
-		UI.hideChatBodyAndDetails();
+		// $("#o").hide();
+		// UI.hideChatBodyAndDetails();
 		$("#setPassword").hide();
 		var setting = null;
 		//设置相关数据回显
@@ -1780,8 +1780,8 @@ var UI = {
 	},
 	showPwd:function() {
 		
-		$("#o").hide();
-		UI.hideChatBodyAndDetails();
+		// $("#o").hide();
+		// UI.hideChatBodyAndDetails();
 		$("#privacy").hide();
 		$("#prop").hide();
 		$("#setPassword").show();
@@ -1789,8 +1789,9 @@ var UI = {
 	},
 	showMe:function() {
 
-		$("#o").hide();
-		UI.hideChatBodyAndDetails();
+		//好友、聊天面板
+		// $("#o").hide();
+		// UI.hideChatBodyAndDetails();
 		$("#privacy").hide();
 		$("#setPassword").hide();
  		$("#avatarUserId").val(myData.userId);
@@ -2229,7 +2230,7 @@ var UI = {
 			}
 	},
 	showNewFriends:function(pageIndex){
-		
+
 		$("#tabCon_new").show();
 		$("#tabCon_0").hide();
 		$("#tabCon_1").hide();
