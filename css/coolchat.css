@@ -2949,3 +2949,14 @@ html,body{
     background-color: #d6d6d6;
     border: 1px solid #d6d6d6;
 }
+
+.panel_close{
+	width:30px;
+	height:30px;
+	border:0px solid red;
+	margin:0px auto;
+	position: relative;
+	top:15%;
+	left:30%;
+
+}

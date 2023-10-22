@@ -1778,6 +1778,11 @@ var UI = {
 			
   		});
 	},
+	close: function (e) {
+		$("#setPassword").hide();
+		$("#prop").hide();
+		$("#privacy").hide();
+	},
 	showPwd:function() {
 		
 		// $("#o").hide();
