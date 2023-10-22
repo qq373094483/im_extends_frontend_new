@@ -2117,12 +2117,13 @@ html,body{
 /** 我的资料面板 */
 
 .my_profile_panel,.privacy_set_panel,.password_set_panel{
-	position: relative; 
+	position: absolute;
 	display: none;
-	background-color: white;
+	background-color:  #e6e6e6;
 	height: 600px; 
 	width: 360px; 
 	margin: 50px auto;
+	border-radius: 15px;
 }
 
 .privacy_option {
