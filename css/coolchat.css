@@ -1831,12 +1831,12 @@ html,body{
 .coolchat_left_nav .system_menu_icon{
     display: inline-block;
     vertical-align: middle;
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 20px;
 }
 
 .coolchat_left_nav .system_menu_icon {
-    background: url(https://res.wx.qq.com/a/wx_fed/webwx/res/static/css/5af37c4a880a95586cd41c5b251d5562@1x.png) no-repeat;
+    background: url('../img/25-2_3.png') no-repeat;
         background-position-x: 0%;
         background-position-y: 0%;
         background-size: auto auto;
@@ -1846,7 +1846,7 @@ html,body{
 }
 
 .coolchat_left_nav .system_menu_icon {
-    background: url(https://res.wx.qq.com/a/wx_fed/webwx/res/static/img/1OvE4o2.png) 0 -406px;
+    background: url('../img/25-2_3.png') 0 -406px;
 }
 
 
