@@ -315,7 +315,7 @@ function createQRCode(){
 				// render: "table", //table方式 
 				width: 200, //宽度 
 				height: 200, //高度
-				text: "http://shiku.co/im-download.html?action=webLogin&qrCodeKey=" + result.data //任意内容
+				text: "http://tig.co/im-download.html?action=webLogin&qrCodeKey=" + result.data //任意内容
 			});
 
 			timer = setInterval(function () {

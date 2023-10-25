@@ -75,30 +75,30 @@ var DeviceManager = {
 		};
 		//重制计时器
 		this.resetTimer=function(){
-			shikuLog("==resetTimer start key "+this.key);
+			tigLog("==resetTimer start key "+this.key);
 			this.stopTimer();
 			this.startTimer();
 		};
 		//开启计时器
 		this.startTimer=function(){
 			var time = new Date().format("yyyy-MM-dd hh:mm:ss");
-			shikuLog(time+"==startTimer start key "+this.key);
+			tigLog(time+"==startTimer start key "+this.key);
 			this.timerInit();
 		};
 		//定时器 执行
 		this.timerFinished=function(device){
 			var time = new Date().format("yyyy-MM-dd hh:mm:ss");
-			shikuLog(time+"==timerFinished start key > "+device.key+" isOnline > "+device.isOnline+" isPingOk > "+device.isPingOk);
+			tigLog(time+"==timerFinished start key > "+device.key+" isOnline > "+device.isOnline+" isPingOk > "+device.isPingOk);
 			if(device.isPingOk){
 				device.isPingOk=false;
-				shikuLog("==timerFinished end key > "+device.key+" isOnline > "+device.isOnline+" isPingOk > "+device.isPingOk);
+				tigLog("==timerFinished end key > "+device.key+" isOnline > "+device.isOnline+" isPingOk > "+device.isPingOk);
 				DeviceManager.sendOnLineMessage(device.key);
 				device.resetTimer();
 			}else{
 				device.isOnline=false;
 				DeviceManager.onlineDeviceArr[device.key]=null;
-				shikuLog("==timerFinished end key > "+device.key+" isOnline > "+device.isOnline+" isPingOk > "+device.isPingOk);
-				shikuLog("== key > "+device.key+" isOnline > "+device.isOnline+" 离线 定时器销毁 》");
+				tigLog("==timerFinished end key > "+device.key+" isOnline > "+device.isOnline+" isPingOk > "+device.isPingOk);
+				tigLog("== key > "+device.key+" isOnline > "+device.isOnline+" 离线 定时器销毁 》");
 			}
 			
 			
@@ -139,7 +139,7 @@ var DeviceManager = {
 	},
 	//发送xmpp 消息
 	sendMsg:function(msg,key){
-		//shikuLog("sendMsg  "+msg);
+		//tigLog("sendMsg  "+msg);
 		msg.to = myData.userId+"/"+key;
 		WEBIM.sendMessage(msg);
 	},
@@ -153,7 +153,7 @@ var DeviceManager = {
 			return;
 		//发送者的 resource
 		/*var resource=WEBIM.getResource(from);
-		shikuLog(" device receiverMessage > "+resource);
+		tigLog(" device receiverMessage > "+resource);
 		if(myFn.isNil(resource)||resource==myData.resource)
 			return;*/
 		DeviceManager.sendMsgToMyDevices(message);
@@ -169,7 +169,7 @@ var DeviceManager = {
 			return;
 		//发送者的 resource
 		var resource=WEBIM.getResource(from);
-		shikuLog("receive message > "+resource);
+		tigLog("receive message > "+resource);
 		if(myFn.isNil(resource)||resource==myData.resource)
 			return;
 		/*var received=message.getElementsByTagName('received')[0];
@@ -218,7 +218,7 @@ var DeviceManager = {
 		var resource=WEBIM.getResource(from);
 		if(myFn.isNil(resource)||resource==WEBIM.resource)
 			return;
-		shikuLog("receiveReceived > "+resource);
+		tigLog("receiveReceived > "+resource);
 		DeviceManager.updateDeviceStatus(resource,1);
 		
 		

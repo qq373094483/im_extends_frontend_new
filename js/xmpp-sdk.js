@@ -1,6 +1,6 @@
 var SKIMSDK={
 
-    cont:"skimweb_",
+    cont:"tigmweb_",
     connection:null,
     serverUrl:null,
     /*服务器的 domain*/
@@ -23,7 +23,7 @@ var SKIMSDK={
     enableAckReceipt:false,
     waitSendReceiptIds:"",
     /*自定义 服务器送达机制的 命名空间*/
-    NS_SKACK:"xmpp:shiku:ack",
+    NS_SKACK:"xmpp:tig:ack",
 
 
     initApi(url,userId,resource,token,pingTime,server){
@@ -110,7 +110,7 @@ var SKIMSDK={
     /*收到服务器消息*/
     onmessage:function(elem){
     	 //if("body"==elem.nodeName)
-       		//shikuLog("onmessage  "+Strophe.serialize(elem));
+       		//tigLog("onmessage  "+Strophe.serialize(elem));
        
 
        
@@ -140,7 +140,7 @@ var SKIMSDK={
 		 	message=SKIMSDK.convertToClientMsg(message);
 		 	if(!message)
 		 		continue;
-			 //shikuLog("收到 receiver  "+Strophe.serialize(message));
+			 //tigLog("收到 receiver  "+Strophe.serialize(message));
 			 //处理单条消息
 			SKIMSDK.messageReceiver(message);
 			
@@ -223,13 +223,13 @@ var SKIMSDK={
      	var bodyElem = elem.getElementsByTagName('body')[0];
 		var type = elem.getAttribute('type');		
 		 if ((type !=ChatType.CHAT&& type !=ChatType.GROUPCHAT) || bodyElem == undefined || bodyElem.length <= 0) {
-			//shikuLog("跳过： type "+type+"  "+ bodyElem);
+			//tigLog("跳过： type "+type+"  "+ bodyElem);
 			return null;
 		}
 			
 		var bodyText = Strophe.getText(bodyElem);
 		if ("{" != bodyText.charAt(0) || "}" != bodyText.charAt(bodyText.length - 1)) {
-			//shikuLog("跳过：" + bodyText);
+			//tigLog("跳过：" + bodyText);
 			return null;
 		}
 		
@@ -342,7 +342,7 @@ var SKIMSDK={
 		var from = message.getAttribute('from');
 		if(!received)
 			return false;
-		//shikuLog("收到回执 checkReceived  "+Strophe.serialize(message));
+		//tigLog("收到回执 checkReceived  "+Strophe.serialize(message));
 		var id = received.getAttribute('id');
 		var xmlns=received.getAttribute('xmlns');
 		if(!xmlns&&!id){
@@ -352,7 +352,7 @@ var SKIMSDK={
 		//多设备模块的  回执处理
 		if(1==myData.multipleDevices && myData.userId==SKIMSDK.getUserIdFromJid(from) && 
 			-1!=DeviceManager.allDeviceArr.indexOf(WEBIM.getResource(from))){
-			shikuLog("更新多设备状态  ===>>>> resources "+ WEBIM.getResource(from));
+			tigLog("更新多设备状态  ===>>>> resources "+ WEBIM.getResource(from));
 			DeviceManager.updateDeviceStatus(WEBIM.getResource(from), 1);
 		   //return true;
 		}
@@ -380,7 +380,7 @@ var SKIMSDK={
 		}, null);
 		SKIMSDK.send(receipt.tree());
 
-		shikuLog("发送回执： messageId " + id);
+		tigLog("发送回执： messageId " + id);
 	},
 	/*
 	批量发送 到服务器 消息回执
@@ -418,10 +418,10 @@ var SKIMSDK={
 	handlerEnableAckResult:function(elem){
 		if("iq"==elem.nodeName&&elem.firstChild){
 			if("enable"==elem.firstChild.nodeName&&SKIMSDK.NS_SKACK==elem.firstChild.namespaceURI){
-       	 		 shikuLog("handlerEnableAckResult  "+Strophe.serialize(elem));
+       	 		 tigLog("handlerEnableAckResult  "+Strophe.serialize(elem));
        	 		/*启用成功发送消息回执机制*/
 				SKIMSDK.enableAckReceipt=true;
-				shikuLog("启用消息送达机制 成功=====>");
+				tigLog("启用消息送达机制 成功=====>");
 				return true;
        	 	}
        }
@@ -528,7 +528,7 @@ var SKIMSDK={
 			    seconds=0;
 		}
 		
-		shikuLog(to+" to _XEP_0045_037 seconds "+seconds);
+		tigLog(to+" to _XEP_0045_037 seconds "+seconds);
 		var pres = $pres({
 			id : id,
 			to : to
@@ -728,7 +728,7 @@ var SKIMSDK={
 
 		SKIMSDK.connection.streamManagement.requestResponseInterval =1;
 		SKIMSDK.connection.streamManagement.addAcknowledgedStanzaListener(function(id){
-			shikuLog("streamManagement ack  "+id);
+			tigLog("streamManagement ack  "+id);
 			ConversationManager.processReceived(id);
 		});
 	},

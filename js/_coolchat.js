@@ -448,7 +448,7 @@ var ConversationManager = {
 		//单聊
 		if(WEBIM.CHAT==msg.chatType){
 			if(myFn.isNil(fromUserName)||myFn.isNil(content)){
-				shikuLog("===> Notification params is null ");
+				tigLog("===> Notification params is null ");
 				return;
 			}
 			UI.showNotification(url,fromUserName,content);
@@ -675,7 +675,7 @@ var ConversationManager = {
 			
 	},
 	processReceived:function(id){
-		shikuLog("收到送达回执 ："+id);
+		tigLog("收到送达回执 ："+id);
 		/*处理收到的消息回执*/
 		if(!myFn.isNil(myData.user) && 1==myData.user.settings.openService){
 			CustomerService.checkHelloTextReceipt(id); //客服模块，检查打招呼语的回执
@@ -808,7 +808,7 @@ var ConversationManager = {
 		//设置发送消息重发次数
 		msg.reSendCount=3;
 
-		shikuLog("发送已读回执："+msg.messageId+"       类型:"+dbMsg.type);
+		tigLog("发送已读回执："+msg.messageId+"       类型:"+dbMsg.type);
 		if(1==isSendMyDevice&&1==myData.multipleDevices){
 			DeviceManager.sendMsgToMyDevices(msgObj);
 		}
@@ -928,18 +928,18 @@ var ConversationManager = {
 		var msg=DataUtils.getMessage(msgId);
 		if(myFn.isNil(msg)){
 			UI.showReSendImg(msgId);
-			shikuLog("sendTimeout  消息找不到了");
+			tigLog("sendTimeout  消息找不到了");
 			return;
 		}
 		//检查网络状态
 		checkNetAndXmppStatus();
 		if(msg.reSendCount>0){
-			shikuLog(" 消息自动重发 "+msgId+"  type "+msg.type+" content ==  "+msg.content+"  reSendCount "+msg.reSendCount);
+			tigLog(" 消息自动重发 "+msgId+"  type "+msg.type+" content ==  "+msg.content+"  reSendCount "+msg.reSendCount);
 			msg.reSendCount=msg.reSendCount-1;
 			DataUtils.saveMessage(msg);
 			WEBIM.sendMessage(msg,msgId);
 		}else{
-			shikuLog(" showReSendImg "+msgId+"  type "+msg.type+" content ==  "+msg.content+"  reSendCount "+msg.reSendCount);
+			tigLog(" showReSendImg "+msgId+"  type "+msg.type+" content ==  "+msg.content+"  reSendCount "+msg.reSendCount);
 			UI.showReSendImg(msgId);
 		}
 	},

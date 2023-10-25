@@ -5,7 +5,7 @@ var  PUBSUB={
         PUBSUB.jid="pubsub."+AppConfig.boshDomain;
 
         /*setTimeout(function(){
-                shikuLog("=============subscribe");
+                tigLog("=============subscribe");
                 //myConnection.pubsub.subscribe("10000",null,PUBSUB.onMessage);
                 PUBSUB._XEP_0060_032("10000");
                 PUBSUB._XEP_0060_084("10000");
@@ -13,7 +13,7 @@ var  PUBSUB={
     },
 	/*收到订阅消息*/
 	onMessage:function(elem){
-		//shikuLog("pubsub onMessage===> "+Strophe.serialize(elem));
+		//tigLog("pubsub onMessage===> "+Strophe.serialize(elem));
 		var msgArr=elem.getElementsByTagName("item");
 		if(null==msgArr)
 			return;	
@@ -24,7 +24,7 @@ var  PUBSUB={
 		for (var i = 0; i < msgArr.length; i++){
 			message=msgArr[i];
 			messageId=message.getAttribute('id');
-			shikuLog("pubsub onMessage item===> id "+messageId+" message "+Strophe.serialize(message).replace(/&quot;/gm, '"'));
+			tigLog("pubsub onMessage item===> id "+messageId+" message "+Strophe.serialize(message).replace(/&quot;/gm, '"'));
 			if(!myFn.isNil(DataUtils.getMessage(messageId))){
 				continue;
 			}
@@ -52,11 +52,11 @@ var  PUBSUB={
 			xmlns : "http://jabber.org/protocol/pubsub"
 		}).c("subscribe",{node:node,jid:WEBIM.userIdStr});
 
-		shikuLog("sendMsg pubsub "+myFn.parseMessage(elem));
+		tigLog("sendMsg pubsub "+myFn.parseMessage(elem));
 		myConnection.sendIQ(elem.tree(),function(stanza){
-				 shikuLog("pubsub result "+Strophe.serialize(stanza));
+				 tigLog("pubsub result "+Strophe.serialize(stanza));
 			},function(stanza){
-				 shikuLog("pubsub error "+Strophe.serialize(stanza));
+				 tigLog("pubsub error "+Strophe.serialize(stanza));
 			},null
 		);
 	},
@@ -73,11 +73,11 @@ var  PUBSUB={
 
 		//elem.form("http://jabber.org/protocol/pubsub",{'tigase-pubsub#timestamp':0});
 
-		shikuLog("sendMsg pubsub "+myFn.parseMessage(elem));
+		tigLog("sendMsg pubsub "+myFn.parseMessage(elem));
 		myConnection.sendIQ(elem.tree(),function(stanza){
 				PUBSUB.onMessage(stanza);
 			},function(stanza){
-				 shikuLog("pubsub error "+Strophe.serialize(stanza));
+				 tigLog("pubsub error "+Strophe.serialize(stanza));
 			},null
 		);
 		
@@ -94,11 +94,11 @@ var  PUBSUB={
 			node:node
 		});
 
-		shikuLog("sendMsg queryPubsub "+myFn.parseMessage(elem));
+		tigLog("sendMsg queryPubsub "+myFn.parseMessage(elem));
 		myConnection.sendIQ(elem.tree(),function(stanza){
-				 shikuLog("pubsub result "+Strophe.serialize(stanza));
+				 tigLog("pubsub result "+Strophe.serialize(stanza));
 			},function(stanza){
-				 shikuLog("pubsub error "+Strophe.serialize(stanza));
+				 tigLog("pubsub error "+Strophe.serialize(stanza));
 			},null
 		);
 	}
@@ -404,7 +404,7 @@ Extend connection object to have plugin name 'pubsub'.
         }
         //add the event handler to receive items
         that.addHandler(event_cb, null, 'message', null, null, null);
-       shikuLog("subscribe  "+iq.toString());
+       tigLog("subscribe  "+iq.toString());
         that.sendIQ(iq.tree(), success, error);
         return iqid;
     },

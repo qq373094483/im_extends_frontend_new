@@ -203,7 +203,7 @@ var mySdk = {
 				}
 			},
 			error : function(result) {
-				shikuLog("获取好友失败");
+				tigLog("获取好友失败");
 			}
 		});
 	},

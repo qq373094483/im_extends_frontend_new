@@ -25,7 +25,7 @@ layui.use(['form', 'layedit', 'laydate'], function () {
         var loginData = $.cookie("loginData");
 
         if (myFn.isNil(loginData)) {
-            shikuLog("loginData  " + loginData);
+            tigLog("loginData  " + loginData);
             loginDataObj = DataMap.loginData;
             if (myFn.isNil(loginDataObj)) {
                 if (window.sessionStorage) {
@@ -56,7 +56,7 @@ layui.use(['form', 'layedit', 'laydate'], function () {
 
         console.log("init ===> getLogoutTime " + DataUtils.getLogoutTime());
         window.onbeforeunload = function () {
-            shikuLog("onbeforeunload =========== > ");
+            tigLog("onbeforeunload =========== > ");
             if (!WEBIM.isConnect()) {
                 DataUtils.setLogoutTime(WEBIM.getTimeSecond());
             }
@@ -84,7 +84,7 @@ layui.use(['form', 'layedit', 'laydate'], function () {
                 myData.password, myData.keepalive, myData.nickname, AppConfig.boshDomain);
 
             WEBIM.loginIM(function () {
-                console.log("ShikuWebIM loginSuccess =========>");
+                console.log("TigWebIM loginSuccess =========>");
                 UI.online();
                 GroupManager.joinMyRoom(); //xmpp 加群
                 layui.layer.close(init_loading_index); //关闭loding

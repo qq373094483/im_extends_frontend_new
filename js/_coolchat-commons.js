@@ -5,7 +5,7 @@ var AppConfig = {
     boshUrl : "ws://dx.jimi5588.com:5290/websocket/",// http://+（XMPP主机IP或域名）+（:5280）
     uploadServer:"http://dx.jimi5588.com:8088/",
     fileServer:"http://dx.jimi5588.com:8089/",
-    jitsiDomain:"",
+    jitsiDomain:"/",
     apiKey:"",
     companyId : "5cd2fdfd0c03d03c19a109c7", //客服模块公司id
     departmentId : "5cd2fdfd0c03d03c19a109c9", //客服部门id
@@ -38,9 +38,9 @@ var myData = {
 
 
 //日志打印
-function shikuLog(obj){
+function tigLog(obj){
 	//log 打印
- 	console.log("shikuLog "+obj);
+ 	console.log("tigLog "+obj);
 }
 
 

@@ -90,7 +90,7 @@ var DBUtils={
 	getUIMessageList:function(){
 		var key="messageList_";
 		var messageList=dbStorage.getItem(key);
-		//shikuLog("getUIMessageList ===> "+messageList);
+		//tigLog("getUIMessageList ===> "+messageList);
 		if(myFn.isNil(messageList)){
 			return null;
 		}else{

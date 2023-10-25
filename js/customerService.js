@@ -55,7 +55,7 @@ var CustomerService = {
 		msg.reSendCount=3;
 		//DataUtils.saveMessage(msg);
 		ConversationManager.connSend(receipt,msg.messageId);
-		shikuLog("发送结束会话xmpp："+msg.messageId);
+		tigLog("发送结束会话xmpp："+msg.messageId);
 		delete CustomerService.customerMap[ConversationManager.fromUserId]; //结束会话后删除缓存的该客户信息
 	},
 	//发送打招呼语

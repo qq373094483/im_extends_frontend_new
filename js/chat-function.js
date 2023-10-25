@@ -18,7 +18,7 @@ function offNet(){
 
 //检查网络状态 和xmpp 链接状态
 function checkNetAndXmppStatus(){
-	shikuLog("当前网络状态 "+NetWork.online);
+	tigLog("当前网络状态 "+NetWork.online);
 	if(NetWork.online){
 		
 	}else 
@@ -26,9 +26,9 @@ function checkNetAndXmppStatus(){
 	
 }
 
-function shikuLog(obj){
+function tigLog(obj){
 	//log 打印
- 	console.log("shikuLog "+obj);
+ 	console.log("tigLog "+obj);
 }
 
 
@@ -104,10 +104,10 @@ function welcome(){
              browser.appname = 'safari';  
              browser.versionStr = RegExp.$2;  
          }  
-         shikuLog("appInfo name "+browser.appname+" version  "+browser.version);
+         tigLog("appInfo name "+browser.appname+" version  "+browser.version);
          browser.version=browser.versionStr.split(".")[0];
          browser.version=parseInt(browser.version);
-         shikuLog("appInfo  version  "+ browser.version);
+         tigLog("appInfo  version  "+ browser.version);
 
          var errMsg="目前音视频只支持 Chrome 47 以下版本和Firefox 49及以下版本 请下载相应版本使用 ";
 	         if("chrome"==browser.appname){

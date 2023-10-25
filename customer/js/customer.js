@@ -213,7 +213,7 @@ var Customer = {
 		        
 			        //xmpp登录
 				    WEBIM.loginIM(function(){
-				            console.log("ShikuWebIM loginSuccess =========>");
+				            console.log("TigWebIM loginSuccess =========>");
 				        	$("#Snapchat").html("已接入人工客服");
 							$("#Snapchat").removeAttr("onclick");
 							//建立对话
@@ -263,7 +263,7 @@ var Customer = {
 		// 存储消息
 		//DataMap.msgMap[messageId]=msg;
 		WEBIM.sendMessage(msg);
-		shikuLog("发送建立会话xmpp："+msg.messageId);
+		tigLog("发送建立会话xmpp："+msg.messageId);
 	},
 	choiceEmojl : function(key) {
 		// var emojiHtml = "<img data-alias='hehe' src='" + _emojl[key] + "' width='25' height='25' title='"+key+"'/>";

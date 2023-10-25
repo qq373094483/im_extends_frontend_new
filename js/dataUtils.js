@@ -98,7 +98,7 @@ var DataUtils={
 		DBUtils.setStreamId(streamId);
 	},
 	getIsEncrypt:function(){
-		//shikuLog("===> getLogoutTime "+value);
+		//tigLog("===> getLogoutTime "+value);
 		var isEncrypt=myData.isEncrypt;
 		if(myFn.isNil(isEncrypt)){
 			isEncrypt= DBUtils.getIsEncrypt();
@@ -115,7 +115,7 @@ var DataUtils={
 	setIsEncrypt:function(value){
 		myData.isEncrypt=value;
 		DBUtils.setIsEncrypt(value);
-		shikuLog("===> setIsEncrypt "+value);
+		tigLog("===> setIsEncrypt "+value);
 	},
 	getGroupMsgFromUserName(msg,userId,defaultName){
 		var member=Temp.members[userId];
@@ -147,12 +147,12 @@ var DataUtils={
 		return msg.fromUserName;
 	},
 	getLogoutTime:function(){
-		//shikuLog("===> getLogoutTime "+value);
+		//tigLog("===> getLogoutTime "+value);
 		return DBUtils.getLogoutTime();
 	},
 	setLogoutTime:function(time){
 		DBUtils.setLogoutTime(time);
-		shikuLog("===> setLogoutTime "+time);
+		tigLog("===> setLogoutTime "+time);
 	},
 	/*获取好友聊天记录*/
 	getMsgRecordListKey:function(userId){

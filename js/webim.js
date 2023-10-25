@@ -6,7 +6,7 @@
 */
 var WEBIM={
 	/*消息ID 前缀 */
-	cont:"skimweb_",
+	cont:"tigmweb_",
 	resource:"youjob",
 	/*单聊标识*/
 	CHAT:"chat",
@@ -126,7 +126,7 @@ var WEBIM={
 	            break;
 
 	        case MessageType.Type.REVOKE:
-	        	if(message.messageId.substring(0, 8)=="skimweb_" && WEBIM.userId==message.fromUserId)
+	        	if(message.messageId.substring(0, 8)=="tigmweb_" && WEBIM.userId==message.fromUserId)
 	        	break;
 	            WEBIM.handlerRevokeMessage(message)
 	            break;
@@ -226,7 +226,7 @@ var WEBIM={
 			else
 			    seconds=0;
 		}
-		shikuLog(groupJid+"  joinGroup seconds "+seconds);
+		tigLog(groupJid+"  joinGroup seconds "+seconds);
 		SKIMSDK.joinGroupChat(groupJid,userId,seconds);
 		
 	},
@@ -723,7 +723,7 @@ var WEBIM={
 	},
     initConfig:function(){
 		mySdk.getConfig(function(result){
-			shikuLog("====> initConfig > "+JSON.stringify(result));
+			tigLog("====> initConfig > "+JSON.stringify(result));
 			if(myFn.isNil(result))
 				return;
 			/*if(result.apiUrl.endWith("/")){

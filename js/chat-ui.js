@@ -93,7 +93,7 @@ var UI = {
 	createItem : function(msg, fromUserId, direction,isSend) {   //消息Item
 		//direction  1 自己发送的   0 别人发送的
 		//isSend  发送后创建消息
-		//shikuLog(" createItem msg => "+ JSON.stringify(msg));
+		//tigLog(" createItem msg => "+ JSON.stringify(msg));
 		if (1!=ConversationManager.isGroup) {
 			if (myData.userId!=msg.fromUserId) {
 				var friend =DataMap.friends[msg.fromUserId];
@@ -914,9 +914,9 @@ var UI = {
 		
 		count=parseInt(length)/10;
 		count=count<1?10:count*10;
-		shikuLog("==========> showReadDelMsg  length > "+length+" count > "+count);
+		tigLog("==========> showReadDelMsg  length > "+length+" count > "+count);
 		
-		shikuLog("==========> showReadDelMsg  count > "+count);
+		tigLog("==========> showReadDelMsg  count > "+count);
 		$("#msgReadTime_"+messageId).html(count);
 		
 		var msg=DataUtils.getMessage(messageId);
