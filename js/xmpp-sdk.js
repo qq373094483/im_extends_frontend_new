@@ -26,11 +26,12 @@ var SKIMSDK={
     NS_SKACK:"xmpp:tig:ack",
 
 
-    initApi(url,userId,resource,token,pingTime,server){
+    initApi(url,userId,resource,token,pingTime,server,salt){
         
         SKIMSDK.token=token;
         SKIMSDK.serverUrl=url;
         SKIMSDK.server=server;
+		SKIMSDK.salt=salt;
         SKIMSDK.resource=SKIMSDK.resource;
         SKIMSDK.userIdStr=SKIMSDK.getFullUserJid(userId)+"/"+resource;
         SKIMSDK.pingTime=pingTime;
@@ -74,12 +75,19 @@ var SKIMSDK={
         
     },
     connect:function(){
-    	SKIMSDK.connection.connect(
-				 SKIMSDK.userIdStr,
-				 SKIMSDK.token,
-				 SKIMSDK.onConnect,
-				 50
-			);
+    	//TODO 加盐处理。
+		SKIMSDK.connection.connect(
+			SKIMSDK.userIdStr,
+			SKIMSDK.salt === '' ? SKIMSDK.token : $.md5($.md5(SKIMSDK.salt + $.md5(SKIMSDK.token + SKIMSDK.salt))),
+			SKIMSDK.onConnect,
+			50
+		);
+		/*SKIMSDK.connection.connect(
+			SKIMSDK.userIdStr,
+			SKIMSDK.token ,
+			SKIMSDK.onConnect,
+			50
+		);*/
     },
 	onConnect:function(status) {
 		/*xmpp 链接成功*/
@@ -483,6 +491,7 @@ var SKIMSDK={
 	},
     randomUUID : function() {
         return SKIMSDK.cont+SKIMSDK.getCurrentSeconds()+Math.round(Math.random()*1000);
+        // return SKIMSDK.getCurrentSeconds()+Math.round(Math.random()*1000);
     },
     getCurrentSeconds:function(){
         return Math.round(new Date().getTime());

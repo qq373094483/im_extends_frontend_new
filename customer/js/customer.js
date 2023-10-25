@@ -209,7 +209,7 @@ var Customer = {
 					myData.password=$.md5(customerData.customerId+"");
 					WEBIM.setUserIdAndToken(customerData.customerId,myData.access_token);
 					WEBIM.initWebIM(AppConfig.boshUrl,customerData.customerId,myData.resource,
-					myData.password,myData.keepalive,myData.nickname,AppConfig.boshDomain);
+					myData.password,myData.keepalive,myData.nickname,AppConfig.boshDomain,result.salt);//TODO 待确认加盐
 		        
 			        //xmpp登录
 				    WEBIM.loginIM(function(){

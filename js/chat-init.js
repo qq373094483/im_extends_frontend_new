@@ -81,7 +81,7 @@ layui.use(['form', 'layedit', 'laydate'], function () {
             if (1 == myData.multipleDevices)
                 myData.resource = "web";
             WEBIM.initWebIM(AppConfig.boshUrl, myData.userId, myData.resource,
-                myData.password, myData.keepalive, myData.nickname, AppConfig.boshDomain);
+                myData.password, myData.keepalive, myData.nickname, AppConfig.boshDomain,data.salt);
 
             WEBIM.loginIM(function () {
                 console.log("TigWebIM loginSuccess =========>");

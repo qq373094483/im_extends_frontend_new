@@ -34,7 +34,7 @@ var WEBIM={
     	WEBIM.token=token;
     },
     /*初始化*/
-    initWebIM:function(url,userId,resource,password,pingTime,nickname,server){
+    initWebIM:function(url,userId,resource,password,pingTime,nickname,server,salt){
         WEBIM.password=password;
         WEBIM.userId=userId+"";
         WEBIM.nickname=nickname;
@@ -42,7 +42,7 @@ var WEBIM={
         if(server)
         	WEBIM.server=server;
         WEBIM.resource=resource;
-        SKIMSDK.initApi(url,userId,resource,password,pingTime,server);
+        SKIMSDK.initApi(url,userId,resource,password,pingTime,server,salt);
 		WEBIM.userIdStr=SKIMSDK.userIdStr;
         SKIMSDK.messageReceiver=WEBIM.handlerMessage;
         SKIMSDK.handlerMsgReceipt=WEBIM.handlerMsgReceipt;
@@ -332,6 +332,7 @@ var WEBIM={
     },
     randomUUID : function() {
         return WEBIM.cont+WEBIM.userId+WEBIM.getTimeSecond()+Math.round(Math.random()*1000);
+        // return WEBIM.userId+WEBIM.getTimeSecond()+Math.round(Math.random()*1000);
     },
     /*获取服务器的当前时间秒*/
     getServerTime:function(){
