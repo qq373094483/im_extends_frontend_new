@@ -224,7 +224,9 @@ var SKIMSDK={
         
     },
     send:function(elem){
-    	SKIMSDK.connection.send(elem);
+		// SKIMSDK.connection.streamManagement = null;
+		// SKIMSDK.connection.pubsub=null;
+		SKIMSDK.connection.send(elem);
     },
   	/*转换为 客户端的 消息*/
     convertToClientMsg:function(elem){
