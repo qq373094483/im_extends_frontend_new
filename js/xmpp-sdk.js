@@ -13,7 +13,7 @@ var SKIMSDK={
     handlerMsgReceipt:null,
     handlerLoginConflict:null,
     userIdStr:null,
-    resource:null,
+    resource:"web",
     token:null,
     /*心跳间隔时间*/
     pingTime:30,

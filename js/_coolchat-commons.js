@@ -1,40 +1,39 @@
 var AppConfig = {
 
-	apiUrl : "http://dx.jimi5588.com:8092",// 接口地址
-    //boshUrl : "http://mm.jimi5588.com:5280",
-    boshUrl : "ws://dx.jimi5588.com:5290/websocket/",// http://+（XMPP主机IP或域名）+（:5280）
-    uploadServer:"http://dx.jimi5588.com:8088/",
-    fileServer:"http://dx.jimi5588.com:8089/",
-    jitsiDomain:"/",
-    apiKey:"",
-    companyId : "5cd2fdfd0c03d03c19a109c7", //客服模块公司id
-    departmentId : "5cd2fdfd0c03d03c19a109c9", //客服部门id
-	isOpenReceipt:1,
-	isOpenSMSCode:0,  //是否开短信验证码
-	registerInviteCode:0, //注册邀请码  0：关闭 1:一码一用(注册型邀请码)  2：一码多用（推广型邀请码）
-	regeditPhoneOrName:0// 注册方式 0:手机号注册，1：用户名注册
-}
-
+	apiUrl: "http://dx.jimi5588.com:8092",// 接口地址
+	//boshUrl : "http://mm.jimi5588.com:5280",
+	boshUrl: "ws://dx.jimi5588.com:5290/websocket/",// http://+（XMPP主机IP或域名）+（:5280）
+	uploadServer: "http://dx.jimi5588.com:8088/",
+	fileServer: "http://dx.jimi5588.com:8089/",
+	jitsiDomain: "/",
+	apiKey: "",
+	companyId: "5cd2fdfd0c03d03c19a109c7", //客服模块公司id
+	departmentId: "5cd2fdfd0c03d03c19a109c9", //客服部门id
+	isOpenReceipt: 1,
+	isOpenSMSCode: 0,  //是否开短信验证码
+	registerInviteCode: 0, //注册邀请码  0：关闭 1:一码一用(注册型邀请码)  2：一码多用（推广型邀请码）
+	regeditPhoneOrName: 0// 注册方式 0:手机号注册，1：用户名注册
+};
 
 
 var myData = {
-	isReadDel:0,
-	isAutoOpenCustomer:1,  //是否自动开启客服模式
-	resource:"youjob",//多点登陆 用到的 设备标识
-	jid:null,
-	userId : null,
-	telephone : null,
-	password : null,
-	access_token : null,
-	loginResult : null,
-	user : null,
-	nickname:null,
+	isReadDel: 0,
+	isAutoOpenCustomer: 1,  //是否自动开启客服模式
+	resource: "web",//多点登陆 用到的 设备标识
+	jid: null,
+	userId: null,
+	telephone: null,
+	password: null,
+	access_token: null,
+	loginResult: null,
+	user: null,
+	nickname: null,
 
-	locateParams : null,
-	keepalive:70,//xmpp 心跳间隔
-	charArray : '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split(''),
-	isShowGroupMsgReadNum : false//是否显示群组消息已读人数，false：不显示 true:显示 默认不显示
-}
+	locateParams: null,
+	keepalive: 70,//xmpp 心跳间隔
+	charArray: '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split(''),
+	isShowGroupMsgReadNum: false//是否显示群组消息已读人数，false：不显示 true:显示 默认不显示
+};
 
 
 //日志打印
