@@ -5740,6 +5740,7 @@ Strophe.Websocket.prototype = {
    * message handler. On receiving a stream error the connection is terminated.
    */
   _connect_cb_wrapper: function _connect_cb_wrapper(message) {
+    console.log("Websocket onmessage:"+message);
     if (message.data.indexOf("<open ") === 0 || message.data.indexOf("<?xml") === 0) {
       // Strip the XML Declaration, if there is one
       var data = message.data.replace(/^(<\?.*?\?>\s*)*/, "");
@@ -5882,6 +5883,7 @@ Strophe.Websocket.prototype = {
    * Nothing to do here for WebSockets
    */
   _onClose: function _onClose(e) {
+    console.log(e);
     if (this._conn.connected && !this._conn.disconnecting) {
       Strophe.error("Websocket closed unexpectedly");
 

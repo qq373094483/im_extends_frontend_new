@@ -7,7 +7,7 @@
 var WEBIM={
 	/*消息ID 前缀 */
 	cont:"tigmweb_",
-	resource:"youjob",
+	resource:"web",
 	/*单聊标识*/
 	CHAT:"chat",
 	/*群聊标识*/
