@@ -6003,6 +6003,7 @@ Strophe.Websocket.prototype = {
    * (string) message - The websocket message.
    */
   _onMessage: function _onMessage(message) {
+    console.log("收到消息:"+message)
     var elem; // check for closing stream
 
     var close = '<close xmlns="urn:ietf:params:xml:ns:xmpp-framing" />';
