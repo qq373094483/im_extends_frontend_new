@@ -440,7 +440,8 @@ var SKIMSDK={
 	},
 	getMessages:function(elem,nodeName){
 		let msgArr=new Array();
-		 if (elem.firstChild&& "message"==elem.firstChild.nodeName&&elem.childNodes.length == 0){
+		// if (elem.firstChild&& "message"==elem.firstChild.nodeName&&elem.childNodes.length == 0){
+		if (elem.firstChild&& "message"==elem.firstChild.nodeName){
 			msgArr.push(elem);
 			return msgArr;
 		}
