@@ -365,8 +365,8 @@ var SKIMSDK = {
 		}
 
 		//多设备模块的  回执处理
-		if (1 == myData.multipleDevices && myData.userId == SKIMSDK.getUserIdFromJid(from) &&
-			-1 != DeviceManager.allDeviceArr.indexOf(WEBIM.getResource(from))) {
+		if (1 === myData.multipleDevices && myData.userId === SKIMSDK.getUserIdFromJid(from) &&
+			-1 !== DeviceManager.allDeviceArr.indexOf(WEBIM.getResource(from))) {
 			tigLog("更新多设备状态  ===>>>> resources " + WEBIM.getResource(from));
 			DeviceManager.updateDeviceStatus(WEBIM.getResource(from), 1);
 			//return true;

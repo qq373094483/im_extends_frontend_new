@@ -114,8 +114,9 @@ var UI = {
 		var contentHtml = this.createMsgContent(msg,direction,isSend);
 		var html="";
 		
-		if(myFn.isNil(contentHtml))
+		if(myFn.isNil(contentHtml)) {
 			return "";
+		}
 		var imgUrl=msg.imgUrl;
 		//用户头像
 		if(myFn.isNil(msg.imgUrl)){
