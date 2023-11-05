@@ -122,8 +122,9 @@ var SKIMSDK = {
 		//tigLog("onmessage  "+Strophe.serialize(elem));
 
 
-		if (SKIMSDK.checkConflict(elem))
+		if (SKIMSDK.checkConflict(elem)) {
 			return null;
+		}
 		/*检查 是否 开启自定义送达机制*/
 		if (!SKIMSDK.enableAckReceipt) {
 			if (SKIMSDK.handlerEnableAckResult(elem)) {
@@ -135,19 +136,22 @@ var SKIMSDK = {
 		}*/
 		SKIMSDK.lastTransferTime = SKIMSDK.getCurrentSeconds();
 		var msgArr = SKIMSDK.getMessages(elem, "message");
-		if (null == msgArr)
+		if (null === msgArr) {
 			return;
+		}
 		var message = null;
 		for (var i = 0; i < msgArr.length; i++) {
 			message = msgArr[i];
-			if (!message)
+			if (!message) {
 				continue;
+			}
 			else if (SKIMSDK.checkReceived(message)) {
 				continue;
 			}
 			message = SKIMSDK.convertToClientMsg(message);
-			if (!message)
+			if (!message) {
 				continue;
+			}
 			//tigLog("收到 receiver  "+Strophe.serialize(message));
 			//处理单条消息
 			SKIMSDK.messageReceiver(message);
