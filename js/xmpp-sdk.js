@@ -441,7 +441,7 @@ var SKIMSDK={
 	getMessages:function(elem,nodeName){
 		let msgArr=new Array();
 		// if (elem.firstChild&& "message"==elem.firstChild.nodeName&&elem.childNodes.length == 0){
-		if (elem.firstChild&& "message"==elem.firstChild.nodeName){
+		if (elem&& "message" === elem.nodeName){
 			msgArr.push(elem);
 			return msgArr;
 		}
@@ -449,8 +449,9 @@ var SKIMSDK={
 		let child=null;
 		for (i = 0; i < elem.childNodes.length; i++) {
                 child = elem.childNodes[i];
-                if (nodeName!=child.nodeName) 
-                	continue;
+                if (nodeName!== child.nodeName) {
+					continue;
+				}
                	msgArr.push(child);
         }
 
