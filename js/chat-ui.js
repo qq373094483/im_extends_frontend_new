@@ -1149,7 +1149,7 @@ var UI = {
 								+		     "<img onerror='this.src=&quot;img/ic_avatar.png&quot;' width='40' height='40' alt='' src='"
 								+			   myFn.getAvatarUrl(obj.toUserId) + "' class='media-object roundAvatar'>"
 								+   "</a>"
-								+   "<div style='cursor: pointer;' class='text-length media-body'><div style='font-size:13px;margin-top:1%'>" 
+								+   "<div style='cursor: pointer;width:100px' class='text-length'><div style='font-size:13px;margin-top:1%'>"
 								+     myFn.getText(obj.toNickname)
 								+    "</div>";
 

@@ -2078,6 +2078,7 @@ html,body{
 	background-color: #FFFFFF;
 	/*display: none; */
 	border-radius: 0;
+	height:100%;
 	border-left: 1px solid #e6e6e6;
 }
 
