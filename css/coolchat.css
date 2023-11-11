@@ -2059,7 +2059,8 @@ html,body{
 	position: relative;
 	padding: 0;
 	margin-left: 5px;
-	width: 700px;
+	width: calc(100% - 375px);
+	min-width: 700px;
 	height:100%;
 	background-color: #eee;
 	overflow: hidden;
