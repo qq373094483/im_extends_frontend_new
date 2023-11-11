@@ -63,17 +63,18 @@ var UI = {
     },
     // 播放消息提醒声音
 	playSound:function(){
-		if(playMusic.status)
+		if (playMusic.status) {
 			return;
+		}
 		try {
-			playMusic.status=true;
-			setTimeout(function(){
-				playMusic.status=false;
-			},500);
-		 	
+			playMusic.status = true;
+			setTimeout(function () {
+				playMusic.status = false;
+			}, 500);
+
 		} catch (e) {
-		 	//console.log(e.name + ": " + e.message);
-		 return false;
+			//console.log(e.name + ": " + e.message);
+			return false;
 		}
 		
 		
@@ -98,16 +99,19 @@ var UI = {
 			if (myData.userId!=msg.fromUserId) {
 				var friend =DataMap.friends[msg.fromUserId];
 				if(!myFn.isNil(friend)){
-					if(friend.remarkName)
-						msg.fromUserName=friend.remarkName;
-					else if(!msg.fromUserName)	
-						msg.fromUserName=friend.toNickname;
+					if(friend.remarkName) {
+						msg.fromUserName = friend.remarkName;
+					}
+					else if(!msg.fromUserName) {
+						msg.fromUserName = friend.toNickname;
+					}
 				}
 			}
 			
 		} else {
-			if(myData.userId!=msg.fromUserId)
-				DataUtils.getGroupMsgFromUserName(msg,msg.fromUserId);
+			if(myData.userId!=msg.fromUserId) {
+				DataUtils.getGroupMsgFromUserName(msg, msg.fromUserId);
+			}
 				
 		}
 

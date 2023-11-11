@@ -355,8 +355,9 @@ var SKIMSDK = {
 	checkReceived: function (message) {
 		var received = message.getElementsByTagName('received')[0];
 		var from = message.getAttribute('from');
-		if (!received)
+		if (!received) {
 			return false;
+		}
 		//tigLog("收到回执 checkReceived  "+Strophe.serialize(message));
 		var id = received.getAttribute('id');
 		var xmlns = received.getAttribute('xmlns');
@@ -404,8 +405,9 @@ var SKIMSDK = {
 		SKIMSDK.waitSendReceiptIds += (messageId + ",");
 		if (!SKIMSDK.sendReceiptTask) {
 			SKIMSDK.sendReceiptTask = window.setInterval(function () {
-				if ("" == SKIMSDK.waitSendReceiptIds)
+				if ("" == SKIMSDK.waitSendReceiptIds) {
 					return;
+				}
 				var receipt = $iq({
 					"from": SKIMSDK.userIdStr,
 					"to": SKIMSDK.server,
