@@ -2,7 +2,7 @@ var AppConfig = {
 
 	apiUrl: "http://dx.jimi5588.com:8092",// 接口地址
 	//boshUrl : "http://mm.jimi5588.com:5280",
-	boshUrl: "ws://localhost:5290/websocket/",// http://+（XMPP主机IP或域名）+（:5280）
+	boshUrl: "ws://dx.jimi5588.com:5290/websocket/",// http://+（XMPP主机IP或域名）+（:5280）
 	uploadServer: "http://dx.jimi5588.com:8088/",
 	fileServer: "http://dx.jimi5588.com:8089/",
 	jitsiDomain: "/",

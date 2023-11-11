@@ -2005,6 +2005,7 @@ html,body{
 	width: 300px;
 	/*margin-left: 20px;*/
 	float: left;
+	height:100%;
 	/*background: #2e3238;*/
 }
 
@@ -2059,6 +2060,7 @@ html,body{
 	padding: 0;
 	margin-left: 5px;
 	width: 700px;
+	height:100%;
 	background-color: #eee;
 	overflow: hidden;
 }
@@ -2068,6 +2070,7 @@ html,body{
 	background-color: #FFFFFF;
 	display: none; 
 	border-radius: 0;
+	height:100%;
 	border-left: 1px solid #e6e6e6;
 }
 .coolchat_message_panel_1{
