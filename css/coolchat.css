@@ -1254,6 +1254,23 @@ a:hover {
 	color: #FFFFFF;
 	font-family: '微软雅黑', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
+.newFirendNum{
+	position: absolute;
+	display: none;
+	min-width: 18px;
+	height: 18px;
+	font-style: normal;
+	font-size: 12px;
+	text-align: center;
+	line-height: 16px;
+	border-radius: 30px;
+	right: 40px;
+	top: 15px;
+	background-color: #f74c1e;
+	padding: 1px 3px;
+	color: #FFFFFF;
+	font-family: '微软雅黑', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
 .chooseFriend{
 	border: 1px solid #ddd; 
 	height: 470px;

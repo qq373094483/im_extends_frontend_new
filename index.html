@@ -70,8 +70,10 @@
                     <dl>
                         <dt>
                             <a href="#friendsTab" data-toggle="tab" style="text-decoration: none" onclick="UI.showFriends(0)">
-                                <p id="friend" onclick='UI.handoverImg(this)' class="left_title_old">
+                                <p id="friend" onclick='UI.handoverImg(this)' class="left_title_old" style=" position:relative;">
                                     <img id='friendImg' style="width: 20px;margin-top: -4px" src="img/friendImg2.png"><!--&nbsp;&nbsp;<span>我的好友</span>-->
+                                    <!--TODO 通讯类显示新增好友数量-->
+                                    <i id="newFirendNum" class="newFirendNum"></i>
                                 </p>
                             </a>
                         </dt>
