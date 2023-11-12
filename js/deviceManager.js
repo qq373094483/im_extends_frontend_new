@@ -309,8 +309,9 @@ var DeviceManager = {
 		var deviceKey= fromUserId+"/"+msg.deviceKey;
 			userIdKey=fromUserId+"_"+msg.deviceKey;
 	
-		if(!updateUI)
-			updateUI=1;
+		if(!updateUI) {
+			updateUI = 1;
+		}
 		var friendHtml = $("#myMessagesList #friends_"+userIdKey).prop("outerHTML");
 
 		var content=WEBIM.parseShowMsgTitle(msg);
@@ -322,15 +323,17 @@ var DeviceManager = {
 			friendHtml = this.createDevicesItem(imgUrl, fromUserId, msg.fromUserName,content,
 				msg.deviceKey,timeSendStr);
 			$(friendHtml).insertAfter("#myMessagesList #friends_10001"); //加入到新朋友下方
-			if(1==showNum)
-				UI.showMsgNum(userIdKey,updateUI,deviceKey);
+			if(1==showNum) {
+				UI.showMsgNum(userIdKey, updateUI, deviceKey);
+			}
 		}else{ //存在 则直接加入到新朋友下方
 			$("#myMessagesList #friends_"+userIdKey).remove();
 			$(friendHtml).insertAfter("#myMessagesList #friends_10001");
-			if(1==showNum)
-				UI.showMsgNum(userIdKey,updateUI,deviceKey);	
-			
-				$("#myMessagesList #titfriends_"+userIdKey).html(content);
+			if (1 == showNum) {
+				UI.showMsgNum(userIdKey, updateUI, deviceKey);
+			}
+
+			$("#myMessagesList #titfriends_" + userIdKey).html(content);
 			
 			
 		}

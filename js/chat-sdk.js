@@ -101,14 +101,12 @@ var mySdk = {
 		});
 	},
 	getLastChatList:function(startTime,callback){
-		
-		
 		var endTime=0;
-		var pageSize=20;
+		var pageSize=200;
 		myFn.invoke({
 			url : '/tigase/getLastChatList',
 			data : {
-				startTime:startTime,
+				startTime:0,
 				endTime:endTime,
 				pageSize:pageSize
 			},
