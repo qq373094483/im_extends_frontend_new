@@ -977,15 +977,15 @@ function changeTab(tabCon_num,id){
 function msgMabayUser(){
 	if(10000==ConversationManager.fromUserId)
 		return;
-	document.getElementById("tabCon_0").style.display="none"; //将所有的层都隐藏
-	document.getElementById("tabCon_2").style.display="none"; //将所有的层都隐藏
+	// document.getElementById("tabCon_0").style.display="none"; //将所有的层都隐藏
+	// document.getElementById("tabCon_2").style.display="none"; //将所有的层都隐藏
 
 	document.getElementById("tabCon_1").style.display="block";//显示当前层
 }
 
 function msgMabayRoom(){
-	document.getElementById("tabCon_0").style.display="none"; //将所有的层都隐藏
-	document.getElementById("tabCon_1").style.display="none"; //将所有的层都隐藏
+	// document.getElementById("tabCon_0").style.display="none"; //将所有的层都隐藏
+	// document.getElementById("tabCon_1").style.display="none"; //将所有的层都隐藏
 	document.getElementById("tabCon_2").style.display="none";//显示当前层
 	document.getElementById("tabCon_2").style.display="block";//显示当前层
 	GroupManager.showGroupSetting();

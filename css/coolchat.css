@@ -367,7 +367,8 @@ dl:hover{
 
 #tabCon_1{
 	width: 700px;
-	height: 760px;
+	min-height: 760px;
+	height: 100%;
 	display: none;
 	background-color: white;
 	/*margin-left: 5px;*/
@@ -377,8 +378,9 @@ dl:hover{
 }
 
 #tabCon_2{
-	/*width: 730px;*/
-	height: 760px;
+	min-width: 500px;
+	min-height: 760px;
+	height:100%;
 	display: none;
 	background-color: white;
 	/*margin-left: 10px;*/
@@ -2176,6 +2178,17 @@ html,body{
 	/*border:1px solid #ddd;*/
 	border-bottom: 1px solid #d6d6d6;
 }
+.friends_detail_panel > .head{
+	height:50px;
+	/*background-color: #EEF0F5;*/
+	/*border-radius: 5px;*/
+	text-align: center;
+	line-height:50px;
+	font-size: 18px;
+	color: #666666;
+	/*border:1px solid #ddd;*/
+	border-bottom: 1px solid #d6d6d6;
+}
 
 
 .groupName{
@@ -2273,7 +2286,7 @@ html,body{
 }
 /** 群公告长度限制 **/
 #gnotice {
-	width: 350px;
+	/*width: 350px;*/
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
