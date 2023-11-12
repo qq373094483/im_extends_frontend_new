@@ -974,6 +974,11 @@ function changeTab(tabCon_num,id){
 
 };
 
+function panelBodyClick(){
+	$("#tabCon_2").hide();
+	$("#tabCon_1").hide();
+}
+
 function msgMabayUser(){
 	if(10000==ConversationManager.fromUserId)
 		return;
