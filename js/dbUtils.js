@@ -61,7 +61,7 @@ var DBUtils={
 		dbStorage.removeItem(key);
 	},
 	getMsgNumCount:function(){
-		var key="msgNumCount_"
+		var key = "msgNumCount_";
 		var num=dbStorage.getItem(key);
 		if(myFn.isNil(num)){
 			num=0;
