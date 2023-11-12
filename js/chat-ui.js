@@ -1306,7 +1306,7 @@ var UI = {
 		
 		$("#messagemyFriend").show();
 		$("#deviceList").hide();
-		$("#tabCon_new").hide();
+		// $("#tabCon_new").hide();
 		$("#back").hide();
 		$("#prop").hide();
 		/*$("#friends_10000").show();
