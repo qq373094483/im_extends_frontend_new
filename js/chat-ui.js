@@ -1001,6 +1001,7 @@ var UI = {
 					//if (1 == result.resultCode) {
 						var res = eval("(" + result + ")");
 						videoUrl=res.data[0].oUrl;
+						//播放语音动画效果
 						UI.showAudioInUrl(videoUrl,messageId,readDel);
 					//}
 				},
