@@ -836,10 +836,18 @@ var UI = {
 		var timeSendStr=getTimeText(msg.timeSend,1);
 		UI.showMsgLog(timeSendStr);
 	},
+	showMsgNumByUserId :function(userId){
+		return DataUtils.getMsgNum(userId);
+	},
 	showMsgNum :function(userId,isAdd,userIdKey){
+		//TODO 屏蔽计算添加好友和添加好友的消息数量
+		/*if (10001 === userId) {
+			return;
+		}*/
 		//显示消息数量
-		if(!userIdKey)
-			userIdKey=userId;
+		if(!userIdKey) {
+			userIdKey = userId;
+		}
 		var msgNum = DataUtils.getMsgNum(userIdKey);
 		var messageNumber =DataUtils.getMsgNumCount();
 		if(1==isAdd){
@@ -854,12 +862,17 @@ var UI = {
 			DataUtils.setMsgMumCount(messageNumber);
 		}
 		if(0<msgNum){
-			if(99<msgNum)
-				$("#myMessagesList #msgNum_"+userId+"").html("99+");
-			else
-				$("#myMessagesList #msgNum_"+userId+"").html(msgNum);
+			if(99<msgNum) {
+				$("#myMessagesList #msgNum_" + userId + "").html("99+");
+			}
+			else {
+				$("#myMessagesList #msgNum_" + userId + "").html(msgNum);
+			}
 			$("#myMessagesList #msgNum_"+userId).removeClass("msgNumHide");
 			$("#myMessagesList #msgNum_"+userId).addClass("msgNumShow");
+
+			/*$("#myFriendsList #msgNum_10001").removeClass("msgNumHide");
+			$("#myFriendsList #msgNum_10001").addClass("msgNumShow");*/
 			
 		}
 	
@@ -2588,6 +2601,19 @@ var UI = {
 			$("#to #messageNum").show();
 		}
 		UI.showMsgNum(10001);
+		// UI.showMsgNumBy10001();
+	},
+	showMsgNumBy10001: function () {
+		let showMsgNumBy10001 = UI.showMsgNumByUserId(10001);
+		if (!showMsgNumBy10001) {
+			showMsgNumBy10001 = 0;
+		}
+		if (showMsgNumBy10001 > 0) {
+			$("#friend #newFirendNum").text(showMsgNumBy10001);
+
+		}
+// 	$("#messages #messageNum").removeClass("msgNumHide");
+// $("#messages #messageNum").addClass("msgNumShow");
 	},
 	removeFriendMessagesList(userId){
 		$("#myMessagesList #friends_"+toUserId).remove();
