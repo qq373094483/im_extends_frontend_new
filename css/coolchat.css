@@ -364,6 +364,13 @@ dl:hover{
 #tabCon_0{
 	/*height: 815px;*/
 }
+#system_menu_panel{
+	left: 80px;
+	display: none;
+	position: relative;
+	top: calc(100% - 480px);
+
+}
 
 #tabCon_1{
 	width: 700px;
