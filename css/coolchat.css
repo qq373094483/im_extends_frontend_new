@@ -646,7 +646,7 @@ dl:hover{
 	width: 20px;
 	height: 20px;
 	float: left;
-	background-image: url(../img/tips_icon.png)
+	/*background-image: url(../img/tips_icon.png)*/
 }
 
 .chat_content .icon_info {
@@ -1199,7 +1199,7 @@ a:hover {
 }
 
 .msgMabay{
-	background:url('../img/talk.png');
+	/*background:url('../img/talk.png');*/
 	width: 110px;
 	height: 38px;
 	display: inline-block;
@@ -1210,12 +1210,13 @@ a:hover {
 }
 
 .msgMabayChange{
-	background:url('../img/mabay.png');
+	/*background:url('../img/mabay.png');*/
 }
 
 .logContent{
-	margin:0 20px; 
-	padding:0 auto; 
+	margin:0 20px;
+	/*padding:0 auto;*/
+	padding:0 0;
 	/*border:1px solid red;*/
 	text-align:center;
 	margin-bottom:20px;
@@ -1232,7 +1233,8 @@ a:hover {
 }
 .loadHistoryIcon{
 	margin:0 20px; 
-	padding:0 auto; 
+	/*padding:0 auto;*/
+	padding:0 0;
 	/*border:1px solid red;*/
 	text-align:center;
 	color: #269abc;
@@ -1321,10 +1323,10 @@ a:hover {
 	height: 38px; 
 	text-align: center; 
 	line-height: 38px;
-	background:url('../img/talk.png');
+	/*background:url('../img/talk.png');*/
 }
 .transpondChange{
-	background:url('../img/mabay.png');
+	/*background:url('../img/mabay.png');*/
 }
 .friendDetails{
 	height: 50px;
@@ -2637,7 +2639,7 @@ html,body{
     word-break: normal;
     display: block;
     border:0;
-    background-color: 0;
+    /*background-color: 0;*/
     background-color: #fffefe00;
 
 }
