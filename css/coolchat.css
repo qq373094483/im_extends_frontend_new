@@ -2310,13 +2310,12 @@ html,body{
 }
 /** 群公告长度限制 **/
 #gnotice {
-	/*width: 350px;*/
+	width: 200px;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	word-wrap: normal;
 }
-
 .chat_item .avatar .icon {
     position: absolute;
     top: -6px;

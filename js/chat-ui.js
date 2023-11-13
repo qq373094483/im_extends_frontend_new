@@ -2495,6 +2495,7 @@ var UI = {
 					$("#gname").append(result.name);
 					if(myFn.notNull(result.notice)&&myFn.notNull(result.notice.text)){
 						$("#gnotice").append(myFn.getText(result.notice.text,25));
+						$("#gnotice").prop("title", result.notice.text);//鼠标移动过去后显示全量文字
 					}else{
 						$("#gnotice").append("暂无公告");
 					}

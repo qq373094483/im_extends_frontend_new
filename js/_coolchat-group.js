@@ -623,6 +623,7 @@ function noticeInfo(pageIndex){
 				"</tr></table>"
 				+"<button type='button' class='btn btn-danger' data-target='#exampleModal' data-whatever='@mdo' style='float:right;position:relative ;height: 25px;line-height: 0.912857143px;bottom:20px;right:10px;'" +
 				" onclick='deleteNotice(\"" + obj.pageData[i].roomId + "\",\""+obj.pageData[i].id+ "\")'>删除</button>"
+				// +"<div style='margin-top:5px'><p style='margin-left: 48px'>"+(obj.pageData[i].text.length>22?obj.pageData[i].text.substring(0,22)+"...":obj.pageData[i].text)+"</p></div>" +
 				+"<div style='margin-top:5px'><p style='margin-left: 48px'>"+(obj.pageData[i].text.length>22?obj.pageData[i].text.substring(0,22)+"...":obj.pageData[i].text)+"</p></div>" +
 				"</div>";
 			}
@@ -1133,8 +1134,9 @@ var GroupManager = {
 			case 905:
 			 	//群公告
 			 	 //$("#myRoomList #titgroups_"+msg.objectId).html(msg.text);
-			 	 if(ConversationManager.isOpen&&msg.roomJid==ConversationManager.fromUserId)
-			 		$("#gnotice").html(msg.text);
+			 	 if(ConversationManager.isOpen&&msg.roomJid==ConversationManager.fromUserId) {
+					 $("#gnotice").html(msg.text);
+				 }
 			  break;
 			case 906:
 			  //判断被禁言者是否为用户自己
