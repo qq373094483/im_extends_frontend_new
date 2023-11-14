@@ -841,28 +841,34 @@ var UI = {
 	},
 	showMsgNum :function(userId,isAdd,userIdKey){
 		//TODO 屏蔽计算添加好友和添加好友的消息数量
-		/*if (10001 === userId) {
+		if (10001 === userId) {
 			return;
-		}*/
+		}
 		//显示消息数量
 		if(!userIdKey) {
 			userIdKey = userId;
 		}
+		//好友的未读消息数
 		var msgNum = DataUtils.getMsgNum(userIdKey);
+		//当前账号收到的总消息数
 		var messageNumber =DataUtils.getMsgNumCount();
+		//新增的消息。1.新增，0.非新增（初始化）
 		if(1==isAdd){
 			if(myFn.isNil(msgNum)){
 				// var i=$("#msgNum_"+userId+"  #span").html();
 				// msgNum=parseInt(i);
 				msgNum = 1;
 			}
-			else msgNum+=1;
+			else {
+				msgNum += 1;
+			}
 			DataUtils.setMsgNum(userIdKey,msgNum) ;
 			messageNumber += 1; //将好友发送的未读消息汇总
 			DataUtils.setMsgMumCount(messageNumber);
 		}
-		if(0<msgNum){
-			if(99<msgNum) {
+		//显示好友的消息数量
+		if(msgNum>0){
+			if(msgNum>99) {
 				$("#myMessagesList #msgNum_" + userId + "").html("99+");
 			}
 			else {
@@ -877,7 +883,8 @@ var UI = {
 		}
 	
 		// ConversationManager.changMessageNum(0,messageNumber);
-		if(0<messageNumber){
+		//显示总消息数量
+		if(messageNumber>0){
 			//显示到页面
 			if(messageNumber > 99){  //数量大于99 则显示99+
 				$("#messages #messageNum").text("99+");
@@ -2288,7 +2295,8 @@ var UI = {
 				$("#divNewFriendList").show();
 				// $("#charMessage").empty();
 				// $("#charMessage").append("新的朋友");
-				UI.clearMsgNum(10001);
+				//TODO 10001待完成
+				// UI.clearMsgNum(10001);
 
 		});
 		
@@ -2544,15 +2552,14 @@ var UI = {
 	/*初始化聊天列表页面*/
 	initUIMessageList:function(){
 		var messageList=DataUtils.getUIMessageList();
-		if(myFn.isNil(messageList))
+		if(myFn.isNil(messageList)) {
 			return;
+		}
 
 		/*按照timeSend 排序*/
 		var sortList=Utils.objSort(messageList,"timeSend",1,"lastTime");
-		var message=null;
-		var msgNum=0;
 		for (i in sortList){
-			message=messageList[sortList[i]];
+			var message=messageList[sortList[i]];
 			if(myFn.isNil(message))
 				continue;
 			var jid=message.id.split("/")[0];
@@ -2601,7 +2608,7 @@ var UI = {
 			}
 			$("#to #messageNum").show();
 		}
-		UI.showMsgNum(10001);
+		// UI.showMsgNum(10001);//显示10001的消息数量，并且加入到消息总数中
 		// UI.showMsgNumBy10001();
 	},
 	showMsgNumBy10001: function () {
