@@ -784,7 +784,8 @@ var ConversationManager = {
 	handlerNewFriendMessage:function(msg){
 		//TODO 10001待完成
 		//好友验证 消息
-		UI.showMsgNum(10001,1);
+		// UI.showMsgNum(10001,1);
+		UI.showMsgNum10001(1);
 		UI.msgWithFriend(msg);
 	},
 	/*撤回消息*/

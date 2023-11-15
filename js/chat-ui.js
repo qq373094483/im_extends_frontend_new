@@ -839,6 +839,32 @@ var UI = {
 	showMsgNumByUserId :function(userId){
 		return DataUtils.getMsgNum(userId);
 	},
+	showMsgNum10001: function (isAdd) {
+		var userId = 10001;
+		var msgNum = DataUtils.getMsgNum(userId);
+		if(myFn.isNil(msgNum)){
+			msgNum = 0;
+		}
+		msgNum += 1;
+		DataUtils.setMsgNum(userId,msgNum) ;
+		if(msgNum>0){
+			if(msgNum>99) {
+				$("#myFriendsList #msgNum_10001").html("99+");
+				$("#newFirendNum").html("99+");
+			}
+			else {
+				$("#myFriendsList #msgNum_10001").html(msgNum);
+				$("#newFirendNum").html(msgNum);
+			}
+			$("#myFriendsList #msgNum_10001").removeClass("msgNumHide");
+			$("#myFriendsList #msgNum_10001").addClass("msgNumShow");
+			$("#newFirendNum").removeClass("msgNumHide");
+			$("#newFirendNum").addClass("msgNumShow");
+			/*$("#myFriendsList #msgNum_10001").removeClass("msgNumHide");
+			$("#myFriendsList #msgNum_10001").addClass("msgNumShow");*/
+
+		}
+	},
 	showMsgNum :function(userId,isAdd,userIdKey){
 		//TODO 屏蔽计算添加好友和添加好友的消息数量
 		if (10001 === userId) {
@@ -897,6 +923,14 @@ var UI = {
 		
 		/*if("NewFriend"==Temp.nowList&&10001==userId)
 			UI.showNewFriends(0);*/
+	},
+	clearMsgNum10001: function () {
+		var userId = 10001;
+		DataUtils.setMsgNum(userId,0) ;
+		$("#myFriendsList #msgNum_10001").removeClass("msgNumShow");
+		$("#myFriendsList #msgNum_10001").addClass("msgNumHide");
+		$("#newFirendNum").removeClass("msgNumShow");
+		$("#newFirendNum").addClass("msgNumHide");
 	},
 	clearMsgNum:function(userId,userIdKey){
 		if(!userIdKey)
@@ -1348,7 +1382,7 @@ var UI = {
 		$("#add_friend").show();
 		$("#o").show();
 		$("#btnFooter").show();
-		$("#roomTab").hide();
+		// $("#roomTab").hide();//群聊天.解决新增好友时，在群那会被刷掉的问题。
 		$("#prop").hide();
 		$("#friendsTabTitle").html("我的好友");
 		$("#setPassword").hide();
@@ -1369,15 +1403,30 @@ var UI = {
 			myData.friendListNum = result.pageData.length;
 			//清空已记录的当前页中所有好友的userId
 			myData.friendListUserIds=[];
+			var userId = 10001;
+			var msgNum = DataUtils.getMsgNum(userId);
+			if(myFn.isNil(msgNum)){
+				msgNum = 0;
+			}
 
 			var html = "";
 			if(pageIndex==0){
+				var msgNum10001 = '<i id="msgNum_10001" class="icon web_wechat_reddot_middle msgNumHide">0</i>';
+				if(msgNum>0){
+					if(msgNum>99) {
+						msgNum10001='<i id="msgNum_10001" class="icon web_wechat_reddot_middle msgNumShow">99+</i>';
+					}
+					else {
+						msgNum10001='<i id="msgNum_10001" class="icon web_wechat_reddot_middle msgNumShow">'+msgNum+'</i>';
+					}
+
+				}
 				html+='<div  class="" id="friends_10001" onclick="UI.isChoose(10001);">'+
 									        '<div class="chat_item slide-left active" onclick="UI.showNewFriends(0);" >'+
 									            '<div class="ext"> <p class="attr"></p> </div>'+
 									            '<div class="avatar">'+
 									                '<img class="img roundAvatar" src="img/im_10001.png" alt="">'+
-									                '<i id="msgNum_10001" class="icon web_wechat_reddot_middle">1</i>'+
+					msgNum10001+
 									            '</div>'+
 									            '<div class="info">'+
 									                '<h3 class="nickname">'+
@@ -2297,6 +2346,7 @@ var UI = {
 				// $("#charMessage").append("新的朋友");
 				//TODO 10001待完成
 				// UI.clearMsgNum(10001);
+				UI.clearMsgNum10001();
 
 		});
 		
@@ -2609,15 +2659,29 @@ var UI = {
 			$("#to #messageNum").show();
 		}
 		// UI.showMsgNum(10001);//显示10001的消息数量，并且加入到消息总数中
-		// UI.showMsgNumBy10001();
+		UI.showMsgNumBy10001();
 	},
 	showMsgNumBy10001: function () {
-		let showMsgNumBy10001 = UI.showMsgNumByUserId(10001);
-		if (!showMsgNumBy10001) {
-			showMsgNumBy10001 = 0;
+		var userId = 10001;
+		var msgNum = DataUtils.getMsgNum(userId);
+		if(myFn.isNil(msgNum)){
+			msgNum = 0;
 		}
-		if (showMsgNumBy10001 > 0) {
-			$("#friend #newFirendNum").text(showMsgNumBy10001);
+		if(msgNum>0){
+			if(msgNum>99) {
+				$("#myFriendsList #msgNum_10001").html("99+");
+				$("#newFirendNum").html("99+");
+			}
+			else {
+				$("#myFriendsList #msgNum_10001").html(msgNum);
+				$("#newFirendNum").html(msgNum);
+			}
+			$("#myFriendsList #msgNum_10001").removeClass("msgNumHide");
+			$("#myFriendsList #msgNum_10001").addClass("msgNumShow");
+			$("#newFirendNum").removeClass("msgNumHide");
+			$("#newFirendNum").addClass("msgNumShow");
+			/*$("#myFriendsList #msgNum_10001").removeClass("msgNumHide");
+			$("#myFriendsList #msgNum_10001").addClass("msgNumShow");*/
 
 		}
 // 	$("#messages #messageNum").removeClass("msgNumHide");
