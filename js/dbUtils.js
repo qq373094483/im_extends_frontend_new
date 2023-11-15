@@ -106,6 +106,7 @@ var DBUtils={
 		}
 		return messageList;
 	},
+	/*添加最近的消息到消息列表记录*/
 	putUIMessageList:function(msg){
 		var key="messageList_";
 		var messageList=DBUtils.getUIMessageList();
