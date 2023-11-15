@@ -136,7 +136,7 @@ layui.use(['form', 'layedit', 'laydate'], function () {
 
     function over() {
         var s = Document.getElementById("img1");
-        s.src = "img/378FMI5VN@}]1D{H5(NOP8D.png"
+        s.src = "img/378FMI5VN@}]1D{H5(NOP8D.png";
     }
 
     function out() {
@@ -153,7 +153,7 @@ layui.use(['form', 'layedit', 'laydate'], function () {
         //var h5 = "<img onclick=" + 'UI.showMe()' + " id='myAvatar' onerror='this.src=\"img/ic_avatar.png\"' src='" + myFn.getAvatarUrl(myData.userId, 1) + "' class='myAvatar roundAvatar'><div id='user_online' class='user_status user_online'></div>";
         var h5 = "<img onclick=" + 'UI.showMe()' + " id='myAvatar' onerror='this.src=\"img/ic_avatar.png\"' src='" + myFn.getAvatarUrl(myData.userId, 1) + "' class='myAvatar roundAvatar'>";
         $("#photo").append(h5);
-        var sp = "<p id='nickname' class='text-length' style='color:white;margin-top:10px'>" + myData.nickname + "</p>"
+        var sp = "<p id='nickname' class='text-length' style='color:white;margin-top:10px'>" + myData.nickname + "</p>";
         $("#photo").append(sp);
         // var online="<p id='myonline' style='color:white;margin-top:-100px;margin-left:110px'></p>"
         // $("#photo").append(online);
@@ -365,8 +365,9 @@ layui.use(['form', 'layedit', 'laydate'], function () {
                 return;
             }
             var str = text.charAt(text.length - 1);
-            if ("@" != str)
+            if ("@" !== str) {
                 return;
+            }
             Temp.friendListType = "@Member";
             $("#divFriendListTitle").html("选择成员");
             $("#divFriendListBtnOk").html("确认");
@@ -500,15 +501,18 @@ layui.use(['form', 'layedit', 'laydate'], function () {
             var userIdArr = Checkbox.parseData();
             if ("@Member" == Temp.friendListType) {
                 //@群成员
-                if (1 > userIdArr.length)
+                if (1 > userIdArr.length) {
                     return;
+                }
                 var text = $("#messageBody").val();
                 var i = 0;
                 for (var key in Checkbox.checkedNames) {
-                    if (i == Checkbox.checkedNames.length - 1)
+                    if (i === Checkbox.checkedNames.length - 1) {
                         text += Checkbox.checkedNames[key] + "  ";
-                    else
+                    }
+                    else {
                         text += Checkbox.checkedNames[key] + "  @";
+                    }
                     i++;
                 }
                 $("#messageBody").val(text);
@@ -549,7 +553,7 @@ layui.use(['form', 'layedit', 'laydate'], function () {
             var reg = new RegExp("^[\u4e00-\u9fa5A-Za-z0-9-_]*$");
             obj["nickname"] = $("#from #mynickname").val();
             if (!reg.test(obj["nickname"])) {
-                ownAlert(3, "昵称 输入有误 只能输入 中文 英文 数字!")
+                ownAlert(3, "昵称 输入有误 只能输入 中文 英文 数字!");
                 return;
             }
             obj["description"] = $("#from #mydescription").val();
