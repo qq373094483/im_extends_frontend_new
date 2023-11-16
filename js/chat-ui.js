@@ -1469,7 +1469,7 @@ var UI = {
 			$("#btnMyFriends").addClass("border");
 
 			if(1==myData.multipleDevices&&0==pageIndex){
-				DeviceManager.initMyDevices();
+				// DeviceManager.initMyDevices();
 			}
 
 		});
