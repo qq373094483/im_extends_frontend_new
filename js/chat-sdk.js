@@ -7,12 +7,12 @@ var mySdk = {
 			data : {},
 			async:false,
 			success : function(result) {
-				if (1 == result.resultCode) {
+				if (1 === result.resultCode) {
 					callback(result.data);
 				} 
 			},
 			error : function(result) {
-				if(1030102==result.resultCode){
+				if(1030102===result.resultCode){
 					window.location.href = "login.html";
 				}
 			}
@@ -25,14 +25,16 @@ var mySdk = {
 			data : {},
 			async:false,
 			success : function(result) {
-				if (1 == result.resultCode) {
-					if(callback)
+				if (1 === result.resultCode) {
+					if(callback) {
 						callback(result.data);
+					}
 				} 
 				WEBIM.timeDelay=WEBIM.getMilliSeconds()-result.currentTime;
 				console.log("timeDelay   ====> "+WEBIM.timeDelay);
 			},
 			error : function(result) {
+				console.log(result);
 			}
 		});
 	},

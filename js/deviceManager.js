@@ -344,7 +344,8 @@ var DeviceManager = {
 		}
 			
 	},
-	initMyDevices:function(){
+	//TODO 删除我的设备
+	/*initMyDevices:function(){
 		//我的设备 
         
 	    var my_device_html ='<div class="" id="friends_MyDevice" onclick="DeviceManager.showMyDevice();">'
@@ -370,7 +371,7 @@ var DeviceManager = {
 		//$("#myMessagesList").append(html);
 		var first=$("#myFriendsList div").first();
 		$(my_device_html).insertBefore(first);
-	},
+	},*/
 	showMyDevice:function(){
 		$("#myFriendsList").hide();
 		var html ="<div id='deviceList'>";

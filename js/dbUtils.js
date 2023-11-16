@@ -8,6 +8,22 @@ var DBUtils={
 		var  key ="streamId_";
 		window.dbStorage.setItem(key,value);
 	},
+
+	getUrlData:function(url){
+		if (myFn.isNil(url)) {
+			return;
+		}
+		var  key ="urlData_"+url;
+		return window.dbStorage.getItem(key);
+	},
+	setUrlData: function (url, value) {
+		if (myFn.isNil(url) || myFn.isNil(value)) {
+			return;
+		}
+		var key = "urlData_" + url;
+		window.dbStorage.getItem(key, value);
+	},
+
 	getIsEncrypt:function(){
 		var  key ="isEncrypt_";
 		var value=window.dbStorage.getItem(key);

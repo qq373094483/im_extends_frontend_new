@@ -69,14 +69,14 @@ var myFn = {
 		if (!obj.data.secret) {
 			obj.data = WEBIM.createCommApiSecret(obj.data);
 		}
+		//$.extend(params, obj);
 		var params = {
 			type: type,
-			async: false,
-			url: obj.url,
+			async: async,
+			url: AppConfig.apiUrl +obj.url,
 			data: obj.data,
 			dataType: 'json',
 			success: function (result) {
-
 				if (1030101 === result.resultCode) {
 					//缺少访问令牌
 					console.log("===> " + obj.url + " >> " + result.resultMsg);
@@ -97,12 +97,12 @@ var myFn = {
 						window.location.href = "login.html";
 					}, 1000);
 
-				} else if (1010101 == result.resultCode) {
+				} else if (1010101 === result.resultCode) {
 					console.log("===> " + obj.url + " >> " + result.resultMsg);
-				} else if (1040307 == result.resultCode || 1040308 == result.resultCode || 1040309 == result.resultCode) {
+				} else if (1040307 === result.resultCode || 1040308 === result.resultCode || 1040309 === result.resultCode) {
 
-				} else if (1 != result.resultCode && myFn.notNull(result.resultMsg)) {
-					if (false == obj.isShowAlert) {
+				} else if (1 !== result.resultCode && myFn.notNull(result.resultMsg)) {
+					if (false === obj.isShowAlert) {
 						return;
 					}
 					if (result.resultMsg) {
@@ -118,9 +118,11 @@ var myFn = {
 					}
 				}
 				obj.success(result);
+
+
 			},
 			error: function (result) {
-				if (false == obj.isShowAlert) {
+				if (false === obj.isShowAlert) {
 					return;
 				}
 				if (result.resultMsg)
@@ -130,12 +132,12 @@ var myFn = {
 			complete: function () {
 			}
 		};
-		//$.extend(params, obj);
-		params.url = AppConfig.apiUrl + params.url;
+
 		if (myFn.isNil(params.data["access_token"])) {
 			params.data["access_token"] = myData.access_token;
 		}
 		$.ajax(params);
+
 	},
 	/** 调用接口通用方法,该方法的弹框提示等ui部分使用layui  */
 	lay_invoke: function (obj) {

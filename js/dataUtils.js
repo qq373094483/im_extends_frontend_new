@@ -93,6 +93,12 @@ var DataUtils = {
 	getStreamId: function () {
 		return DBUtils.getStreamId();
 	},
+	setReuqestData: function (url,value) {
+		DBUtils.setUrlData(url, value);
+	},
+	getReuqestData: function (url) {
+		DBUtils.getUrlData(url);
+	},
 	setStreamId: function (streamId) {
 		DBUtils.setStreamId(streamId);
 	},
@@ -216,7 +222,7 @@ var DataUtils = {
 		delete DataMap.msgRecordList[userId];
 		DBUtils.clearMsgRecordList(userId);
 	},
-	//删除解散群组 或 删除好友 
+	//删除解散群组 或 删除好友
 	deleteFriend: function (jid) {
 		this.clearMsgRecordList(jid);
 		this.removeUIMessageList(jid);
