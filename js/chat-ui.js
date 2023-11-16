@@ -1388,8 +1388,11 @@ var UI = {
 		$("#setPassword").hide();
 		$("#privacy").hide();
 
-		$("#search_all_user").bind("input propertychange",function(){
-			UI.showNearbyUser(0);
+		$("#search_all_user").bind("input keypress",function(event){
+			//好友添加输入框回车事件
+			if (event.keyCode === 13) {
+				UI.showNearbyUser(0);
+			}
 		});
 
 		if(myFn.isNil(pageIndex))
