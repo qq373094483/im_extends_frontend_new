@@ -93,11 +93,11 @@ var DataUtils = {
 	getStreamId: function () {
 		return DBUtils.getStreamId();
 	},
-	setReuqestData: function (url,value) {
+	setRequestData: function (url,value) {
 		DBUtils.setUrlData(url, value);
 	},
-	getReuqestData: function (url) {
-		DBUtils.getUrlData(url);
+	getRequestData: function (url) {
+		return DBUtils.getUrlData(url);
 	},
 	setStreamId: function (streamId) {
 		DBUtils.setStreamId(streamId);

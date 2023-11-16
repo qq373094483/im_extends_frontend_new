@@ -21,7 +21,7 @@ var DBUtils={
 			return;
 		}
 		var key = "urlData_" + url;
-		window.dbStorage.getItem(key, value);
+		window.dbStorage.setItem(key, value);
 	},
 
 	getIsEncrypt:function(){
