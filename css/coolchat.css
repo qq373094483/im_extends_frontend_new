@@ -1737,7 +1737,8 @@ html,body{
 
 @media (max-height:980px){
 	.box{
-		padding-top:88px;
+		/*padding-top:88px;*/
+		padding-top:0px;
 	}
 }
 
