@@ -1870,6 +1870,9 @@ var UI = {
 		$("#setPassword").show();
 
 	},
+	/**
+	 * 我的资料
+	 */
 	showMe:function() {
 
 		//好友、聊天面板
@@ -1882,8 +1885,10 @@ var UI = {
 			myData.user = result;
 
 			$("#avatar_preview").attr("src", myFn.getAvatarUrl(myData.userId)+"?x="+Math.random()*10);
-			
+			console.log(myData.user.account+"adasdf");
 			$("#mynickname").val(myData.user.nickname);
+			$("#myaccount").val(myData.user.account);
+			$("#myaccount").attr("disabled","disabled");
 			// $("#mydescription").val(myData.user.description);
 			$("input[type=radio][name='sex'][value='"+myData.user.sex+"']").attr("checked",'checked');
 			$("#mybirthday").val(0 == myData.user.birthday ? "" : myFn.toDate(myData.user.birthday));

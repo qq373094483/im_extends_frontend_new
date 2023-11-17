@@ -137,7 +137,7 @@
 
                 <!-- 好友、聊天面板 -->
                 <div id="o" class="coolchat_data_panel">
-                    <div class="tab-content" style="min-height: 760px;">
+                    <div class="tab-content" style="min-height: 760px;height:100%">
                         <div id="friendsTab" class="tab-pane fade">
 
 
@@ -167,12 +167,12 @@
                                 <div class="fWarp" id="myFriendsList" style="height:700px; overflow: auto;"></div>
                             </div>
                         </div>
-                        <div id="messagesTab" class="tab-pane fade in active">
+                        <div id="messagesTab" class="tab-pane fade in active" style="min-height: 760px;height:100%">
                             <div class="coolchat_data_panel_head">
                                 <!-- <img id="back" src="img/back.png" style="width: 30px;float:left;margin-top: 15px;margin-left: 5px;display: none;" onclick="UI.showMessages()"> -->
                                 <p id="charMessage" style="display: inline;">聊天消息</p>
                             </div>
-                            <div id="messageDisplayArea" style="height: 676px; overflow-y:auto;overflow-x:hidden;">
+                            <div id="messageDisplayArea" style="min-height: 760px;height:760px;height: calc(100% - 50px); overflow-y:auto;overflow-x:hidden;">
                                 <div class="fWarp" id="myMessagesList">
 
 
@@ -1046,7 +1046,13 @@
 
                     <form id="from" role="form" class="form-horizontal layui-form" lay-filter="my_profile_form"
                           enctype="multipart/form-data">
-
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">账 号</label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="myaccount" name="" lay-verify="required"
+                                       autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
                         <div class="layui-form-item">
                             <label class="layui-form-label">昵 称</label>
                             <div class="layui-input-inline">
