@@ -66,7 +66,7 @@ var mySdk = {
 			url : '/user/login/auto',
 			data:{},
 			success : function(result) {
-				if (1 == result.resultCode) {
+				if (1 === result.resultCode) {
 					callback(result.data);
 				}
 			},
@@ -81,8 +81,9 @@ var mySdk = {
 			if (myFn.isNil(value)) {
 				value = CustomerService.customerMap[userId];
 			}
-			if(myFn.notNull(value))
+			if(myFn.notNull(value)) {
 				return callback(value);
+			}
 		}
 		
 
@@ -129,7 +130,7 @@ var mySdk = {
 				userId : userId
 			},
 			success : function(result) {
-				if (1 == result.resultCode) {
+				if (1 === result.resultCode) {
 					callback(result.data);
 				}
 			},
@@ -148,7 +149,7 @@ var mySdk = {
 				userId : userId,
 			},
 			success : function(result) {
-				if (1 == result.resultCode) {
+				if (1 === result.resultCode) {
 					DataMap.userSetting[userId]=result.data;
 					callback(result.data);
 				}
@@ -162,7 +163,7 @@ var mySdk = {
 			url : '/user/update',
 			data : obj,
 			success : function(result) {
-				if (1 == result.resultCode) {
+				if (1 === result.resultCode) {
 					ownAlert(1,"资料更新成功");
 					myData.user=result.data;
 					myData.nickname=myData.user.nickname;
@@ -188,7 +189,7 @@ var mySdk = {
 				pageSize : 500
 			},
 			success : function(result) {
-				if (1 == result.resultCode) {
+				if (1 === result.resultCode) {
 					if(myFn.isNil(result.data)||myFn.isNil(result.data.pageData)){
 						callback();
 						return;
@@ -237,7 +238,7 @@ var mySdk = {
 				pageSize : pageSize
 			},
 			success : function(result) {
-				if (1 == result.resultCode) {
+				if (1 === result.resultCode) {
 					callback(result.data);
 				}
 			},
@@ -249,8 +250,9 @@ var mySdk = {
 	getFriends : function(toUserId,callback,isHttp) {
 		var value=DataMap.friends[toUserId];
 		if(!isHttp){
-			if(myFn.notNull(value))
+			if(myFn.notNull(value)) {
 				return callback(value);
+			}
 		}
 		var reg = /^[0-9]*$/;
 		if(!reg.test(toUserId)){
@@ -263,7 +265,7 @@ var mySdk = {
 				toUserId : toUserId
 			},
 			success : function(result) {
-				if (1 == result.resultCode) {
+				if (1 === result.resultCode) {
 					DataMap.friends[toUserId]=result.data;
 					callback(result.data);
 				}
@@ -274,8 +276,9 @@ var mySdk = {
 	},
 	getNewFriendsList : function(userId,pageIndex, callback) {
 		
-		if(myFn.isNil(pageIndex))
-			pageIndex=0;
+		if(myFn.isNil(pageIndex)) {
+			pageIndex = 0;
+		}
 		myFn.invoke({
 			url : '/friends/newFriendListWeb',
 			data : {
@@ -284,7 +287,7 @@ var mySdk = {
 				pageSize : 10
 			},
 			success : function(result) {
-				if (1 == result.resultCode) {
+				if (1 === result.resultCode) {
 					callback(result.data);
 				}
 			}
@@ -465,7 +468,7 @@ var mySdk = {
 				toUserId : toUserId,
 			},
 			success : function(result) {
-				if (1 == result.resultCode) {
+				if (1 === result.resultCode) {
 					var msg=WEBIM.createMessage(MessageType.Type.REFUSED,"",toUserId,null);
 					UI.sendMsg(msg,toUserId);
 					DataMap.friends[toUserId]=null;
@@ -498,12 +501,13 @@ var mySdk = {
 				url : '/user/settings/update',
 				data : settingObj,
 				success : function(result) {
-					if (1 == result.resultCode) {
+					if (1 === result.resultCode) {
 						
 						/*$("#edit_setting").modal('hide');*/
 						//ownAlert(1,"保存成功")
-						if(callback)	
+						if(callback) {
 							callback();
+						}
 					} else {
 						ownAlert(2,result.resultMsg);
 					}
@@ -521,7 +525,7 @@ var mySdk = {
 				pageSize : pageSize
 			},
 			success : function(result) {
-				if (1 == result.resultCode){
+				if (1 === result.resultCode){
 					callback(result.data);
 				}
 			},
@@ -539,8 +543,9 @@ var mySdk = {
 				roomName : keyword
 			},
 			success : function(result) {
-				if (1 == result.resultCode)
+				if (1 === result.resultCode) {
 					callback(result.data);
+				}
 			},
 			error : function(result) {
 			}
@@ -556,7 +561,7 @@ var mySdk = {
 				roomId : roomId
 			},
 			success : function(result) {
-				if (1 == result.resultCode){
+				if (1 === result.resultCode){
 					DataMap.rooms[roomId]=result.data;
 					callback(result.data);
 				}
@@ -579,7 +584,7 @@ var mySdk = {
 				roomId : roomId
 			},
 			success : function(result) {
-				if (1 == result.resultCode){
+				if (1 === result.resultCode){
 					DataMap.rooms[roomId]=result.data;
 					callback(result.data);
 				}else{
@@ -596,7 +601,7 @@ var mySdk = {
 			url : '/room/add',
 			data : params,
 			success : function(result) {
-				if (1 == result.resultCode) {
+				if (1 === result.resultCode) {
 					ownAlert(1,"群组创建成功！");
 					$("#newRoomModal").modal('hide');
 					callback(result.data);
@@ -617,7 +622,7 @@ var mySdk = {
 					roomId : roomId
 				},
 				success : function(result) {
-					if (1 == result.resultCode) {
+					if (1 === result.resultCode) {
 						callback();
 						
 					} 
@@ -666,8 +671,8 @@ var mySdk = {
 				keyword:keyword
 			},
 			success : function(result) {
-				if(1==result.resultCode){
-						callback(result.data);
+				if(1===result.resultCode){
+					callback(result.data);
 				}
 			},
 			error:function(result){
@@ -683,8 +688,9 @@ var mySdk = {
 				userId:userId
 			},
 			success:function(result){
-				if(1==result.resultCode)
-						callback(result.data);
+				if(1===result.resultCode) {
+					callback(result.data);
+				}
 			}
 		});
 	},
@@ -693,7 +699,7 @@ var mySdk = {
 				url:'/room/member/update',
 				data:data,
 				success:function(result){
-					if(1==result.resultCode)
+					if(1===result.resultCode)
 						callback(result.data);
 					else{
 						ownAlert(3,result.resultMsg);
@@ -710,8 +716,9 @@ var mySdk = {
 				type:type,
 			},
 			success:function(result){
-				if(1==result.resultCode)
-						callback(result.data);
+				if(1===result.resultCode) {
+					callback(result.data);
+				}
 				else{
 					ownAlert(3,result.resultMsg);
 				}
@@ -726,7 +733,7 @@ var mySdk = {
 				toUserId:toUserId
 			},
 			success:function(result){
-				if(1==result.resultCode){
+				if(1===result.resultCode){
 					callback(result.data);
 				}else{
 					ownAlert(3,result.resultMsg);
@@ -760,7 +767,7 @@ var mySdk = {
 		document.body.appendChild(script);
 	},*/
 	locateCallback : function(result) {
-		if (0 == result.status) {
+		if (0 === result.status) {
 			console.log("百度IP定位成功");
 			var provinceName = result.content.address_detail.province;
 			var cityName = result.content.address_detail.city;
@@ -774,8 +781,9 @@ var mySdk = {
 				longitude : longitude,
 				latitude : latitude
 			}
-		} else
+		} else {
 			console.log("百度IP定位失败，请求错误。");
+		}
 	},
 	
 	deleteMsg:function(type,del,msgId,callback,roomJid){
@@ -789,7 +797,7 @@ var mySdk = {
 					roomJid:roomJid
 					},
 				success:function(result){
-					if(1==result.resultCode){
+					if(1===result.resultCode){
 						callback(result.data);
 						DataUtils.deleteMessage(msgId);
 					}else{
@@ -809,7 +817,7 @@ var mySdk = {
 					type:type
 					},
 				success:function(result){
-					if(1==result.resultCode){
+					if(1===result.resultCode){
 						DataUtils.saveMessage(result.data,msgId);
 						callback(result.data);
 					}
@@ -831,7 +839,7 @@ var mySdk = {
 				url:'/redPacket/sendRedPacket',
 					data:data,
 					success:function(result){
-						if(1==result.resultCode){
+						if(1===result.resultCode){
 							callback(result.data);
 						}
 					}			
@@ -845,7 +853,7 @@ var mySdk = {
 			 id:packetId
 			},
 			success:function(result){
-					callback(result);
+				callback(result);
 			},
 			error:function(result){
 				ownAlert(2,result);
