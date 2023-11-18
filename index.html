@@ -50,7 +50,6 @@
         </div>-->
 
 
-
         <div class="coolchat_content_nav box" style="">
             <div class="layui-fluid" style="min-width:1107px;max-width:100%;width:100%;height:100%;padding:0 0;">
                 <!-- 左侧菜单栏 -->
@@ -58,9 +57,12 @@
                     <div id="photo" style="height: 130px;text-align: center;"></div>
                     <dl>
                         <dt>
-                            <a href="#messagesTab" data-toggle="tab" style="text-decoration: none" onclick="UI.showMessages()">
-                                <p id="messages" onclick='UI.handoverImg(this)' style=" position:relative;" class="back">
-                                    <img id='messageImg' style="width: 20px;margin-top: -4px;color: " src="img/messageImg.png"><!--&nbsp;&nbsp;聊天消息-->
+                            <a href="#messagesTab" data-toggle="tab" style="text-decoration: none"
+                               onclick="UI.showMessages()">
+                                <p id="messages" onclick='UI.handoverImg(this)' style=" position:relative;"
+                                   class="back">
+                                    <img id='messageImg' style="width: 20px;margin-top: -4px;color: "
+                                         src="img/messageImg.png"><!--&nbsp;&nbsp;聊天消息-->
                                     <i id="messageNum" class="messageNum"></i>
                                 </p>
                             </a>
@@ -71,16 +73,20 @@
                             <a href="#roomTab" data-toggle="tab" style="text-decoration: none"
                                onclick="GroupManager.showMyRoom(0)">
                                 <p id="room" onclick='UI.handoverImg(this)' class="left_title_old">
-                                    <img id='roomImg' style="width: 25px;margin-top: -4px" src="img/roomImg2.png"><!--&nbsp;&nbsp;群组聊天-->
+                                    <img id='roomImg' style="width: 25px;margin-top: -4px" src="img/roomImg2.png">
+                                    <!--&nbsp;&nbsp;群组聊天-->
                                 </p>
                             </a>
                         </dt>
                     </dl>
                     <dl>
                         <dt>
-                            <a href="#friendsTab" data-toggle="tab" style="text-decoration: none" onclick="UI.showFriends(0)">
-                                <p id="friend" onclick='UI.handoverImg(this)' class="left_title_old" style=" position:relative;">
-                                    <img id='friendImg' style="width: 20px;margin-top: -4px" src="img/friendImg2.png"><!--&nbsp;&nbsp;<span>我的好友</span>-->
+                            <a href="#friendsTab" data-toggle="tab" style="text-decoration: none"
+                               onclick="UI.showFriends(0)">
+                                <p id="friend" onclick='UI.handoverImg(this)' class="left_title_old"
+                                   style=" position:relative;">
+                                    <img id='friendImg' style="width: 20px;margin-top: -4px" src="img/friendImg2.png">
+                                    <!--&nbsp;&nbsp;<span>我的好友</span>-->
                                     <!--TODO 通讯类显示新增好友数量-->
                                     <i id="newFirendNum" class="newFirendNum"></i>
                                 </p>
@@ -116,12 +122,14 @@
                          style="">
                         <ul class="dropdown_menu">
                             <li>
-                                <a tabindex="-1" href="javascript:;" onclick="UI.showSetting()" title="隐私设置" class="ng-scope">
+                                <a tabindex="-1" href="javascript:;" onclick="UI.showSetting()" title="隐私设置"
+                                   class="ng-scope">
                                     <i class="menuicon_push_on"></i>隐私设置
                                 </a>
                             </li>
                             <li>
-                                <a tabindex="-1" href="javascript:;" onclick="UI.showPwd()" title="修改密码" class="ng-scope">
+                                <a tabindex="-1" href="javascript:;" onclick="UI.showPwd()" title="修改密码"
+                                   class="ng-scope">
                                     <i class="menuicon_volume_on"></i>修改密码
                                 </a>
                             </li>
@@ -172,7 +180,8 @@
                                 <!-- <img id="back" src="img/back.png" style="width: 30px;float:left;margin-top: 15px;margin-left: 5px;display: none;" onclick="UI.showMessages()"> -->
                                 <p id="charMessage" style="display: inline;">聊天消息</p>
                             </div>
-                            <div id="messageDisplayArea" style="min-height: 760px;height:760px;height: calc(100% - 50px); overflow-y:auto;overflow-x:hidden;">
+                            <div id="messageDisplayArea"
+                                 style="min-height: 760px;height:760px;height: calc(100% - 50px); overflow-y:auto;overflow-x:hidden;">
                                 <div class="fWarp" id="myMessagesList">
 
 
@@ -285,7 +294,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="divNewFriendList" class="tab-content" style="min-height: 710px;background-color: white;height: calc(100% - 220px);"></div>
+                        <div id="divNewFriendList" class="tab-content"
+                             style="min-height: 710px;background-color: white;height: calc(100% - 220px);"></div>
                     </div>
                 </div>
                 <div id="tabCon_0" class="coolchat_message_panel_div">
@@ -309,7 +319,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="panel-body" style="padding: 0px;min-height:710px;height:96%;" onclick="panelBodyClick()">
+                        <div class="panel-body" style="padding: 0px;min-height:710px;height:96%;"
+                             onclick="panelBodyClick()">
                             <div id='messagePanel' class="nano coolchat_message_show_area"
                                  style="min-height: 500px;padding: 0 17px;">
                                 <div class="nano-content" style="">
@@ -1028,7 +1039,10 @@
             </div>
             <!--我的资料-->
             <div id="prop" class="my_profile_panel">
-                <div class="my_profile_title">我的资料<button class="panel_close" style="background: url('img/close1.png')" onclick="UI.close(this)"></button></div>
+                <div class="my_profile_title">我的资料
+                    <button class="panel_close" style="background: url('img/close1.png')"
+                            onclick="UI.close(this)"></button>
+                </div>
 
                 <div style="padding:20px 20px 0 20px">
 
@@ -1093,7 +1107,10 @@
 
             <!--隐私设置-->
             <div id="privacy" class="privacy_set_panel layui-form" style="display: none;">
-                <div class="privacy_set_title">隐私设置<button class="panel_close" style="background: url('img/close1.png')" onclick="UI.close(this)"></button></div>
+                <div class="privacy_set_title">隐私设置
+                    <button class="panel_close" style="background: url('img/close1.png')"
+                            onclick="UI.close(this)"></button>
+                </div>
 
                 <div style="padding: 0 20px 0 20px;">
 
@@ -1152,7 +1169,10 @@
 
             <!--修改密码-->
             <div id="setPassword" class="password_set_panel" style="display: none;">
-                <div class="password_set_title">密码管理<button class="panel_close" style="background: url('img/close1.png')" onclick="UI.close(this)"></button></div>
+                <div class="password_set_title">密码管理
+                    <button class="panel_close" style="background: url('img/close1.png')"
+                            onclick="UI.close(this)"></button>
+                </div>
                 <div style="padding: 0 20px 0 20px">
                     <form id="form5" role="form" class="form-horizontal layui-form"
                           style="text-align: center;padding:100px 20px;">
