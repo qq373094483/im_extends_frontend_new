@@ -238,32 +238,34 @@ var WEBIM={
 	refreshMessage:function(msg,toUserId){
 		var timeSend =WEBIM.getServerTime();
 		var messageId=WEBIM.randomUUID();
-		var message={};
-			message.messageId=messageId;
-			message.fromUserId = WEBIM.userId + "";
-			message.fromUserName = WEBIM.nickname;
-			message.toUserId=toUserId+"";
-			message.timeSend = timeSend;
-			message.objectId=msg.objectId;
-			if(msg.location_x){
-           	  message.location_x=msg.location_x;
-             }
-	        if(msg.location_y){
-	            message.location_y=msg.location_y;
-	         }
-			if(10==msg.type){
-				message.type=msg.contentType;
-				message.content=msg.text;
-			}else{
-				message.type=msg.type;
-				message.content=msg.content;
-			}
-			message.content=(message.content+"").replaceAll('<br/>','\n');
-			if(true==WEBIM.encrypt)
-				message.isEncrypt=1;
-			if(4>message.type&&6!=message.type&&1==myData.isReadDel)
-				message.isReadDel=myData.isReadDel;
-			message.forward=1;
+		var message = {};
+		message.messageId = messageId;
+		message.fromUserId = WEBIM.userId + "";
+		message.fromUserName = WEBIM.nickname;
+		message.toUserId = toUserId + "";
+		message.timeSend = timeSend;
+		message.objectId = msg.objectId;
+		if (msg.location_x) {
+			message.location_x = msg.location_x;
+		}
+		if (msg.location_y) {
+			message.location_y = msg.location_y;
+		}
+		if (10 == msg.type) {
+			message.type = msg.contentType;
+			message.content = msg.text;
+		} else {
+			message.type = msg.type;
+			message.content = msg.content;
+		}
+		message.content = (message.content + "").replaceAll('<br/>', '\n');
+		if (true === WEBIM.encrypt) {
+			message.isEncrypt = 1;
+		}
+		if (4 > message.type && 6 != message.type && 1 == myData.isReadDel) {
+			message.isReadDel = myData.isReadDel;
+		}
+		message.forward = 1;
 		return message;
 	},
 	/*构建一条消息*/
@@ -278,17 +280,22 @@ var WEBIM={
 				timeSend : timeSend,
 				type : type
 			};
-			if(true==WEBIM.encrypt)
-				msg.isEncrypt=1;
-			if(4>type&&6!=type&&1==myData.isReadDel)
-				msg.isReadDel=myData.isReadDel;
+			if(true===WEBIM.encrypt) {
+				msg.isEncrypt = 1;
+			}
+			if(4>type&&6!=type&&1==myData.isReadDel) {
+				msg.isReadDel = myData.isReadDel;
+			}
 
-			if(toUserId)
-				msg.toUserId=toUserId+"";
-			else
-				msg.toUserId=ConversationManager.fromUserId+"";
-			if(toUserName)
-				msg.toUserName=toUserName;
+			if(toUserId) {
+				msg.toUserId = toUserId + "";
+			}
+			else {
+				msg.toUserId = ConversationManager.fromUserId + "";
+			}
+			if(toUserName) {
+				msg.toUserName = toUserName;
+			}
 			else{
 				msg.toUserName=ConversationManager.nickName;
 			}

@@ -1,10 +1,10 @@
 var AppConfig = {
 
-	apiUrl: "http://dx.jimi5588.com:8092",// 接口地址
+	apiUrl: "http://mm.jimi5588.com:8092",// 接口地址
 	//boshUrl : "http://mm.jimi5588.com:5280",
-	boshUrl: "ws://dx.jimi5588.com:5290/websocket/",// http://+（XMPP主机IP或域名）+（:5280）
-	uploadServer: "http://dx.jimi5588.com:8088/",
-	fileServer: "http://dx.jimi5588.com:8089/",
+	boshUrl: "ws://mm.jimi5588.com:5290/websocket/",// http://+（XMPP主机IP或域名）+（:5280）
+	uploadServer: "http://mm.jimi5588.com:8088/",
+	fileServer: "http://mm.jimi5588.com:8089/",
 	jitsiDomain: "/",
 	apiKey: "",
 	companyId: "5cd2fdfd0c03d03c19a109c7", //客服模块公司id

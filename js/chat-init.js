@@ -243,7 +243,7 @@ layui.use(['form', 'layedit', 'laydate'], function () {
         });
 
 
-        // 发送
+        // 发送。点击发送时发送消息
         $("#btnSend").click(function () {
 
             var content = $("#messageBody").val();
@@ -252,7 +252,7 @@ layui.use(['form', 'layedit', 'laydate'], function () {
                 return;
             }
             var msg = WEBIM.createMessage(1, content);
-            if (1 != ConversationManager.isGroup) { //isGroup//1是群聊 0是单聊
+            if (1 !== ConversationManager.isGroup) { //isGroup//1是群聊 0是单聊
                 UI.sendMsg(msg);
                 $("#messageBody").val("");
                 return;
@@ -266,10 +266,12 @@ layui.use(['form', 'layedit', 'laydate'], function () {
             if (myFn.isContains(msg.content, "@") && null != userIdArr && 0 < userIdArr.length) {
                 msg.objectId = "";
                 for (var i = 0; i < userIdArr.length; i++) {
-                    if (i == userIdArr.length - 1)
+                    if (i === userIdArr.length - 1) {
                         msg.objectId += userIdArr[i] + "";
-                    else
+                    }
+                    else {
                         msg.objectId += userIdArr[i] + ",";
+                    }
                 }
 
             }
