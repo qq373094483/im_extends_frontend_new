@@ -1807,17 +1807,25 @@ var UI = {
 			$("#privacy").show();
 			$("#prop").hide();
 
-			if(1==setting.allowAtt)
-				UI.switchToggle("allowAtt",1);
-			if(1==setting.allowGreet)
-				UI.switchToggle("allowGreet",1);
-			if(1==setting.friendsVerify)
-				UI.switchToggle("friendsVerify",1);
-			if(1==setting.openService)
-				UI.switchToggle("customerService",1);
-			if(1==myData.isEncrypt)
-				UI.switchToggle("infoEncrypt",1);
-				
+			if(1==setting.allowAtt) {
+				UI.switchToggle("allowAtt", 1);
+			}
+			if(1==setting.allowGreet) {
+				UI.switchToggle("allowGreet", 1);
+			}
+			if(1==setting.friendsVerify) {
+				UI.switchToggle("friendsVerify", 1);
+			}
+			if(1==setting.openService) {
+				UI.switchToggle("customerService", 1);
+			}
+			if(1==myData.isEncrypt) {
+				UI.switchToggle("infoEncrypt", 1);
+			}
+			if(1==setting.allowTranslateChat) {
+				UI.switchToggle("allowTranslateChat", 1);
+			}
+
 		});
 
 		//初始化设置开关切换事件的监听
@@ -1830,6 +1838,15 @@ var UI = {
 			mySdk.updateUserSetting(setting);//调用接口更新用户数据
 			
   		});
+
+		//开启翻译聊天
+		layui.form.on('switch(allowTranslateChat)', function(data){
+
+			var sign = this.checked;
+			setting.allowTranslateChat = (true == sign?1:0);
+			mySdk.updateUserSetting(setting);//调用接口更新用户数据
+
+		});
 
 		//需要好友验证
 		layui.form.on('switch(friendsVerify)', function(data){

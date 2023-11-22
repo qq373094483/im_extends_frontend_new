@@ -122,9 +122,9 @@
                          style="">
                         <ul class="dropdown_menu">
                             <li>
-                                <a tabindex="-1" href="javascript:;" onclick="UI.showSetting()" title="隐私设置"
+                                <a tabindex="-1" href="javascript:;" onclick="UI.showSetting()" title="系统设置"
                                    class="ng-scope">
-                                    <i class="menuicon_push_on"></i>隐私设置
+                                    <i class="menuicon_push_on"></i>系统设置
                                 </a>
                             </li>
                             <li>
@@ -1133,6 +1133,14 @@
                         <div class="layui-input-block" style="margin-left:0;  ">
                             <label class="layui-form-label" style="width: 220px; text-align: left;">需要好友验证</label>
                             <input id="friendsVerify" lay-filter="friendsVerify" type="checkbox" name="friendsVerify"
+                                   lay-skin="switch">
+                        </div>
+                    </div>
+
+                    <div class="privacy_option">
+                        <div class="layui-input-block" style="margin-left:0; ">
+                            <label class="layui-form-label" style="width: 220px; text-align: left;">翻译聊天</label>
+                            <input id="allowTranslateChat" lay-filter="allowTranslateChat" type="checkbox" name="allowTranslateChat"
                                    lay-skin="switch">
                         </div>
                     </div>
