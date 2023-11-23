@@ -114,29 +114,11 @@ var UI = {
 			}
 				
 		}
-
-		//翻译
-		let currentDialog = DataMap.currentDialog;
-		if (currentDialog.language) {
-			//调用翻译功能
-			myFn.invoke({
-				url : '/translate',
-				data : {
-					q:msg.content,
-					from:'Auto',
-					to: currentDialog.language
-				},
-				type: 'GET',
-				async:false,
-				success : function(result) {
-					if (result.resultCode === 1) {
-						msg.targetContent = result.resultMsg;
-					}
-				},
-				error : function(result) {
-				}
-			});
-
+		//接收消息。翻译
+		if (!myFn.isNil(msg.targetContent)) {
+			if (direction === 0) {
+				msg.content = msg.targetContent;
+			}
 		}
 		var contentHtml = this.createMsgContent(msg,direction,isSend);
 		var html="";
@@ -645,7 +627,32 @@ var UI = {
 	},
 	//发送消息
 	sendMsg : function(msg,toJid) {
+		//发送消息翻译
+		if (msg.chatType==WEBIM.CHAT||msg.chatType==WEBIM.GROUPCHAT) {
+			//翻译
+			var currentDialog = DataMap.currentDialog;
+			if (currentDialog.language) {
+				//调用翻译功能
+				myFn.invoke({
+					url : '/translate',
+					data : {
+						q:msg.content,
+						from:'Auto',
+						to: currentDialog.language
+					},
+					type: 'GET',
+					async:false,
+					success : function(result) {
+						if (result.resultCode === 1) {
+							msg.targetContent = result.resultMsg;
+						}
+					},
+					error : function(result) {
+					}
+				});
 
+			}
+		}
 		if (!myFn.isNil(DataMap.deleteRooms[ConversationManager.fromUserId]&&200>msg.type)) { 
 			//判断用户是否被踢出该群
 			ownAlert(3,"你已被踢出该群，无法发送消息");
