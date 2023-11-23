@@ -2389,13 +2389,41 @@
         }
     };
     //TODO 待实现
-    /*document.getElementById("messageBody").onmouseenter = function () {
-        console.log(this,"移入");
-        $(this).prop('title', "abc");
+    document.getElementById("messageBody").onmouseenter = function () {
+        //提交配置
+        var msg = $('#messageBody').val();
+        if (!myFn.isNil($('#messageBody').val())) {
+            let currentDialog = DataMap.currentDialog;
+            if (currentDialog.language) {
+                //调用翻译功能
+                myFn.invoke({
+                    url : '/translate',
+                    data : {
+                        q:$('#messageBody').val(),
+                        from:'Auto',
+                        to: currentDialog.language
+                    },
+                    type: 'GET',
+                    async:false,
+                    success : function(result) {
+                        if (result.resultCode === 1) {
+                            msg = result.resultMsg;
+
+                        }
+
+
+                    },
+                    error : function(result) {
+                    }
+                });
+
+            }
+            $('#messageBody').prop('title', msg);
+        }
     };
     document.getElementById("messageBody").onmouseleave = function () {
         $(this).prop('title', null);
-    };*/
+    };
 
     onload = function () {
         var txts = wrap.getElementsByTagName("input");

@@ -2458,6 +2458,19 @@ var UI = {
 	showDetails:function(from,type,name){
 		console.log("UI : "+ "from:"+from+" name:"+name)
 		DataMap.currentDialog = {fromUserId:Object.keys(DataMap.userMap)[0],toUserId: from, type: type};
+		myFn.invoke({
+			url : '/translate/current_translate_config',
+			data : DataMap.currentDialog,
+			type: 'GET',
+			async:false,
+			success : function(result) {
+				if (result.resultCode===1&&result.data) {
+					DataMap.currentDialog.language = result.data.language;
+				}
+			},
+			error : function(result) {
+			}
+		});
 		//阅后即焚开关
 		if(1==ConversationManager.isGroup){
 			$("#switchReadDelDiv").hide();
@@ -2905,6 +2918,7 @@ var UI = {
 							tbInviteListHtml+= "<tr><td><td width=100%>"+info.cn+"</td><td>"+info.en+"</td>"
 								+"<td><input class='translateCheckbox' name='translate_user' type='checkbox' checked='checked' value='" + infoIndex + "'  onClick='Checkbox.translateCheckedAndCancel(this)'/>"+
 								"</td></tr>";
+							DataMap.currentDialog.language = result.data.language;
 						}else{
 
 							tbInviteListHtml+= "<tr><td><td width=100%>"+info.cn+"</td><td>"+info.en+"</td>"
