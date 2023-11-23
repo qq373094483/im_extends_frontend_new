@@ -218,7 +218,25 @@ layui.use(['form', 'layedit', 'laydate'], function () {
             }
             $('#system_menu_panel').toggle();
         });
+        //提交配置
+        $("#sendTranslateConfig").click(function () {
+            console.log(DataMap.currentDialog);
+            myFn.invoke({
+                url : '/translate',
+                data : DataMap.currentDialog,
+                type: 'POST',
+                async:false,
+                success : function(result) {
+                    console.log(result);
+                    if (result.resultCode === 1) {
+                        $('#traslate').modal('hide');
+                    }
 
+                },
+                error : function(result) {
+                }
+            });
+        });
 
         //发送名片
         $("#sendOK").click(function () {

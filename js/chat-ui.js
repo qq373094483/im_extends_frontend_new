@@ -2457,7 +2457,7 @@ var UI = {
 	},
 	showDetails:function(from,type,name){
 		console.log("UI : "+ "from:"+from+" name:"+name)
-		DataMap.currentDialog = {userId: from, type: type};
+		DataMap.currentDialog = {fromUserId:Object.keys(DataMap.userMap)[0],toUserId: from, type: type};
 		//阅后即焚开关
 		if(1==ConversationManager.isGroup){
 			$("#switchReadDelDiv").hide();
@@ -2890,17 +2890,37 @@ var UI = {
 			//$(lastElem).nextAll().remove();
 	},
 	setTranslate: function () {
-		var tbInviteListHtml = "";
-		$.getJSON("json/youdao_translate.json", function (data) {
-			$.each(data, function (infoIndex, info) {
-				tbInviteListHtml+= "<tr><td><td width=100%>"+info.cn+"</td><td>"+info.en+"</td>"
-					+"<td><input class='translateCheckbox' name='translate_user' type='checkbox' value='" + infoIndex + "'  onClick='Checkbox.translateCheckedAndCancel(this)'/>"+
-				"</td></tr>";
-			})
-			$("#translates").empty();
-			$("#translates").append(tbInviteListHtml);
-			$('#traslate').modal('show');
+		//提交配置
+		myFn.invoke({
+			url : '/translate/current_translate_config',
+			data : DataMap.currentDialog,
+			type: 'GET',
+			async:false,
+			success : function(result) {
+				console.log(result);
+				var tbInviteListHtml = "";
+				$.getJSON("json/youdao_translate.json", function (data) {
+					$.each(data, function (infoIndex, info) {
+						if (result.resultCode===1&&result.data&&result.data.language === infoIndex) {
+							tbInviteListHtml+= "<tr><td><td width=100%>"+info.cn+"</td><td>"+info.en+"</td>"
+								+"<td><input class='translateCheckbox' name='translate_user' type='checkbox' checked='checked' value='" + infoIndex + "'  onClick='Checkbox.translateCheckedAndCancel(this)'/>"+
+								"</td></tr>";
+						}else{
+
+							tbInviteListHtml+= "<tr><td><td width=100%>"+info.cn+"</td><td>"+info.en+"</td>"
+								+"<td><input class='translateCheckbox' name='translate_user' type='checkbox' value='" + infoIndex + "'  onClick='Checkbox.translateCheckedAndCancel(this)'/>"+
+								"</td></tr>";
+						}
+					})
+					$("#translates").empty();
+					$("#translates").append(tbInviteListHtml);
+					$('#traslate').modal('show');
+				});
+			},
+			error : function(result) {
+			}
 		});
+
 
 	},
 	sendCard : function(){ //发送名片

@@ -1,6 +1,6 @@
 var AppConfig = {
 
-	apiUrl: "http://mm.jimi5588.com:8092",// 接口地址
+	apiUrl: "http://localhost:8092",// 接口地址
 	//boshUrl : "http://mm.jimi5588.com:5280",
 	boshUrl: "ws://mm.jimi5588.com:5290/websocket/",// http://+（XMPP主机IP或域名）+（:5280）
 	uploadServer: "http://mm.jimi5588.com:8088/",
@@ -493,11 +493,10 @@ var Checkbox = {
 	        Checkbox.cancel(that.value,that.id);
 	    }
 	},
-	//TODO 待实现
 	translateCheckedAndCancel: function (that) {
-		let currentUserId = Object.keys(DataMap.userMap)[0];
 		// DataMap.currentDialog;
 		Checkbox.signCheckbox('.translateCheckbox', that);
+		DataMap.currentDialog.language = $(that).val();
 	},
 	signCheckbox: function (selector, that) {
 		//切换状态

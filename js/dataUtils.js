@@ -7,7 +7,9 @@
 var DataMap = {
     userMap: {},
     currentDialog:{
-        userId:null,//userId:对话的群ID或个人ID
+        fromUserId:null,//userId:对话的群ID或个人ID
+        toUserId:null,
+        language:null,
         type:null//type:1.个人，0.群组
     },//当前对话框。
     userSetting: {},
