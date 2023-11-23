@@ -2315,11 +2315,11 @@ var UI = {
 
 	},
 	isChoose : function(userId){ //好友列表选中状态切换
-	$("#friends_"+userId+"").siblings().removeClass("fActive");
-     $("#friends_"+userId+"").addClass("fActive");
-     
-     $("#myMessagesList #friends_"+userId+"").siblings().removeClass("fActive");
-     $("#myMessagesList #friends_"+userId+"").addClass("fActive");
+		$("#friends_" + userId + "").siblings().removeClass("fActive");
+		$("#friends_" + userId + "").addClass("fActive");
+
+		$("#myMessagesList #friends_" + userId + "").siblings().removeClass("fActive");
+		$("#myMessagesList #friends_" + userId + "").addClass("fActive");
      // if(10001!=userId)
      //  	changeTab('0','msgTab'); //恢复顶部切换按钮的状态
 	},
@@ -2457,7 +2457,8 @@ var UI = {
 	},
 	showDetails:function(from,type,name){
 		console.log("UI : "+ "from:"+from+" name:"+name)
-				//阅后即焚开关
+		DataMap.currentDialog = {userId: from, type: type};
+		//阅后即焚开关
 		if(1==ConversationManager.isGroup){
 			$("#switchReadDelDiv").hide();
 			myData.isReadDel=0;
@@ -2887,6 +2888,20 @@ var UI = {
 			UI.moveFriendToTop(msg,ConversationManager.fromUserId,null,0);
 			DataUtils.putMsgRecordList(ConversationManager.fromUserId,msg.messageId);
 			//$(lastElem).nextAll().remove();
+	},
+	setTranslate: function () {
+		var tbInviteListHtml = "";
+		$.getJSON("json/youdao_translate.json", function (data) {
+			$.each(data, function (infoIndex, info) {
+				tbInviteListHtml+= "<tr><td><td width=100%>"+info.cn+"</td><td>"+info.en+"</td>"
+					+"<td><input class='translateCheckbox' name='translate_user' type='checkbox' value='" + infoIndex + "'  onClick='Checkbox.translateCheckedAndCancel(this)'/>"+
+				"</td></tr>";
+			})
+			$("#translates").empty();
+			$("#translates").append(tbInviteListHtml);
+			$('#traslate').modal('show');
+		});
+
 	},
 	sendCard : function(){ //发送名片
 		Checkbox.cheackedFriends = {};  //清空储存的数据

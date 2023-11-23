@@ -492,7 +492,20 @@ var Checkbox = {
 	    } else {
 	        Checkbox.cancel(that.value,that.id);
 	    }
-		
+	},
+	//TODO 待实现
+	translateCheckedAndCancel: function (that) {
+		let currentUserId = Object.keys(DataMap.userMap)[0];
+		// DataMap.currentDialog;
+		Checkbox.signCheckbox('.translateCheckbox', that);
+	},
+	signCheckbox: function (selector, that) {
+		//切换状态
+		$(selector).each(function(){
+			if (!($(this).val() === $(that).val() && $(that).prop("checked"))) {
+				$(this).prop('checked', false);
+			}
+		});
 	},
 	checked : function (that) {  //checkbox选中事件
 		

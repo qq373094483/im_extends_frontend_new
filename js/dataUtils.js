@@ -6,6 +6,10 @@
 
 var DataMap = {
     userMap: {},
+    currentDialog:{
+        userId:null,//userId:对话的群ID或个人ID
+        type:null//type:1.个人，0.群组
+    },//当前对话框。
     userSetting: {},
     friends: {},
     msgMap: {},

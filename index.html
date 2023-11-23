@@ -376,6 +376,9 @@
                                     <span id="btnmin" onclick="UI.sendCard(0)">
 											<img alt="" src="img/mingping.png">
 										</span>
+                                    <span id="btnTranslate" onclick="UI.setTranslate()">
+											<img alt="" src="img/translate.png" style="position:relative;top:5px;width: 35px;height: 35px;">
+										</span>
                                     <!--<span id="place">
 											<img src="img/wz.png">
 										</span>-->
@@ -1284,6 +1287,31 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn sou" onclick="GroupManager.doMemberInvite();">确认邀请</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 翻译 -->
+            <div id="traslate" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog" style="width: 100%;max-width: 400px;margin-top: 60px">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">选择翻译语言</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div style="border-left: 1px solid #ddd; border-right: 1px solid #eeeeee; border-bottom:1px solid #eeeeee; height: 480px; overflow-y: auto;">
+                                <table class="table">
+                                    <tbody id="translates">
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div id="cardPage"></div>
+                        </div>
+                        <div class="modal-footer">
+                            <button id="sendOK" type="button" class="btn sou">确认发送</button>
                         </div>
                     </div>
                 </div>
@@ -2360,6 +2388,14 @@
             }, 200);
         }
     };
+    //TODO 待实现
+    /*document.getElementById("messageBody").onmouseenter = function () {
+        console.log(this,"移入");
+        $(this).prop('title', "abc");
+    };
+    document.getElementById("messageBody").onmouseleave = function () {
+        $(this).prop('title', null);
+    };*/
 
     onload = function () {
         var txts = wrap.getElementsByTagName("input");

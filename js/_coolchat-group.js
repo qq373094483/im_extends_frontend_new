@@ -1896,14 +1896,14 @@ var GroupManager = {
 	},
 	isChoose : function(groupId){ //群组列表选中状态切换
 		$("#myMessagesList div").removeClass("fActive");
-		$("#myMessagesList #groups_"+groupId+"").addClass("fActive");
-		
+		$("#myMessagesList #groups_" + groupId + "").addClass("fActive");
+
 		$("#myRoomList").children().removeClass("fActive");
-		$("#myRoomList #groups_"+groupId+"").addClass("fActive");
-		
-		
-      $("#allRoomList #groups_"+groupId+"").addClass("fActive");
-      $("#allRoomList #groups_"+groupId+"").siblings().removeClass("fActive");
+		$("#myRoomList #groups_" + groupId + "").addClass("fActive");
+
+
+		$("#allRoomList #groups_" + groupId + "").addClass("fActive");
+		$("#allRoomList #groups_" + groupId + "").siblings().removeClass("fActive");
 	},
 	getMembersList : function() {
 		var invitee = new Array();
