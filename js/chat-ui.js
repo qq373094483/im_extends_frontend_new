@@ -115,6 +115,29 @@ var UI = {
 				
 		}
 
+		//翻译
+		let currentDialog = DataMap.currentDialog;
+		if (currentDialog.language) {
+			//调用翻译功能
+			myFn.invoke({
+				url : '/translate',
+				data : {
+					q:msg.content,
+					from:'Auto',
+					to: currentDialog.language
+				},
+				type: 'GET',
+				async:false,
+				success : function(result) {
+					if (result.resultCode === 1) {
+						msg.targetContent = result.resultMsg;
+					}
+				},
+				error : function(result) {
+				}
+			});
+
+		}
 		var contentHtml = this.createMsgContent(msg,direction,isSend);
 		var html="";
 		

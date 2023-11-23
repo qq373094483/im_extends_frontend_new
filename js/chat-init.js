@@ -984,6 +984,12 @@ layui.use(['form', 'layedit', 'laydate'], function () {
             title: '语音通话',
             placement: 'top'
         });
+        $("#btnTranslate").tooltip({
+            trigger: 'hover',
+            html: true,
+            title: '翻译',
+            placement: 'top'
+        });
         $("#btnvideo").tooltip({
             trigger: 'hover',
             html: true,
