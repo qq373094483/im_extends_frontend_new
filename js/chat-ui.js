@@ -116,6 +116,7 @@ var UI = {
 		}
 		//接收消息。翻译
 		if (!myFn.isNil(msg.contentTranslate)) {
+			//别人发的
 			if (direction === 0) {
 				msg.content = msg.contentTranslate;
 			}
@@ -219,9 +220,24 @@ var UI = {
 				},1000);
 			}
 		}else{
-			contentHtml += "<pre class='js_message_plain'>"+ content +"</pre>"
-								   + msgStatusHtml
-								   + "</div";
+			if (direction === 0) {
+				contentHtml += "<pre class='js_message_plain'>"+ content +"</pre>"
+					+ msgStatusHtml
+					+ "</div";
+			}else{
+				if (msg.contentTranslate) {
+
+					contentHtml += "<pre class='js_message_plain'>"+ content +"</pre>"
+						+"<pre class='js_message_plain' style='border-top: 1px solid black'></pre>"
+						+"<pre class='js_message_plain'>"+msg.contentTranslate+"</pre>"
+						+ msgStatusHtml
+						+ "</div";
+				}else{
+					contentHtml += "<pre class='js_message_plain'>"+ content +"</pre>"
+						+ msgStatusHtml
+						+ "</div";
+				}
+			}
 		}
 		return contentHtml;
 	},
