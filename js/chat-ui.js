@@ -115,9 +115,9 @@ var UI = {
 				
 		}
 		//接收消息。翻译
-		if (!myFn.isNil(msg.targetContent)) {
+		if (!myFn.isNil(msg.contentTranslate)) {
 			if (direction === 0) {
-				msg.content = msg.targetContent;
+				msg.content = msg.contentTranslate;
 			}
 		}
 		var contentHtml = this.createMsgContent(msg,direction,isSend);
@@ -644,7 +644,7 @@ var UI = {
 					async:false,
 					success : function(result) {
 						if (result.resultCode === 1) {
-							msg.targetContent = result.resultMsg;
+							msg.contentTranslate = result.resultMsg;
 						}
 					},
 					error : function(result) {
