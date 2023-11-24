@@ -95,8 +95,8 @@ var UI = {
 		//direction  1 自己发送的   0 别人发送的
 		//isSend  发送后创建消息
 		//tigLog(" createItem msg => "+ JSON.stringify(msg));
-		if (1!=ConversationManager.isGroup) {
-			if (myData.userId!=msg.fromUserId) {
+		if (1!==ConversationManager.isGroup) {
+			if (myData.userId!==msg.fromUserId) {
 				var friend =DataMap.friends[msg.fromUserId];
 				if(!myFn.isNil(friend)){
 					if(friend.remarkName) {
@@ -130,7 +130,7 @@ var UI = {
 		var imgUrl=msg.imgUrl;
 		//用户头像
 		if(myFn.isNil(msg.imgUrl)){
-			imgUrl=myFn.getAvatarUrl(WEBIM.CHAT==msg.chatType?fromUserId:msg.fromUserId);
+			imgUrl=myFn.getAvatarUrl(WEBIM.CHAT===msg.chatType?fromUserId:msg.fromUserId);
 		}
 		var delayTime=msg.timeSend-DataMap.timeSendLogMap[ConversationManager.fromUserId];
 		
@@ -147,15 +147,15 @@ var UI = {
 		html+= "<div id=msg_"+msg.messageId+" msgType="+msg.type+" class='msgDiv' >"
             +		"<div class='clearfix'>"
 			+			"<div style='overflow: hidden;' >"
-			+	    		"<div  class='message " + (0 == direction ? "you" : "me")+"'>"
+			+	    		"<div  class='message " + (0 === direction ? "you" : "me")+"'>"
 			+			        "<div  class='message_system'>"
 			+			        	"<div  class='content'>"+timeSendStr+"</div>"
 			+			        "</div>"
-			+	        		"<img  class='"+ (1==ConversationManager.isGroup && 0==direction ? " group_avatar":" avatar") + "' onerror='this.src=\"img/ic_avatar.png\"' src='" +imgUrl+ "' >"
+			+	        		"<img  class='"+ (1==ConversationManager.isGroup && 0===direction ? " group_avatar":" avatar") + "' onerror='this.src=\"img/ic_avatar.png\"' src='" +imgUrl+ "' >"
 			+	        		"<div class='content'>"
 			//群组聊天显示昵称  (msg type = 5 表示 gif 动态图 ，若为gif消息则不添加消息气泡背景 )
-			+	(1==ConversationManager.isGroup&&0==direction ? "<h4  class='nickname'>" + msg.fromUserName + "</h4>" : "")
-            +	            	"<div class='bubble js_message_bubble  "+ (0 == direction ?(5 == msg.type?"left'>":"bubble_default left'>"):(5 == msg.type?"right'>":"bubble_primary right'>"))  
+			+	(1 === ConversationManager.isGroup&& 0 === direction ? "<h4  class='nickname'>" + msg.fromUserName + "</h4>" : "")
+            +	            	"<div class='bubble js_message_bubble  "+ (0 === direction ?(5 === msg.type?"left'>":"bubble_default left'>"):(5 === msg.type?"right'>":"bubble_primary right'>"))
 			+	               		 "<div class='bubble_cont'>"
 			+                          contentHtml
 			+	               		 "</div>"
