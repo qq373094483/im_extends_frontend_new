@@ -78,6 +78,7 @@ body {
 }
 .groupDetailSettingRow{
 	height: 6%;
+	width:505px;
 	border-bottom:1px solid #eeeeee;
 	padding: 0  30px;
 }
