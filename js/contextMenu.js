@@ -91,19 +91,33 @@ $(function(){
 
                 }
             },
-        	delete:{
-				name:"删除",
-        		icon:"delete",
+            delete:{
+                name:"删除",
+                icon:"delete",
                 disabled:function(){
                     return false;
                 },
-        		callback:function(key,opt){
-        			var msgId=$(this).parents(".msgDiv").attr("id").split("msg_")[1];
+                callback:function(key,opt){
+                    var msgId=$(this).parents(".msgDiv").attr("id").split("msg_")[1];
 
-						UI.deleteMsg(0==ConversationManager.isGroup?1:2,1,msgId,
-                            0==ConversationManager.isGroup?null:ConversationManager.fromUserId,1);
-        		}
-        	}
+                    UI.deleteMsg(0==ConversationManager.isGroup?1:2,1,msgId,
+                        0==ConversationManager.isGroup?null:ConversationManager.fromUserId,1);
+                }
+            },
+            copy:{
+                name:"复制",
+                icon:"copy",
+                disabled:function(){
+                    return false;
+                },
+                callback:function(key,opt){
+                    /*let message = $(this).find('.js_message_plain')[0];
+                    let val = $(message).text();
+                    $(message).select();*/
+                    document.execCommand('copy');
+
+                }
+            }
             /*,
         	"sep1": "---------",
         	quit:{
