@@ -2695,8 +2695,13 @@ var UI = {
 		var sortList=Utils.objSort(messageList,"timeSend",1,"lastTime");
 		for (i in sortList){
 			var message=messageList[sortList[i]];
-			if(myFn.isNil(message))
+			if(myFn.isNil(message)) {
 				continue;
+			}
+			//解释消息undefined的问题
+			if(myFn.isNil(message.name)) {
+				continue;
+			}
 			var jid=message.id.split("/")[0];
 			message.isGroup=WEBIM.isGroup(jid);
 			/*message.fromUserId=message.id;
