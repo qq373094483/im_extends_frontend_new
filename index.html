@@ -425,7 +425,13 @@
                     <div id="friend_img_div" style="margin-top: 15%">
 
                     </div>
-                    <div style="text-align: center;margin-top: 10%">
+                    <div class="layui-form-item" style="margin-top: 10%">
+                        <span class="one">备注</span>
+                        <input type="hidden" id="friendDetailUserId"/>
+                        <div style="line-height: 50px;font-size: 16px;"><input type="text" id="remarkName" style="float:right;width:50%;min-width:220px;margin-top:10px;margin-right: 50px" name="" class="layui-input"/></div>
+
+                    </div>
+                    <div style="text-align: center;">
                         <span class="one">昵称</span>
                         <div id="desname" style="line-height: 50px;font-size: 16px;"></div>
                     </div>
@@ -2423,9 +2429,36 @@
             $('#messageBody').prop('title', msg);
         }
     };
-   /* document.getElementById("messageBody").onmouseleave = function () {
-        $(this).prop('title', null);
-    };*/
+    document.getElementById("remarkName").onmouseleave = function () {
+        if (!(myFn.isNil($('#friendDetailUserId').val()) && myFn.isNil($('#remarkName').val()))) {
+
+            myFn.invoke({
+                type:"POST",
+                url : '/friends/remark',
+                data : {
+                    toUserId:$('#friendDetailUserId').val(),
+                    describe:'',
+                    remarkName:$('#remarkName').val(),
+
+                },
+                async:false,
+                success : function(result) {
+                    if (1 === result.resultCode) {
+                        console.log(result);
+                        $($('#chatTitle').find('span')[0]).empty().append($('#remarkName').val());
+                        $($('#friends_'+$('#friendDetailUserId').val()).find('.nickname_text')[0]).empty().append($('#remarkName').val());
+
+                    }
+                },
+                error : function(result) {
+                    console.log(result);
+                    if(1030102===result.resultCode){
+                        window.location.href = "login.html";
+                    }
+                }
+            });
+        }
+    };
 
     onload = function () {
         var txts = wrap.getElementsByTagName("input");

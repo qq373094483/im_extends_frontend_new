@@ -2584,6 +2584,10 @@ var UI = {
 				
 				mySdk.getUser(fromUserId,function(user){
 					DataMap.friends[fromUserId]=user.friends;
+
+					$("#remarkName").val(DataMap.friends[fromUserId].remarkName?DataMap.friends[fromUserId].remarkName:'');
+					$("#desname").empty().append(user.nickname);
+					$("#friendDetailUserId").val(DataMap.friends[fromUserId].toUserId);
 					$("#desprovince").empty();
 					$("#dessex").append((1 == user.sex ? "男" : "女"));
 					if(user.description==""){
