@@ -436,11 +436,13 @@ $(function() {
 			ownAlert(3,"只能输入100个字符！");
 			return;
 		}
+		var allowForceNotice = $('#chkForceTip').is(':checked') ? 1 : 0;
 		myFn.invoke({
 			url:'/room/update',
             data:{
 				roomId:GroupManager.roomData.id,
 				notice:notice,
+				allowForceNotice:allowForceNotice
 			},
 			isShowAlert:false,
 			success:function(result){
