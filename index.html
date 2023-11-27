@@ -2444,14 +2444,13 @@
                 async:false,
                 success : function(result) {
                     if (1 === result.resultCode) {
-                        console.log(result);
+                        //TODO 找到刷新的办法后删除
                         $($('#chatTitle').find('span')[0]).empty().append($('#remarkName').val());
                         $($('#friends_'+$('#friendDetailUserId').val()).find('.nickname_text')[0]).empty().append($('#remarkName').val());
 
                     }
                 },
                 error : function(result) {
-                    console.log(result);
                     if(1030102===result.resultCode){
                         window.location.href = "login.html";
                     }
