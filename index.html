@@ -2450,8 +2450,12 @@
                 success : function(result) {
                     if (1 === result.resultCode) {
                         //TODO 找到刷新的办法后删除
-                        $($('#chatTitle').find('span')[0]).empty().append($('#remarkName').val());
-                        $($('#friends_'+$('#friendDetailUserId').val()).find('.nickname_text')[0]).empty().append($('#remarkName').val());
+                        let remarkName = $('#remarkName').val();
+                        if (myFn.isNil(remarkName)) {
+                            remarkName=$('#desname').text();
+                        }
+                        $($('#chatTitle').find('span')[0]).empty().append(remarkName);
+                        $($('#friends_'+$('#friendDetailUserId').val()).find('.nickname_text')[0]).empty().append(remarkName);
 
                     }
                 },
