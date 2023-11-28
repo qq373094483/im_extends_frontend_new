@@ -309,12 +309,21 @@
                                     <h3 id="chatTitle" class="panel-title user_nickname">&nbsp;</h3>
                                 </div>
                                 <div class="headContent hint" style="display: none;" id="chatHint"></div>
+
                                 <div id="switchReadDelDiv" class="layui-form" style="float:right; width: 160px;">
 
                                     <label class="layui-form-label" style="width: 90px;">阅后即焚</label>
 
                                     <div class="layui-input-block" style="margin-left: 90px;">
                                         <input id="switchReadDel" lay-filter="switchReadDel" type="checkbox" name=""
+                                        lay-skin="switch">
+                                    </div>
+                                </div>
+                                <div id="switchShieldDiv" class="layui-form" style="float:right; width: 160px; display: none">
+                                    <label class="layui-form-label" style="width: 90px;">免打扰</label>
+
+                                    <div class="layui-input-block" style="margin-left: 90px;">
+                                        <input id="switchShield" lay-filter="switchShield" type="checkbox" name=""
                                                lay-skin="switch">
                                     </div>
                                 </div>

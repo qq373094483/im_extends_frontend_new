@@ -1941,6 +1941,8 @@ var GroupManager = {
 
 		$("#allRoomList #groups_" + groupId + "").addClass("fActive");
 		$("#allRoomList #groups_" + groupId + "").siblings().removeClass("fActive");
+		$('#switchShieldDiv').hide();
+
 	},
 	getMembersList : function() {
 		var invitee = new Array();

@@ -1184,13 +1184,26 @@ var UI = {
 		//document.getElementById("messageEnd").scrollIntoView();
 		$(".nano").nanoScroller({ scrollBottom: -100000000000});
 	},
+	//消息列表的好友
 	createFriendsItem : function(imgUrl, userId, nickname,content,timeSend,timeSendStr) {
 		//timeSend  发送时间值
 		//timeSendStr 发送时间转换字符串
-	  if(10000==userId)
-		return"";
-        
-      var _item =  "<div  class='' id='friends_"+userId+"' onclick='UI.isChoose(\"" + userId + "\");'>"
+	  if(10000==userId) {
+		  return "";
+	  }
+	  let friend = DataMap.friends[userId];
+	  let offlineNoPushMsg = friend.offlineNoPushMsg;
+		if (!offlineNoPushMsg) {
+			offlineNoPushMsg = 0;
+		}
+		var offlineNoPushMsgHtml = "";
+		if (offlineNoPushMsg === 1) {
+			offlineNoPushMsgHtml = "<div id='jingyin_"+userId+"' style=\"height:0px;float:right;position:relative;top:-18px;right:10px;display:display\"><img src=\"img/jingyin.png\" style=\"width:20px;height:20px;\"></div>";
+		}else{
+			offlineNoPushMsgHtml = "<div id='jingyin_"+userId+"' style=\"height:0px;float:right;position:relative;top:-18px;right:10px;display:none\"><img src=\"img/jingyin.png\" style=\"width:20px;height:20px;\"></div>";
+		}
+
+		var _item =  "<div  class='' id='friends_"+userId+"' onclick='UI.isChoose(\"" + userId + "\");'>"
 			    +    "<div class='chat_item slide-left  active' onclick='ConversationManager.open(\"" + userId + "\",\"" + nickname + "\");' >"
 			    +        "<div class='ext'>"
 			    +           (myFn.isNil(timeSendStr) ? "<p class='attr'></p>" : "<p id='timeSend_"+userId +"' class='attr' value='"+timeSend+"'>" + timeSendStr + "</p>")
@@ -1207,6 +1220,7 @@ var UI = {
 			    +                "<span id='titfriends_"+userId+"'>" +content+"</span>"
 			    +            "</p>"
 			    +        "</div>"
+				+		 offlineNoPushMsgHtml
 			    +    "</div>"
 			    +"</div>";
 
@@ -2362,6 +2376,22 @@ var UI = {
 	},
 	isChoose : function(userId){ //好友列表选中状态切换
 		$('#groupNoticePanel').hide();
+		if (userId === 10000) {
+			$('#switchShieldDiv').hide();
+		}else{
+			$('#switchShieldDiv').show();
+		}
+		let friend = DataMap.friends[userId];
+		let offlineNoPushMsg = friend.offlineNoPushMsg;
+		if (!offlineNoPushMsg) {
+			offlineNoPushMsg = 0;
+		}
+		if (offlineNoPushMsg) {
+			UI.switchToggle("switchShield",1);
+		}else{
+			UI.switchToggle("switchShield",0);
+
+		}
 		$("#friends_" + userId + "").siblings().removeClass("fActive");
 		$("#friends_" + userId + "").addClass("fActive");
 
@@ -2371,15 +2401,40 @@ var UI = {
      //  	changeTab('0','msgTab'); //恢复顶部切换按钮的状态
 	},
 	switchReadDel:function(isReadDel){ //isReadDel true： 开启  false 关闭
-			if(isReadDel){
-				ownAlert(3,"当前状态为阅后即焚，对方看完您发送的图片和语音以及视频消息后会立即删除");
-				myData.isReadDel=1; //更新内存数据 1:是阅后即焚消息
-				DataMap.readDelMap[ConversationManager.fromUserId]=1;
-			}else{
-				ownAlert(3,"已取消阅后即焚");
-				myData.isReadDel=0; //更新内存数据 0:不是阅后即焚消息
-				DataMap.readDelMap[ConversationManager.fromUserId]=0;
+		if(isReadDel){
+			ownAlert(3,"当前状态为阅后即焚，对方看完您发送的图片和语音以及视频消息后会立即删除");
+			myData.isReadDel=1; //更新内存数据 1:是阅后即焚消息
+			DataMap.readDelMap[ConversationManager.fromUserId]=1;
+		}else{
+			ownAlert(3,"已取消阅后即焚");
+			myData.isReadDel=0; //更新内存数据 0:不是阅后即焚消息
+			DataMap.readDelMap[ConversationManager.fromUserId]=0;
+		}
+	},
+	switchShield:function(isShield){ //isReadDel true： 开启  false 关闭
+		let currentDialog = DataMap.currentDialog;
+		let fromUserId = currentDialog.fromUserId;
+		let toUserId = currentDialog.toUserId;
+		myFn.invoke({
+			url:'/friends/update/OfflineNoPushMsg',
+			data:{
+				userId:fromUserId,
+				toUserId:toUserId,
+				offlineNoPushMsg:isShield?1:0
+			},
+			success:function(result){
+				if (result.resultCode === 1) {
+					if (isShield) {
+						$('#jingyin_' + toUserId).show();
+					}else{
+						$('#jingyin_' + toUserId).hide();
+					}
+				}
+			},
+			error : function(result) {
+				ownAlert(2,result);
 			}
+		});
 	},
 	showNewFriends:function(pageIndex){
 

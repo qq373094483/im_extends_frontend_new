@@ -26,11 +26,11 @@ var ConversationManager = {
 		document.getElementById("tabCon_0").style.display="block";//显示当前层
 		document.getElementById("tabCon_new").style.display="none";
 		$(".chat_content_avatar").tooltip({
-		   		trigger:'hover',
-		   		html:true,
-		   		title:'个人资料',
-		   		placement:'bottom'
-		   })
+			trigger: 'hover',
+			html: true,
+			title: '个人资料',
+			placement: 'bottom'
+		});
 	
 		//判断目标会话界面是否已经打开
 		if (ConversationManager.isOpen && this.from==from && this.fromUserId==WEBIM.getUserIdFromJid(from)){
@@ -52,13 +52,15 @@ var ConversationManager = {
 		//type 1 单聊  0 群组
 		ConversationManager.isGroup=0;
 
-		if(0==type)
-			ConversationManager.isGroup=1;	
+		if(0==type) {
+			ConversationManager.isGroup = 1;
+		}
 		var userIdKey=ConversationManager.fromUserId;
 		if(myData.userId==userIdKey&&name!=myData.nickname){
 			var resource=WEBIM.getResource(from);
-			if(!myFn.isNil(resource))
-				userIdKey=userIdKey+"_"+resource;
+			if(!myFn.isNil(resource)) {
+				userIdKey = userIdKey + "_" + resource;
+			}
 			DeviceManager.showDeviceOnlineStatus(resource);
 			//清除未读消息数量提示
 			UI.clearMsgNum(userIdKey,from);

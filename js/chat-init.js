@@ -207,6 +207,11 @@ layui.use(['form', 'layedit', 'laydate'], function () {
             UI.switchReadDel(this.checked);
         });
 
+        //监听阅后即焚开关按钮事件
+        form.on('switch(switchShield)', function (data) {
+            UI.switchShield(this.checked);
+        });
+
 
         //右上角菜单 显示关闭
         $(".system_menu_opt").on("click", function (event) {
