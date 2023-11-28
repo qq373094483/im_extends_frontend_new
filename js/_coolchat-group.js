@@ -103,15 +103,23 @@ $(function() {
 	// 消息免打扰
 	layui.form.on('switch(btnShield)', function(data){
 		DataUtils.setMsgFilters(GroupManager.roomData.jid,this.checked);
+		var checked = this.checked;
 		myFn.invoke({
 			url:'/room/member/setOfflineNoPushMsg',
 			data:{
 				roomId:GroupManager.roomData.id,
 				userId:Object.keys(DataMap.userMap)[0],
-				offlineNoPushMsg:this.checked?1:0
+				offlineNoPushMsg:checked?1:0
 			},
 			success:function(result){
 				console.log(result);
+				if (result.resultCode === 1) {
+					if (checked) {
+						$('#jingyin_' + GroupManager.roomData.jid).show();
+					}else{
+						$('#jingyin_' + GroupManager.roomData.jid).hide();
+					}
+				}
 			},
 			error : function(result) {
 				ownAlert(2,result);
@@ -1058,6 +1066,16 @@ var GroupManager = {
 		
 	},
 	createMyItem : function(obj,content,timeSend,timeSendStr) {
+		var offlineNoPushMsg = obj.member.offlineNoPushMsg;
+		var offlineNoPushMsgHtml = "";
+		if (!offlineNoPushMsg) {
+			offlineNoPushMsg = 0;
+		}
+		if (offlineNoPushMsg === 1) {
+			offlineNoPushMsgHtml = "<div id='jingyin_"+obj.jid+"' style=\"height:0px;float:right;position:relative;top:-18px;right:10px;display:display\"><img src=\"img/jingyin.png\" style=\"width:20px;height:20px;\"></div>";
+		}else{
+			offlineNoPushMsgHtml = "<div id='jingyin_"+obj.jid+"' style=\"height:0px;float:right;position:relative;top:-18px;right:10px;display:none\"><img src=\"img/jingyin.png\" style=\"width:20px;height:20px;\"></div>";
+		}
         var itemHtml =  "<div  class='' id='groups_"+obj.jid+"' onclick='GroupManager.isChoose(\"" +obj.jid + "\");'>"
 				    +    "<div class='chat_item slide-left  active' onclick='GroupManager.createGroupChat(\""+ (obj.id)+ "\",\"" + obj.userId + "\",\"" + obj.jid + "\");'>"
 				    +        "<div class='ext'>"
@@ -1075,6 +1093,7 @@ var GroupManager = {
 				    +                "<span id='titgroups_"+obj.jid+"'>"+ (!myFn.isNil(content)?content :myFn.isNil(obj.desc)?"无":obj.desc)+"</span>"
 				    +            "</p>"
 				    +        "</div>"
+					+		 offlineNoPushMsgHtml
 				    +    "</div>"
 				    +"</div>";
 
