@@ -102,8 +102,22 @@ $(function() {
 	/*修改群信息设置 按钮事件*/
 	// 消息免打扰
 	layui.form.on('switch(btnShield)', function(data){
-		DataUtils.setMsgFilters(GroupManager.roomData.jid,!this.checked);
-		console.log("=======btnShield========>>>>>>  checked: "+this.checked +"  isFilter : "+!this.checked);
+		DataUtils.setMsgFilters(GroupManager.roomData.jid,this.checked);
+		myFn.invoke({
+			url:'/room/member/setOfflineNoPushMsg',
+			data:{
+				roomId:GroupManager.roomData.id,
+				userId:Object.keys(DataMap.userMap)[0],
+				offlineNoPushMsg:this.checked?1:0
+			},
+			success:function(result){
+				console.log(result);
+			},
+			error : function(result) {
+				ownAlert(2,result);
+			}
+		});
+		console.log("=======btnShield========>>>>>>  checked: "+this.checked +"  isFilter : "+this.checked);
   	});
 
 	// 消息免打扰
