@@ -926,17 +926,22 @@ var UI = {
 		var messageNumber =DataUtils.getMsgNumCount();
 		//新增的消息。1.新增，0.非新增（初始化）
 		if(1==isAdd){
-			if(myFn.isNil(msgNum)){
-				// var i=$("#msgNum_"+userId+"  #span").html();
-				// msgNum=parseInt(i);
-				msgNum = 1;
+			let friend = DataMap.friends[userId];
+			//只有在未设置免打扰时才加消息
+			if (friend && friend.offlineNoPushMsg === 1) {
+			}else{
+				if(myFn.isNil(msgNum)){
+					// var i=$("#msgNum_"+userId+"  #span").html();
+					// msgNum=parseInt(i);
+					msgNum = 1;
+				}
+				else {
+					msgNum += 1;
+				}
+				DataUtils.setMsgNum(userIdKey,msgNum) ;
+				messageNumber += 1; //将好友发送的未读消息汇总
+				DataUtils.setMsgMumCount(messageNumber);
 			}
-			else {
-				msgNum += 1;
-			}
-			DataUtils.setMsgNum(userIdKey,msgNum) ;
-			messageNumber += 1; //将好友发送的未读消息汇总
-			DataUtils.setMsgMumCount(messageNumber);
 		}
 		//显示好友的消息数量
 		if(msgNum>0){
@@ -2428,6 +2433,9 @@ var UI = {
 						$('#jingyin_' + toUserId).show();
 					}else{
 						$('#jingyin_' + toUserId).hide();
+					}
+					if (DataMap.friends[toUserId]) {
+						DataMap.friends[toUserId].offlineNoPushMsg = isShield ? 1 : 0;
 					}
 				}
 			},

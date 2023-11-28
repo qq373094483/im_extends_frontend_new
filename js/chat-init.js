@@ -207,7 +207,7 @@ layui.use(['form', 'layedit', 'laydate'], function () {
             UI.switchReadDel(this.checked);
         });
 
-        //监听阅后即焚开关按钮事件
+        //免打扰开关按钮事件
         form.on('switch(switchShield)', function (data) {
             UI.switchShield(this.checked);
         });
