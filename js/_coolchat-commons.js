@@ -238,6 +238,13 @@ var myFn = {
 	isNil: function (s) {
 		return undefined == s || "undefined" == s || null == s || $.trim(s) == "" || $.trim(s) == "null" || NaN == s;
 	},
+	copyToClipboard: function (text) {
+		var $tempInput = $("<input type='text'>");
+		$("body").append($tempInput);
+		$tempInput.val(text).select();
+		document.execCommand('copy');
+		$tempInput.remove();
+	},
 	notNull: function (s) {
 		return !this.isNil(s);
 	},

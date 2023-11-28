@@ -116,6 +116,12 @@ $(function(){
                     $(message).select();*/
                     document.execCommand('copy');
 
+                    /* var text = window.getSelection().toString();
+                     if (myFn.isNil(window.getSelection().toString())) {
+                         text=$(this).text();
+                     }
+                     myFn.copyToClipboard(text);
+ */
                 }
             }
             /*,
