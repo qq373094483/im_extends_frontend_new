@@ -2361,6 +2361,7 @@ var UI = {
 
 	},
 	isChoose : function(userId){ //好友列表选中状态切换
+		$('#groupNoticePanel').hide();
 		$("#friends_" + userId + "").siblings().removeClass("fActive");
 		$("#friends_" + userId + "").addClass("fActive");
 

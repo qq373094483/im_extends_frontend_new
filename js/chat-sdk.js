@@ -586,6 +586,12 @@ var mySdk = {
 			success : function(result) {
 				if (1 === result.resultCode){
 					DataMap.rooms[roomId]=result.data;
+					if (result.data && result.data.notice && result.data.notice.text) {
+						$('#groupNoticePanel').show();
+						$('#groupNoticeContent').empty().append(result.data.notice.text);
+					}else{
+						$('#groupNoticePanel').hide();
+					}
 					callback(result.data);
 				}else{
 					DataMap.rooms[roomId]=result.data;

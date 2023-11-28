@@ -447,6 +447,8 @@ $(function() {
 			isShowAlert:false,
 			success:function(result){
                $("#gnotice").empty().text(notice);
+				$('#groupNoticePanel').show();
+				$('#groupNoticeContent').empty().append(notice);
 				ownAlert(1,"发布公告成功");
 				 $("#groupnotice").modal("hide");
 			}
