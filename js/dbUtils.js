@@ -110,6 +110,34 @@ var DBUtils={
 		var key="msgNum_"+id;
 		window.dbStorage.setItem(key,num);
 	},
+	getMessageTopList: function () {
+		var key="messageTopList_";
+		var messageList=window.dbStorage.getItem(key);
+		//tigLog("getUIMessageList ===> "+messageList);
+		if(myFn.isNil(messageList)){
+			return null;
+		}else{
+			messageList=JSON.parse(messageList);
+		}
+		return messageList;
+	},
+	//type:0.群组，1.个人
+	setMessageTopList: function (type,userId,isTop) {
+
+		var key="messageTopList_";
+		var messageList=DBUtils.getMessageTopList();
+		if(myFn.isNil(messageList)){
+			messageList={};
+		}
+		/*var temp=messageList[msg.id];*/
+
+		messageList[userId]= {
+			type:type,
+			isTop: isTop,
+			time:myFn.getTimeSecond()
+		};
+		window.dbStorage.setItem(key,JSON.stringify(messageList));
+	},
 	/*获取最近的消息列表记录*/
 	getUIMessageList:function(){
 		var key="messageList_";

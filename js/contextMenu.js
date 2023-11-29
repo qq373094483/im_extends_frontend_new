@@ -2,13 +2,84 @@
 
 
 $(function(){
+    $.contextMenu({
+        selector: '#messageDisplayArea .messageDiv',
+        className: 'chat_message_content',
+        //trigger: 'hover',
+        callback: function(key, opt) {
+            console.log("点击了：" + key);
+
+            console.log("来源：" + $(this).text());
+        },
+        items: {
+            messageTop:{
+                name:"消息置顶",
+                icon:"edit",
+                id:"messageTop",
+                visible:false,
+                disabled:function(key,opt){
+
+                    let idProp = $(this).prop('id');
+                    var friends = "friends_";
+                    var groups = "groups_";
+                    let id = idProp.startWith(friends)?idProp.substr(friends.length):idProp.substr(groups.length);
+                    let messageTopList = DBUtils.getMessageTopList();
+                    if (messageTopList && messageTopList[id]&&messageTopList[id].isTop) {
+                        opt.commands.cancenMessageTop.visible = true;
+                        opt.commands.messageTop.visible = false;
+                    }else{
+                        opt.commands.cancenMessageTop.visible = false;
+                        opt.commands.messageTop.visible = true;
+                    }
+                    return false;
+                },
+                callback:function(key,opt){
+                    var friends = "friends_";
+                    var groups = "groups_";
+                    let idProp = $(this).prop('id');
+                    let id = idProp.startWith(friends)?idProp.substr(friends.length):idProp.substr(groups.length);
+                    DBUtils.setMessageTopList(idProp.startWith(friends) ? 1 : 0, id, true);
+
+                }
+            },
+            cancenMessageTop:{
+                name:"取消置顶",
+                icon:"edit",
+                id:"cancenMessageTop",
+                visible:false,
+                disabled:function(key,opt){
+                    let idProp = $(this).prop('id');
+                    var friends = "friends_";
+                    var groups = "groups_";
+                    let id = idProp.startWith(friends)?idProp.substr(friends.length):idProp.substr(groups.length);
+                    let messageTopList = DBUtils.getMessageTopList();
+                    if (messageTopList && messageTopList[id]&&messageTopList[id].isTop) {
+                        opt.commands.cancenMessageTop.visible = true;
+                        opt.commands.messageTop.visible = false;
+                    }else{
+                        opt.commands.cancenMessageTop.visible = false;
+                        opt.commands.messageTop.visible = true;
+                    }
+                    return false;
+                },
+                callback:function(key,opt){
+                    var friends = "friends_";
+                    var groups = "groups_";
+                    let idProp = $(this).prop('id');
+                    let id = idProp.startWith(friends)?idProp.substr(friends.length):idProp.substr(groups.length);
+                    DBUtils.setMessageTopList(idProp.startWith(friends) ? 1 : 0, id, false);
+
+                }
+            }
+
+        }
+    });
 	//消息界面 右键菜单
     $.contextMenu({
         selector: '#messageContainer .bubble_cont',
        	//className: '.chat_content',
        	//trigger: 'hover',
         callback: function(key, opt) {
-          
         },
         items: {
            /* copy:{
@@ -18,7 +89,7 @@ $(function(){
                     var msgType=$(this).parents(".chat_content_group").attr("msgType");
                    if(myFn.notNull(msgType)&&1==msgType)
                         return false;
-                     else 
+                     else
                         return true;
                 },
                 callback:function(key,opt){

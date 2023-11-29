@@ -1207,8 +1207,9 @@ var UI = {
 		}else{
 			offlineNoPushMsgHtml = "<div id='jingyin_"+userId+"' style=\"height:0px;float:right;position:relative;top:-18px;right:10px;display:none\"><img src=\"img/jingyin.png\" style=\"width:20px;height:20px;\"></div>";
 		}
-
-		var _item =  "<div  class='' id='friends_"+userId+"' onclick='UI.isChoose(\"" + userId + "\");'>"
+		var rightTop="<div id='righttop_"+userId+"' style=\"height:0px;float:right;position:relative;top:0px;right:0px;display:none\"><img src=\"img/right_top.png\" style=\"width:10px;height:10px;\"></div>";
+		var _item =  "<div  class='messageDiv' id='friends_"+userId+"' onclick='UI.isChoose(\"" + userId + "\");'>"
+			+rightTop
 			    +    "<div class='chat_item slide-left  active' onclick='ConversationManager.open(\"" + userId + "\",\"" + nickname + "\");' >"
 			    +        "<div class='ext'>"
 			    +           (myFn.isNil(timeSendStr) ? "<p class='attr'></p>" : "<p id='timeSend_"+userId +"' class='attr' value='"+timeSend+"'>" + timeSendStr + "</p>")
@@ -2890,24 +2891,28 @@ var UI = {
 		if(myFn.isNil(content))
 			content="&nbsp";
 		var i=0;
-		if(1==msg.isGroup)
-			 friendHtml = $("#myMessagesList #groups_"+fromUserId).prop("outerHTML");
-		else
-			 friendHtml = $("#myMessagesList #friends_"+fromUserId).prop("outerHTML");
+		if(1==msg.isGroup) {
+			friendHtml = $("#myMessagesList #groups_" + fromUserId).prop("outerHTML");
+		}
+		else {
+			friendHtml = $("#myMessagesList #friends_" + fromUserId).prop("outerHTML");
+		}
 
 
-		//判断发送消息的好友是否在当前页中
+		//判断发送消息的好友是否在当前页中。置顶在这里实现
 		if(!myFn.isNil(friendHtml)){ //存在
 			//存在 则直接加入到新朋友下方
 			if(1==msg.isGroup){
 				$("#myMessagesList #groups_"+fromUserId).remove();
 			}
 			else{
-				if(10000!=fromUserId)
-				$("#myMessagesList #friends_"+fromUserId).remove();
+				if(10000!=fromUserId) {
+					$("#myMessagesList #friends_" + fromUserId).remove();
+				}
 			}
-			if(10000!=fromUserId)	
+			if(10000!=fromUserId) {
 				$(friendHtml).insertAfter("#myMessagesList #friends_10001");
+			}
 			if(1==showNum){
 				UI.showMsgNum(fromUserId,updateUI);
 			}
@@ -2923,7 +2928,8 @@ var UI = {
 			    $("#myMessagesList #titfriends_"+fromUserId).html(myFn.getText(content,20));
 			}
 		  
-		}else{ 
+		}else{
+			//initUIMessageList方法调用时会调，可以在这里面对初始化的消息框进行排序
 			if(i==1)
 				return;
 			i=1;
