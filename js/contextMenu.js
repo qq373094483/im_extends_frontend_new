@@ -39,6 +39,7 @@ $(function(){
                     let idProp = $(this).prop('id');
                     let id = idProp.startWith(friends)?idProp.substr(friends.length):idProp.substr(groups.length);
                     DBUtils.setMessageTopList(idProp.startWith(friends) ? 1 : 0, id, true);
+                    $("#righttop_" + id).show();
 
                 }
             },
@@ -68,6 +69,7 @@ $(function(){
                     let idProp = $(this).prop('id');
                     let id = idProp.startWith(friends)?idProp.substr(friends.length):idProp.substr(groups.length);
                     DBUtils.setMessageTopList(idProp.startWith(friends) ? 1 : 0, id, false);
+                    $("#righttop_" + id).hide();
 
                 }
             }
