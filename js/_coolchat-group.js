@@ -1076,7 +1076,7 @@ var GroupManager = {
 		}else{
 			offlineNoPushMsgHtml = "<div id='jingyin_"+obj.jid+"' style=\"height:0px;float:right;position:relative;top:-18px;right:10px;display:none\"><img src=\"img/jingyin.png\" style=\"width:20px;height:20px;\"></div>";
 		}
-        var itemHtml =  "<div  class='' id='groups_"+obj.jid+"' onclick='GroupManager.isChoose(\"" +obj.jid + "\");'>"
+        var itemHtml =  "<div  class='messageDiv' id='groups_"+obj.jid+"' onclick='GroupManager.isChoose(\"" +obj.jid + "\");'>"
 				    +    "<div class='chat_item slide-left  active' onclick='GroupManager.createGroupChat(\""+ (obj.id)+ "\",\"" + obj.userId + "\",\"" + obj.jid + "\");'>"
 				    +        "<div class='ext'>"
 				    +"<p id='timeSend_"+obj.jid+"' class='attr' value='"+timeSend+"'>" + (myFn.isNil(timeSendStr)?"":timeSendStr) + "</p>"
