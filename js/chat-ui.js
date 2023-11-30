@@ -118,7 +118,8 @@ var UI = {
 		if (!myFn.isNil(msg.contentTranslate)) {
 			//别人发的
 			if (direction === 0) {
-				msg.content = msg.contentTranslate;
+				//TODO暂时不要显示别人发的译文
+				// msg.content = msg.contentTranslate;
 			}
 		}
 		var contentHtml = this.createMsgContent(msg,direction,isSend);
@@ -221,9 +222,21 @@ var UI = {
 			}
 		}else{
 			if (direction === 0) {
-				contentHtml += "<pre class='js_message_plain'>"+ content +"</pre>"
+				/*contentHtml += "<pre class='js_message_plain'>"+ content +"</pre>"
 					+ msgStatusHtml
-					+ "</div";
+					+ "</div";*/
+				if (msg.contentTranslate) {
+
+					contentHtml += "<pre class='js_message_plain'>"+ content +"</pre>"
+						+"<pre class='js_message_plain' style='border-top: 1px solid black'></pre>"
+						+"<pre class='js_message_plain'>"+msg.contentTranslate+"</pre>"
+						+ msgStatusHtml
+						+ "</div";
+				}else{
+					contentHtml += "<pre class='js_message_plain'>"+ content +"</pre>"
+						+ msgStatusHtml
+						+ "</div";
+				}
 			}else{
 				if (msg.contentTranslate) {
 
