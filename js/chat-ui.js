@@ -2662,7 +2662,7 @@ var UI = {
 				
 				mySdk.getUser(fromUserId,function(user){
 					DataMap.friends[fromUserId]=user.friends;
-
+					$("#friendAccount").empty().append(user.account);
 					$("#remarkName").val(DataMap.friends[fromUserId].remarkName?DataMap.friends[fromUserId].remarkName:'');
 					$("#desname").empty().append(user.nickname);
 					$("#friendDetailUserId").val(DataMap.friends[fromUserId].toUserId);
