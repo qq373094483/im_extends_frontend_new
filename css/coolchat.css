@@ -89,7 +89,7 @@ body {
 
 .groupDetailSettingImg{
 	float: right;
-    margin-right: 40px;
+    margin-right: 10px;
     margin-top: 10px;
     height: 25px;
 }
@@ -387,7 +387,7 @@ dl:hover{
 }
 
 #tabCon_2{
-	min-width: 400px;
+	min-width: 420px;
 	min-height: 760px;
 	height:100%;
 	display: none;
@@ -2091,7 +2091,7 @@ html,body{
 	padding: 0;
 	margin-left: 5px;
 	width: calc(100% - 375px);
-	min-width: 700px;
+	min-width: 550px;
 	height:100%;
 	background-color: #eee;
 	overflow: hidden;
@@ -2437,10 +2437,11 @@ html,body{
 
 
 /* ***************    **/
-.layui-input-block > div{
-	    height: 24px;
-	    margin-top: 6px;
-	    width: 50px;
+.layui-input-block > div {
+	height: 24px;
+	margin-top: 6px;
+	margin-left: 30px;
+	width: 50px;
 }
 
 
