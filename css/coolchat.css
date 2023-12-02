@@ -78,7 +78,7 @@ body {
 }
 .groupDetailSettingRow{
 	height: 6%;
-	width:505px;
+	width:400px;
 	border-bottom:1px solid #eeeeee;
 	padding: 0  30px;
 }
@@ -387,7 +387,7 @@ dl:hover{
 }
 
 #tabCon_2{
-	min-width: 500px;
+	min-width: 400px;
 	min-height: 760px;
 	height:100%;
 	display: none;
@@ -2192,7 +2192,7 @@ html,body{
 	padding: 0; 
 	overflow:auto;
 	border-top:0;
-	width: 700px;
+	width: 400px;
 }
 
 
@@ -2315,7 +2315,7 @@ html,body{
 }
 /** 群公告长度限制 **/
 #gnotice {
-	width: 200px;
+	width: 80px;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
