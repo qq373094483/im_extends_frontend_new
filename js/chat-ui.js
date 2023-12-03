@@ -3075,6 +3075,133 @@ var UI = {
 
 
 	},
+	setShutcut: function () {
+		$("#shutcuts").empty();
+		var tbInviteListHtml = "";
+		myFn.invoke({
+			url : '/quick_message',
+			data : {
+				userId:myData.userId
+			},
+			type: 'GET',
+			async:false,
+			success : function(result) {
+				if (result.resultCode === 1) {
+					if (result.data && result.data.length > 0) {
+						var datas=result.data;
+						for(var i=0;i<datas.length;i++){
+							var data=datas[i];
+							tbInviteListHtml+="<tr><td>"+(i+1)+"</td><td width=\"250\" ondblclick=\"UI.sendQuickMessage('"+data.message+"')\">"+data.message+"</td><td><button style=\"width:35px\" onclick=\"UI.delShutcutMessage('"+data.id+"')\">删除</button></td><td><button style=\"width:35px\" onclick=\"UI.setShutcutMessage('"+data.id+"','"+data.message+"')\">编辑</button></td></tr>"
+						}
+					}
+					$("#shutcuts").append(tbInviteListHtml);
+					$('#shutcut').modal('show');
+				}
+
+
+			},
+			error : function(result) {
+			}
+		});
+
+	},
+	sendQuickMessage: function (message) {
+		$("#messageBody").val(message);
+		$('#shutcut').modal('hide');
+
+	},
+	delShutcutMessage: function (id) {
+		if (!id) {
+			ownAlert(3,"id不能为空");
+		}
+		myFn.invoke({
+			url : '/quick_message/del',
+			type: 'POST',
+			data:{
+				id:id,
+				userId:myData.userId
+			},
+			async:false,
+			success : function(result) {
+				if (result.resultCode === 1) {
+					UI.setShutcut();
+					ownAlert(3,"删除成功");
+
+				}
+
+
+			},
+			error : function(result) {
+			}
+		});
+	},
+	setShutcutMessage: function (id,message) {
+		if (id) {
+			$('#quickMessageId').val(id);
+			$("#shutcutMessage").val(message);
+			// $("#shutcuts").empty();
+			// $("#shutcuts").append(tbInviteListHtml);
+			$('#shutcutNew').modal('show');
+		}else{
+			$("#shutcutMessage").val('');
+			// $("#shutcuts").empty();
+			// $("#shutcuts").append(tbInviteListHtml);
+			$('#shutcutNew').modal('show');
+		}
+	},
+	sendShutcutNew: function () {
+
+		let val = $('#shutcutMessage').val();
+		if (myFn.isNil(val)) {
+			ownAlert(3,"内容不能为空");
+			return;
+		}
+		if (myFn.isNil($('#quickMessageId').val())) {
+			myFn.invoke({
+				url : '/quick_message',
+				data : {
+					message:val,
+					userId:myData.userId
+				},
+				type: 'POST',
+				async:false,
+				success : function(result) {
+					if (result.resultCode === 1) {
+						msg = result.resultMsg;
+						UI.setShutcut();
+						$('#shutcutNew').modal('hide');
+
+					}
+
+
+				},
+				error : function(result) {
+				}
+			});
+		}else{
+			myFn.invoke({
+				url : '/quick_message/modify',
+				data : {
+					message:val,
+					userId:myData.userId,
+					id:$('#quickMessageId').val()
+				},
+				type: 'POST',
+				async:false,
+				success : function(result) {
+					if (result.resultCode === 1) {
+						msg = result.resultMsg;
+						UI.setShutcut();
+						$('#shutcutNew').modal('hide');
+					}
+
+
+				},
+				error : function(result) {
+				}
+			});
+		}
+	},
 	sendCard : function(){ //发送名片
 		Checkbox.cheackedFriends = {};  //清空储存的数据
 		Temp.friendListType="sendCard";
