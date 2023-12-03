@@ -3143,6 +3143,7 @@ var UI = {
 			// $("#shutcuts").append(tbInviteListHtml);
 			$('#shutcutNew').modal('show');
 		}else{
+			$('#quickMessageId').val('')
 			$("#shutcutMessage").val('');
 			// $("#shutcuts").empty();
 			// $("#shutcuts").append(tbInviteListHtml);
@@ -3190,7 +3191,7 @@ var UI = {
 				async:false,
 				success : function(result) {
 					if (result.resultCode === 1) {
-						msg = result.resultMsg;
+						$('#quickMessageId').val('');
 						UI.setShutcut();
 						$('#shutcutNew').modal('hide');
 					}
