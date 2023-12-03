@@ -454,8 +454,8 @@ $(function() {
 		if(notice==""){
 			ownAlert(3,"请输入新公告");
 		}
-		if(notice.length>100){
-			ownAlert(3,"只能输入100个字符！");
+		if(notice.length>500){
+			ownAlert(3,"只能输入500个字符！");
 			return;
 		}
 		var allowForceNotice = $('#chkForceTip').is(':checked') ? 1 : 0;
