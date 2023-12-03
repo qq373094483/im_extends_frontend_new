@@ -2,7 +2,7 @@
 
 
 $(function(){
-    $.contextMenu({
+   /* $.contextMenu({
         selector: '#messageDisplayArea .messageDiv',
         className: 'chat_message_content',
         //trigger: 'hover',
@@ -75,7 +75,7 @@ $(function(){
             }
 
         }
-    });
+    });*/
 	//消息界面 右键菜单
     $.contextMenu({
         selector: '#messageContainer .bubble_cont',
