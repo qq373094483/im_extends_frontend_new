@@ -397,6 +397,9 @@
                                     <span id="btnShutcut" onclick="UI.setShutcut()">
 											<img alt="" src="img/7.png" style="position:relative;top:5px;left:5px;width: 35px;height: 35px;">
 										</span>
+                                    <span id="btnMessageRemark" onclick="UI.setMessageRemark()">
+											<img alt="" src="img/1.png" style="position:relative;top:5px;left:5px;width: 35px;height: 35px;">
+										</span>
                                     <!--<span id="place">
 											<img src="img/wz.png">
 										</span>-->
@@ -1388,6 +1391,51 @@
                         </div>
                         <div class="modal-footer" style="text-align: left;">
                             <button id="sendShutcutNew" onclick="UI.sendShutcutNew()" type="button" class="btn sou">提交</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 消息备注 -->
+            <div id="messageRemark" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog" style="width: 100%;max-width: 400px;margin-top: 60px">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title">消息备注</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div style="border-left: 1px solid #ddd; border-right: 1px solid #eeeeee; border-bottom:1px solid #eeeeee; height: 480px; overflow-y: auto;">
+                                <table class="table">
+                                    <tbody id="messageRemarks">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="modal-footer" style="text-align: left;">
+                            <button id="sendMessageRemark" type="button" class="btn sou"  onclick="UI.setMessageRemarkMessage()">新增</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 消息备注 -->
+            <div id="messageRemarkNew" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog" style="width: 100%;max-width: 400px;margin-top: 60px">
+                    <div class="modal-content" style="margin:250px auto">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title">请输入消息备注</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div style="height: 175px; overflow-y: auto;">
+                                <textarea id="messageRemarkMessage" rows="10" cols="48"></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer" style="text-align: left;">
+                            <button id="sendMessageRemarkNew" onclick="UI.sendMessageRemarkNew()" type="button" class="btn sou">提交</button>
                         </div>
                     </div>
                 </div>

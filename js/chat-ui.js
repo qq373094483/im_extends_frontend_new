@@ -3075,6 +3075,70 @@ var UI = {
 
 
 	},
+	setMessageRemark: function () {
+		$("#messageRemarks").empty();
+		var tbInviteListHtml = "";
+		myFn.invoke({
+			url : '/message_remark',
+			data : {
+				fromUserId:myData.userId,
+				toUserId:DataMap.currentDialog.toUserId
+			},
+			type: 'GET',
+			async:false,
+			success : function(result) {
+				if (result.resultCode === 1) {
+					if (result.data && result.data.length > 0) {
+						var datas=result.data;
+						for(var i=0;i<datas.length;i++){
+							var data=datas[i];
+							tbInviteListHtml+="<tr><td>"+data.dateTime+"</td></tr><tr><td>"+data.remark+"</td></tr>"
+						}
+					}
+					$("#messageRemarks").append(tbInviteListHtml);
+					$('#messageRemark').modal('show');
+				}
+
+
+			},
+			error : function(result) {
+			}
+		});
+	},
+	setMessageRemarkMessage: function () {
+		$("#messageRemarkMessage").val('');
+		$("#messageRemarkNew").modal('show');
+	},
+	sendMessageRemarkNew: function () {
+		let val = $("#messageRemarkMessage").val();
+		if (myFn.isNil(val)) {
+			ownAlert(3,"备注不能为空");
+			return;
+		}
+		myFn.invoke({
+			url : '/message_remark',
+			data : {
+				fromUserId:myData.userId,
+				toUserId:DataMap.currentDialog.toUserId,
+				remark:val
+
+			},
+			type: 'POST',
+			async:false,
+			success : function(result) {
+				if (result.resultCode === 1) {
+					$('#messageRemarkNew').modal('hide');
+					UI.setMessageRemark();
+					ownAlert(3,"添加成功");
+				}
+
+
+			},
+			error : function(result) {
+			}
+		});
+		console.log(val);
+	},
 	setShutcut: function () {
 		$("#shutcuts").empty();
 		var tbInviteListHtml = "";
