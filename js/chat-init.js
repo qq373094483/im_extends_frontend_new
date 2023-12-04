@@ -995,6 +995,18 @@ layui.use(['form', 'layedit', 'laydate'], function () {
             title: '翻译',
             placement: 'top'
         });
+        $("#btnShutcut").tooltip({
+            trigger: 'hover',
+            html: true,
+            title: '快捷回复',
+            placement: 'top'
+        });
+        $("#btnMessageRemark").tooltip({
+            trigger: 'hover',
+            html: true,
+            title: '消息跟进',
+            placement: 'top'
+        });
         $("#btnvideo").tooltip({
             trigger: 'hover',
             html: true,
