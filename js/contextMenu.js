@@ -137,14 +137,16 @@ $(function(){
                 icon:"recall",
                 disabled:function(){
                     //判断不是自己发送的就隐藏
-                    var cla=$(this).parents(".js_message_bubble").attr("class");
-                   if(!myFn.isContains(cla,"right"))
-                     return true;
-                 var msgType=$(this).parents(".msgDiv").attr("msgType");
-                   if(myFn.notNull(msgType)&&28!=msgType)
-                        return false;
-                    else 
+                    var cla = $(this).parents(".js_message_bubble").attr("class");
+                    if (!myFn.isContains(cla, "right")) {
                         return true;
+                    }
+                    var msgType = $(this).parents(".msgDiv").attr("msgType");
+                    if (myFn.notNull(msgType) && 28 != msgType) {
+                        return false;
+                    } else {
+                        return true;
+                    }
                 },
                 callback:function(key,opt){
                     var msgId=$(this).parents(".msgDiv").attr("id").split("msg_")[1];
