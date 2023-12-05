@@ -138,6 +138,25 @@ var DBUtils={
 		};
 		window.dbStorage.setItem(key,JSON.stringify(messageList));
 	},
+	//TODO 待实现消息排序
+	messageSort: function () {
+		//最近的消息
+		let uiMessageList = DBUtils.getUIMessageList();
+		if (!uiMessageList) {
+			uiMessageList = {};
+		}
+		//消息置顶
+		let messageTopList = DBUtils.getMessageTopList();
+		if (!messageTopList) {
+			messageTopList = {};
+		}
+		var top = {};
+		var notTop = {};
+		console.log(uiMessageList);
+		console.log(messageTopList);
+		var messageTopListArray = Object.keys(messageTopList);
+		console.log(messageTopListArray);
+	},
 	/*获取最近的消息列表记录*/
 	getUIMessageList:function(){
 		var key="messageList_";

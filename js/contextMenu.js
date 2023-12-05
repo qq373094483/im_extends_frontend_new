@@ -2,7 +2,9 @@
 
 
 $(function(){
-   /* $.contextMenu({
+
+    //DBUtils.messageSort
+    /*$.contextMenu({
         selector: '#messageDisplayArea .messageDiv',
         className: 'chat_message_content',
         //trigger: 'hover',
