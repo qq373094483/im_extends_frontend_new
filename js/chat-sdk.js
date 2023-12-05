@@ -576,8 +576,9 @@ var mySdk = {
 			return null;
 		}
 		var value=DataMap.rooms[roomId];
-		if(!myFn.isNil(value))
+		if(!myFn.isNil(value)) {
 			return callback(value);
+		}
 		myFn.invoke({
 			url : '/room/getRoom',
 			data : {
