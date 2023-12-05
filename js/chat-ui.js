@@ -227,9 +227,9 @@ var UI = {
 					+ "</div";*/
 				if (msg.contentTranslate) {
 
-					contentHtml += "<pre class='js_message_plain'>"+ content +"</pre>"
+					contentHtml += "<pre class='js_message_plain'>"+msg.contentTranslate+"</pre>"
 						+"<pre class='js_message_plain' style='border-top: 1px solid black'></pre>"
-						+"<pre class='js_message_plain'>"+msg.contentTranslate+"</pre>"
+						+"<pre class='js_message_plain'>"+ content +"</pre>"
 						+ msgStatusHtml
 						+ "</div";
 				}else{
