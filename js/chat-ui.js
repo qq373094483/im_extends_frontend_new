@@ -2418,6 +2418,7 @@ var UI = {
 		$("#myMessagesList #friends_" + userId + "").addClass("fActive");
      // if(10001!=userId)
      //  	changeTab('0','msgTab'); //恢复顶部切换按钮的状态
+		$('.nano').css('height','calc(100% - 220px)');
 	},
 	switchReadDel:function(isReadDel){ //isReadDel true： 开启  false 关闭
 		if(isReadDel){

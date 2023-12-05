@@ -1944,6 +1944,11 @@ var GroupManager = {
 		$("#allRoomList #groups_" + groupId + "").addClass("fActive");
 		$("#allRoomList #groups_" + groupId + "").siblings().removeClass("fActive");
 		$('#switchShieldDiv').hide();
+		if ($('#groupNoticePanel').css('display') === 'block') {
+			$('.nano').css('height', 'calc(100% - 270px)');
+		} else {
+			$('.nano').css('height', 'calc(100% - 220px)');
+		}
 
 	},
 	getMembersList : function() {
