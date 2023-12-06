@@ -2872,8 +2872,11 @@ var UI = {
 		//然后显示消息提醒
 		var friendHtml=null;
 		//No1 将发送消息的好友移动到新朋友的下方
-
 		var content=WEBIM.parseShowMsgTitle(msg);
+		//TODO 如果需要增加判断条件，在这加
+		if (msg.contentTranslate) {
+			content = msg.contentTranslate;
+		}
 		var timeSend=0!=msg.timeSend?msg.timeSend:msg.lastTime;
 		var timeSendStr=getTimeText(timeSend,1);
 

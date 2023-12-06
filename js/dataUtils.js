@@ -343,6 +343,7 @@ var DataUtils = {
         }
         obj.lastTime = 0;
         obj.content = msg.content;
+        obj.contentTranslate = msg.contentTranslate;
         obj.type = msg.type;
         DBUtils.putUIMessageList(obj);
     },
