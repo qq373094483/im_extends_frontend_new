@@ -628,10 +628,15 @@ var WEBIM={
 			case 913:
 				if(!WEBIM.isGroupType(msg.chatType))
 					return null;
+				var role=2;
 			  	if(1==msg.content||"1"==msg.content)
 					msg.content=msg.toUserName+" 被设置管理员 ";
-				else
-					msg.content=msg.toUserName+" 被取消管理员 ";
+				else {
+					role = 3;
+					msg.content = msg.toUserName + " 被取消管理员 ";
+				}
+				DataMap.myRooms[msg.roomJid].member.role = role;
+				DataMap.currentDialog.role = role;
 			  	break;
 			case 915:
 			  	//群已读消息开关

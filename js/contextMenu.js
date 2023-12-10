@@ -138,6 +138,16 @@ $(function(){
                 name:"撤回",
                 icon:"recall",
                 disabled:function(){
+                    if (DataMap.currentDialog.type === 0) {
+                        //群组ID
+                        var toUserId=DataMap.currentDialog.toUserId;
+                        //当前用户
+                        var fromUserId=DataMap.currentDialog.fromUserId;
+                        if (DataMap.myRooms[toUserId].member.role === 1||DataMap.myRooms[toUserId].member.role === 2||DataMap.currentDialog.role===2) {
+                            return false;
+                        }
+
+                    }
                     //判断不是自己发送的就隐藏
                     var cla = $(this).parents(".js_message_bubble").attr("class");
                     if (!myFn.isContains(cla, "right")) {
@@ -149,6 +159,7 @@ $(function(){
                     } else {
                         return true;
                     }
+                    // return false;
                 },
                 callback:function(key,opt){
                     var msgId=$(this).parents(".msgDiv").attr("id").split("msg_")[1];

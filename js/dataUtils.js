@@ -10,7 +10,8 @@ var DataMap = {
         fromUserId:null,//userId:对话的群ID或个人ID
         toUserId:null,
         language:null,
-        type:null//type:1.个人，0.群组
+        type:null,//type:1.个人，0.群组
+        role:null
     },//当前对话框。
     userSetting: {},
     friends: {},
