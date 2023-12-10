@@ -78,8 +78,9 @@ layui.use(['form', 'layedit', 'laydate'], function () {
             myData.multipleDevices = myData.user.settings.multipleDevices;
 
 
-            if (1 == myData.multipleDevices)
+            if (1 == myData.multipleDevices) {
                 myData.resource = "web";
+            }
             WEBIM.initWebIM(AppConfig.boshUrl, myData.userId, myData.resource,
                 myData.password, myData.keepalive, myData.nickname, AppConfig.boshDomain,data.salt);
 
