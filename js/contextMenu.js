@@ -169,6 +169,9 @@ $(function(){
                         ownAlert(3,"发送超过五分钟,不能撤回！");
                         return;
                     }*/
+                    // DataMap.msgRecordList[ConversationManager.fromUserId]=null;
+                    //用于解决撤回问题
+                    DBUtils.clearAll();
                     UI.deleteMsg(0==ConversationManager.isGroup?1:2,2,msgId,ConversationManager.fromUserId,1,function(){
                          //发送撤回消息协议
                         var message=WEBIM.createMessage(202,msgId);

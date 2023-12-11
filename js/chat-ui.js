@@ -484,8 +484,15 @@ var UI = {
 					}else{
 						recallHtml = "<div class='logContent'><span>"+msg.fromUserName+" 撤回了一条消息 ("+myFn.toDateTime(msg.timeSend)+")</span></div>";
 					}
-					
-					
+					//清空缓存消息
+					if (msg.chatType === WEBIM.GROUPCHAT) {
+						// DataMap.msgRecordList = null;
+						//用于解决撤回问题
+						DBUtils.clearAll();
+
+					}
+
+
 					$("#messageContainer #msg_"+msg.msgId).remove();
 					$("#messageContainer").append(recallHtml);
 					
