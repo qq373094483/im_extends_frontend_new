@@ -227,7 +227,7 @@ var UI = {
 					+ "</div";*/
 				if (msg.contentTranslate) {
 
-					contentHtml += "<pre class='js_message_plain'>"+msg.contentTranslate+"</pre>"
+					contentHtml += "<pre class='js_message_plain'>"+myFn.parseContent(msg.contentTranslate)+"</pre>"
 						+"<pre class='js_message_plain' style='border-top: 1px solid black'></pre>"
 						+"<pre class='js_message_plain'>"+ content +"</pre>"
 						+ msgStatusHtml
@@ -242,7 +242,7 @@ var UI = {
 
 					contentHtml += "<pre class='js_message_plain'>"+ content +"</pre>"
 						+"<pre class='js_message_plain' style='border-top: 1px solid black'></pre>"
-						+"<pre class='js_message_plain'>"+msg.contentTranslate+"</pre>"
+						+"<pre class='js_message_plain'>"+myFn.parseContent(msg.contentTranslate)+"</pre>"
 						+ msgStatusHtml
 						+ "</div";
 				}else{
@@ -667,12 +667,27 @@ var UI = {
 		if (msg.chatType==WEBIM.CHAT||msg.chatType==WEBIM.GROUPCHAT) {
 			//翻译
 			var currentDialog = DataMap.currentDialog;
+
+			//表情不翻译
+			var keys=Object.keys(_emojl);
+			var content=msg.content;
+			var indexEmpls={};
+			for (var i = 0; i < keys.length; i++) {
+				var key = keys[i];
+				if(msg.content.indexOf(key)!=-1) {
+					console.log(key);
+					content = content.replace(key, '{' + i + '}');
+					indexEmpls[i] = key;
+				}
+
+
+			}
 			if (currentDialog.language) {
 				//调用翻译功能
 				myFn.invoke({
 					url : '/translate',
 					data : {
-						q:msg.content,
+						q:content,
 						from:'Auto',
 						to: currentDialog.language
 					},
@@ -680,7 +695,13 @@ var UI = {
 					async:false,
 					success : function(result) {
 						if (result.resultCode === 1) {
-							msg.contentTranslate = result.resultMsg;
+							var resultMsg = result.resultMsg;
+							for (let indexEmpl in indexEmpls) {
+								var img='<img src="'+_emojl[indexEmpls[indexEmpl]]+'" width="25" height="25">';
+								// resultMsg=resultMsg.replace("{"+indexEmpl+"}",img);
+								resultMsg=resultMsg.replace("{"+indexEmpl+"}",indexEmpls[indexEmpl]);
+							}
+							msg.contentTranslate = resultMsg;
 						}
 					},
 					error : function(result) {

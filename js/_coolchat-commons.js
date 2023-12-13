@@ -360,7 +360,7 @@ var myFn = {
 		console.log(mp3html);
 		return mp3html;
 	},
-
+	//解析表情
 	parseContent: function (content) {
 		var emojlKeys = new Array();
 		if (myFn.isNil(content)) {
