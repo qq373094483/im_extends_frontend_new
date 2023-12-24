@@ -684,14 +684,15 @@ var UI = {
 			}
 			var settings=myData.user.settings;
 			const nonChineseRegex = /[^\u4e00-\u9fa5]/;
-			if (settings.allowTranslateChat === 1|| (!nonChineseRegex.test(content)) ) {
+			// if (settings.allowTranslateChat === 1|| (!nonChineseRegex.test(content)) ) {
+			if (settings.allowTranslateChat === 1) {
 				if (currentDialog.language) {
 					//调用翻译功能
 					myFn.invoke({
 						url : '/translate',
 						data : {
 							q:content,
-							from:'Auto',
+							from:'zh-CHS',
 							to: currentDialog.language
 						},
 						type: 'GET',
