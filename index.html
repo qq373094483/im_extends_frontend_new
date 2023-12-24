@@ -2517,6 +2517,69 @@
             }, 200);
         }
     };
+    //输入框粘贴功能
+    document.getElementById("messageBody").onpaste = function (e) {
+        console.log(e);
+        if (e.clipboardData && e.clipboardData.items) {
+            let items = e.clipboardData.items || [];
+            let file = null;
+            var messageId = null;
+            if (items && items.length) {
+                for (let i = 0; i < items.length; i++) {
+                    if (items[i].type.indexOf('image') !== -1) {
+                        file = items[i].getAsFile();
+                        var imgMsg = WEBIM.createMessage(2, " ");
+                        messageId=imgMsg.messageId;
+                        var reader = new FileReader();
+                        reader.onload = function(evt){
+                            imgMsg.content = evt.target.result;
+                            UI.showMsg(imgMsg,myData.userId,1,1,"newMsg");
+                            DataUtils.saveMessage(imgMsg);//储存消息
+                        }
+                        reader.readAsDataURL(file);
+                        break;
+                    }
+
+                }
+            }
+            if (file != null) {
+                var url=AppConfig.uploadUrl;
+                var formData = new FormData();
+                formData.append('file', file);
+                formData.append("access_token", myData.access_token);
+                /*var data=WEBIM.createOpenApiSecret(formData);
+                formData.append("secret",data.secret)
+                formData.append("time",data.time)*/
+                var obj = WEBIM.createCommApiSecret({});
+                formData.append("time", obj.time);
+                formData.append("secret", obj.secret);
+                $.ajax({
+                    // contentType:"multipart/form-data",
+                    contentType:false,
+                    type:"POST",
+                    url:url,
+                    jsonp:"callback",
+                    processData:false,
+                    data:formData,
+                    success : function(result) {
+                        console.log(result);
+                        let parse = JSON.parse(result);
+                        if (parse.url && (!myFn.isNil(parse.url))) {
+                            // var imgMsg = WEBIM.createMessage(MessageType.IMAGE, " ");
+                            // // WEBIM.sendMessage(msg);
+                            var imgMsg=DataUtils.getMessage(messageId);
+                            imgMsg.content = parse.url;
+                            UI.sendMsg(imgMsg);
+                        }
+                    },
+                    error : function(result) {
+                        console.log(result);
+                    }
+                });
+            }
+        }
+
+    };
     //TODO 待实现
     document.getElementById("messageBody").onmouseenter = function () {
         //提交配置
