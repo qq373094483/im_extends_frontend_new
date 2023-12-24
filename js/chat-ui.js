@@ -682,32 +682,36 @@ var UI = {
 
 
 			}
-			if (currentDialog.language) {
-				//调用翻译功能
-				myFn.invoke({
-					url : '/translate',
-					data : {
-						q:content,
-						from:'Auto',
-						to: currentDialog.language
-					},
-					type: 'GET',
-					async:false,
-					success : function(result) {
-						if (result.resultCode === 1) {
-							var resultMsg = result.resultMsg;
-							for (let indexEmpl in indexEmpls) {
-								var img='<img src="'+_emojl[indexEmpls[indexEmpl]]+'" width="25" height="25">';
-								// resultMsg=resultMsg.replace("{"+indexEmpl+"}",img);
-								resultMsg=resultMsg.replace("{"+indexEmpl+"}",indexEmpls[indexEmpl]);
+			var settings=myData.user.settings;
+			const nonChineseRegex = /[^\u4e00-\u9fa5]/;
+			if (settings.allowTranslateChat === 1|| (!nonChineseRegex.test(content)) ) {
+				if (currentDialog.language) {
+					//调用翻译功能
+					myFn.invoke({
+						url : '/translate',
+						data : {
+							q:content,
+							from:'Auto',
+							to: currentDialog.language
+						},
+						type: 'GET',
+						async:false,
+						success : function(result) {
+							if (result.resultCode === 1) {
+								var resultMsg = result.resultMsg;
+								for (let indexEmpl in indexEmpls) {
+									var img='<img src="'+_emojl[indexEmpls[indexEmpl]]+'" width="25" height="25">';
+									// resultMsg=resultMsg.replace("{"+indexEmpl+"}",img);
+									resultMsg=resultMsg.replace("{"+indexEmpl+"}",indexEmpls[indexEmpl]);
+								}
+								msg.contentTranslate = resultMsg;
 							}
-							msg.contentTranslate = resultMsg;
+						},
+						error : function(result) {
 						}
-					},
-					error : function(result) {
-					}
-				});
+					});
 
+				}
 			}
 		}
 		if (!myFn.isNil(DataMap.deleteRooms[ConversationManager.fromUserId]&&200>msg.type)) { 

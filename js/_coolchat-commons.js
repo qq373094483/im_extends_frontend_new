@@ -503,7 +503,8 @@ var Checkbox = {
 	translateCheckedAndCancel: function (that) {
 		// DataMap.currentDialog;
 		Checkbox.signCheckbox('.translateCheckbox', that);
-		DataMap.currentDialog.language = $(that).val();
+		var val=$(that).is(':checked')?$(that).val():null;
+		DataMap.currentDialog.language = val;
 	},
 	signCheckbox: function (selector, that) {
 		//切换状态
