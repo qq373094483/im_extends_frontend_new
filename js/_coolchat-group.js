@@ -289,8 +289,26 @@ $(function() {
 	//创建群组 的窗口按钮切换事件
 
 	/*--------------------------------------------*/
-	
-	
+
+	$("#search_member_user").bind("input keypress",function(event){
+		//好友添加输入框回车事件
+		if (event.keyCode === 13) {
+			console.log($("#tbMemberList tr"));
+			if (myFn.isNil($(this).val())) {
+				$("#tbMemberList tr").show();
+			}else{
+				var keyword = $(this).val();
+				$("#tbMemberList tr").each(function (index,ele) {
+					let search = $(ele).find('td').eq(1).text().search( new RegExp(keyword,'ig'));
+					if (search < 0) {
+						$(ele).hide();
+					}else{
+						$(ele).show();
+					}
+				});
+			}
+		}
+	});
 	// 群成员管理
 	$("#btnKicking").click(function() {
 		mySdk.getMembersList(GroupManager.roomData.id,null,function(obj){
