@@ -315,7 +315,7 @@ $(function() {
 						tbMemberListHtml += "<td id='replace_"+obj[i].userId+"'><a href='javascript:GroupManager.setAdmin(\""+GroupManager.roomData.id+"\","+obj[i].userId+","+3+")'>取消管理员</a></td><td><a href='javascript:GroupManager.removeMember(\"" + GroupManager.roomData.id + "\","
 							+ obj[i].userId + ",\"" + obj[i].nickname
 							+ "\");'>踢出</a></td>"
-							+"<td width=50><a href='javascript:GroupManager.setTalkTime(\"" + GroupManager.roomData.id + "\","
+							+"<td width=50 id='tr_member_disableSendMsg_"+obj[i].userId+"'><a href='javascript:GroupManager.setTalkTime(\"" + GroupManager.roomData.id + "\","
 							+ obj[i].userId + ",\"" + obj[i].nickname + "\","+obj[i].talkTime+");'>禁言</a></td>"
 							+"<td width=50><a href='javascript:memberRemarkName(\"" + obj[i].userId + "\");'>备注</a></td>";
 
@@ -328,7 +328,7 @@ $(function() {
 					}else{ //普通用户
 						tbMemberListHtml += "<td id='replace_"+obj[i].userId+"'><a href='javascript:GroupManager.setAdmin(\""+GroupManager.roomData.id+"\","+obj[i].userId+","+2+")'>设为管理员</a></td><td><a href='javascript:GroupManager.removeMember(\"" + GroupManager.roomData.id + "\","
 							+ obj[i].userId + ",\"" + obj[i].nickname
-							+ "\");'>踢出</a></td><td width=50><a href='javascript:GroupManager.setTalkTime(\"" + GroupManager.roomData.id + "\","
+							+ "\");'>踢出</a></td><td width=50 id='tr_member_disableSendMsg_"+obj[i].userId+"'><a href='javascript:GroupManager.setTalkTime(\"" + GroupManager.roomData.id + "\","
 							+ obj[i].userId + ",\"" + obj[i].nickname + "\","+obj[i].talkTime+");'>禁言</a></td>"
 							+"<td width=50><a href='javascript:memberRemarkName(\"" + obj[i].userId + "\");'>备注</a></td>";
 
@@ -352,7 +352,7 @@ $(function() {
 						} else {
 							tbMemberListHtml += "<td width=50><a href='javascript:GroupManager.removeMember(\"" + GroupManager.roomData.id + "\","
 								+ obj[i].userId + ",\"" + obj[i].nickname
-								+ "\");'>踢出</a></td><td width=50><a href='javascript:GroupManager.removeMember(\"" + GroupManager.roomData.id + "\","
+								+ "\");'>踢出</a></td><td width=50 id='tr_member_disableSendMsg_"+obj[i].userId+"'><a href='javascript:GroupManager.removeMember(\"" + GroupManager.roomData.id + "\","
 								+ obj[i].userId + ",\"" + obj[i].nickname + "\","+obj[i].talkTime+");'>禁言</a></td>";
 						}
 						
@@ -1778,12 +1778,13 @@ var GroupManager = {
 		        ,content: '<div class="layui-form" style="margin-top:20px; margin-left:70px;width:150px; height:150px;">'+
 		        				'<div class="layui-form-item">'+
 		        					'<div class="layui-inline">'+
-		                   					'<div class="layui-input-inline" style="width: 120px;">'+
+		                   					'<div class="layui-input-inline" style="width: 150px;">'+
 				                   				'<select id="talkTime" name="talkTime">'+
 				                   					(talkTime!=0?'<option value="0">取消禁言</option>':"")+
 				                   			  		'<option value="1800">禁言30分钟</option>'+
 				                   			  		'<option value="3600">禁言1小时</option>'+
 				                   			  		'<option value="86400">禁言1天</option>'+
+													'<option value="315360000">永久禁言</option>'+
 				                   				'</select>'+
 			                   				'</div>'+
 		                   			'</div>'+
@@ -1809,7 +1810,7 @@ var GroupManager = {
 							talkTime : (talkTimeSeconds==0 ? 0 : (Math.round(new Date().getTime() / 1000) + talkTimeSeconds))
 						},
 						success : function(result) {
-						
+
 							layui.layer.msg((talkTimeSeconds==0 ? "该成员已取消禁言":"成员禁言成功"));
 						},
 						error : function(result) {
